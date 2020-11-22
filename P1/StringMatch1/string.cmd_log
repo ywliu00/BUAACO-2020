@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "F:/Course/CO/P1/StringMatch1/string.xst" -ofn "F:/Course/CO/P1/StringMatch1/string.syr" 
