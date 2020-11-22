@@ -2,7 +2,8 @@
 
 parameter ALU_add = 3'b000,
           ALU_sub = 3'b001,
-			 ALU_or = 3'b010;
+			 ALU_or = 3'b010,
+			 ALU_lshift = 3'b011;
 
 parameter inst_err = 60'd0,
           inst_addu = 60'd1 << 0,

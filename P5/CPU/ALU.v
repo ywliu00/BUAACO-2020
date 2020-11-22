@@ -28,7 +28,14 @@ module ALU(
     );
 	 wire [2:0] ALUOp;
 	 assign ALUOp = (addu | lw | sw ) ? ALU_add :
+	                (subu) ? ALU_sub :
+						 (ori) ? ALU_or :
+						 (sll) ? ALU_lshift :
 	                                               ALU_add;
+    assign Res = (ALU_add) ? In0 + In1 :
+	              (ALU_sub) ? In0 - In1 :
+					  (ALU_or) ? In0 | In1 :
+					  (ALU_lshift) ? In0 << In1 : 32'd0;
 	 //always@(*)
 	 //begin
 	 
