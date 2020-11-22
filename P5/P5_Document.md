@@ -10,7 +10,7 @@
 
 ### （一）总体设计概述
 
-本CPU为Logisim实现的单周期MIPS - CPU，支持的指令集包含{addu、subu、ori、lw、sw、beq、lui、jal、jr、nop}。为了实现这些功能，CPU主要包含了IFU、GRF、ALU、DM、控制器等模块。
+本CPU为Verilog实现的五级流水线MIPS - CPU，支持的指令集包含{addu、subu、ori、lw、sw、beq、lui、j、jal、jr、nop}。为了实现这些功能，CPU主要包含了IFU、GRF、ALU、DM、控制器等模块。
 
 ### （二）关键模块定义
 
@@ -137,6 +137,10 @@ IFU功能是从 $IM$ 中取指并将指令按字段输出，并向 $PC$ 更新�
 |jal|1|x|0|1|0|10|x|0|011|x|x|
 |jr|0|x|0|0|1|x|x|0|x|x|x|
 |sll|1|x|0|0|0|01|x|0|010|x|1|
+
+### （三）关键功能实现
+
+
 
 ## 二、测试方案
 
