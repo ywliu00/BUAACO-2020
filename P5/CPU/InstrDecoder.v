@@ -31,14 +31,14 @@ module InstrDecoder(
 	 
 	 assign InstrType = (typeR && Func == 6'b100001) ? addu :
 	                    (typeR && Func == 6'b100011) ? subu :
-							  (OpCode == 6'b001101) ? ori :
-							  (OpCode == 6'b100011) ? lw :
-							  (OpCode == 6'b101011) ? sw :
-							  (OpCode == 6'b000100) ? beq :
-							  (OpCode == 6'b001111) ? lui :
-							  (OpCode == 6'b000010) ? j :
-							  (OpCode == 6'b000011) ? jal :
-							  (typeR && Func == 6'b001000) ? jr :
-							  (typeR && Func == 6'b000000) ? sll : err;
+                       (OpCode == 6'b001101) ? ori :
+                       (OpCode == 6'b100011) ? lw :
+                       (OpCode == 6'b101011) ? sw :
+                       (OpCode == 6'b000100) ? beq :
+                       (OpCode == 6'b001111) ? lui :
+                       (OpCode == 6'b000010) ? j :
+                       (OpCode == 6'b000011) ? jal :
+                       (typeR && Func == 6'b001000) ? jr :
+                       (typeR && Func == 6'b000000) ? sll : err;
 
 endmodule
