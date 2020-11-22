@@ -1,0 +1,8 @@
+lui $0, 43
+lui $1, 0xffff
+lui $4, 0x9427
+lui $15, 0x7219
+ori $15, $15, 0x2618
+lui $15, 0xabcd
+lui $27, 0xecfa
+ori $27, $15, 0x1235

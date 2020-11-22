@@ -1,0 +1,5 @@
+set -tmpdir "F:/Course/CO/P4/CPU/xst/projnav.tmp"
+set -xsthdpdir "F:/Course/CO/P4/CPU/xst"
+elaborate
+-ifn GRF.prj
+-ifmt mixed

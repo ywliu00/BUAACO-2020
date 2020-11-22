@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "F:/Course/CO/P4/CPU/GRF.xst" -ofn "F:/Course/CO/P4/CPU/GRF.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xa3s50-vqg100-4 GRF.ngc GRF.ngd  
+map -intstyle ise -p xa3s50-vqg100-4 -cm area -ir off -pr off -c 100 -o GRF_map.ncd GRF.ngd GRF.pcf 
+vhdtdtfi -lib work F:/Course/CO/P4/CPU/GRF.v -lang verilog -prj CPU -o GRF.spl -module GRF -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family aspartan3 GRF.spl F:/Course/CO/P4/CPU/GRF.sym 
+vhdtdtfi -lang verilog -prj CPU -o F:/Course/CO/P4/CPU/GRF.tfi -lib work F:/Course/CO/P4/CPU//GRF.v -module GRF -template D:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 

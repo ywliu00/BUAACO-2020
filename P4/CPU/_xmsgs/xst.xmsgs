@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;mips.v&quot; line 57 </arg>&apos;<arg fmt="%s" index="2">PC_4</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;mips.v&quot; line 58 </arg>&apos;<arg fmt="%s" index="2">imm32_Shifted</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;mips.v&quot; line 59 </arg>&apos;<arg fmt="%s" index="2">MemReadData</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;mips.v&quot; line 60 </arg>&apos;<arg fmt="%s" index="2">ALURes</arg>&apos; has not been declared
+</msg>
+
+</messages>
+

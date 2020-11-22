@@ -1,0 +1,17 @@
+
+
+
+// Instantiate the module
+GRF instance_name (
+    .RAddr0(RAddr0), 
+    .RAddr1(RAddr1), 
+    .WAddr(WAddr), 
+    .WriteData(WriteData), 
+    .RegWrite(RegWrite), 
+    .clk(clk), 
+    .reset(reset), 
+    .RData0(RData0), 
+    .RData1(RData1)
+    );
+
+

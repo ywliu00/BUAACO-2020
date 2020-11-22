@@ -1,0 +1,5 @@
+ori $2, $zero, 0x1234
+ori $4, $zero, 0xffff
+ori $8, $2, 0x436d
+ori $13, $4, 0x2715
+ori $25, $8, 0x0

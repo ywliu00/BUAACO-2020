@@ -1,0 +1,15 @@
+[Inputs]
+RegWrite
+clk
+reset
+=RAddr0[4:0]=
+=RAddr1[4:0]=
+=WAddr[4:0]=
+=WriteData[31:0]=
+[Outputs]
+=RData0[31:0]=
+=RData1[31:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel GRF
+
