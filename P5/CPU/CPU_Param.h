@@ -1,5 +1,6 @@
 `default_nettype none
-parameter addu = 5'd1,
+parameter err = 5'd0,
+          addu = 5'd1,
           subu = 5'd2,
           ori = 5'd3,
           lw = 5'd4,

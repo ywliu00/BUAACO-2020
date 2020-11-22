@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module IM(
     input wire [31:0] OpAddr,
-    output wire [31:0] OpCode
+    output wire [31:0] Instr
     );
 	 
 	 reg [31:0] IM_Unit [0:1023];
@@ -31,5 +31,5 @@ module IM(
 		$readmemh("code.txt",IM_Unit);
 	 end
 	 
-	 assign OpCode = IM_Unit[OpAddr];
+	 assign Instr = IM_Unit[OpAddr];
 endmodule
