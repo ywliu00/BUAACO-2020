@@ -22,15 +22,15 @@
 module ALU(
     input wire [31:0] In0,
     input wire [31:0] In1,
-    input wire [5:0] InstrType,
+    input wire [59:0] InstrType,
     output wire Zero,
     output wire [31:0] Res
     );
 	 wire [2:0] ALUOp;
-	 assign ALUOp = (addu | lw | sw ) ? ALU_add :
-	                (subu) ? ALU_sub :
-						 (ori) ? ALU_or :
-						 (sll) ? ALU_lshift :
+	 assign ALUOp = (`addu | `lw | `sw ) ? ALU_add :
+	                (`subu) ? ALU_sub :
+						 (`ori) ? ALU_or :
+						 (`sll) ? ALU_lshift :
 	                                               ALU_add;
     assign Res = (ALU_add) ? In0 + In1 :
 	              (ALU_sub) ? In0 - In1 :
