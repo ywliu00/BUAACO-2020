@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module InstrDecoder(
     input wire [31:0] Instr,
-    output wire [5:0] InstrType
+    output wire [59:0] InstrType
     );
 	 wire [5:0] OpCode, Func;
 	 wire typeR;
