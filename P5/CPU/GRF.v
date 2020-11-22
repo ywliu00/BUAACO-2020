@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`default_nettype none
+`include "CPU_Param.h"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -57,6 +57,8 @@ module GRF(
 		//RData0 <= reg32[RAddr0];
 		//RData1 <= reg32[RAddr1];
 	 end
-	 assign {RData0, RData1} = {reg32[RAddr0], reg32[RAddr1]};
+	 //assign {RData0, RData1} = {reg32[RAddr0], reg32[RAddr1]};
+	 assign RData0 = RegWrite && WAddr && (WAddr == RAddr0) ? WriteData : reg32[RAddr0];
+	 assign RData1 = RegWrite && WAddr && (WAddr == RAddr1) ? WriteData : reg32[RAddr1];
 	 
 endmodule
