@@ -4,9 +4,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:45:28 11/16/2020 
+// Create Date:    20:47:55 11/22/2020 
 // Design Name: 
-// Module Name:    IM 
+// Module Name:    NPC 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -19,19 +19,18 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module IM(
-    input wire [31:0] OpAddr,
-    output wire [31:0] Instr,
-	 output wire [31:0] FirstInstr
+module NPC(
+    input wire [31:0] PC,
+    input wire branch,
+    input wire jump,
+    input wire [31:0] branch_addr,
+    input wire [31:0] jump_addr,
+    output wire [31:0] NextPC,
+	 output wire [31:0] PC_4
     );
-	 
-	 reg [31:0] IM_Unit [0:1023];
-	 
-	 initial
-	 begin
-		$readmemh("code.txt",IM_Unit);
-	 end
-	 
-	 assign Instr = IM_Unit[OpAddr];
-	 assign FirstInstr = IM_Unit[0];
+	 assign PC_4 = PC + 31'd4;
+	 assign NextPC = (jump) ? jump_addr :
+	                 (branch) ? branch_addr :
+						  PC_4;
+
 endmodule

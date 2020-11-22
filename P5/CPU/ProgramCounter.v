@@ -1,12 +1,11 @@
 `timescale 1ns / 1ps
-`include "CPU_Param.h"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:45:28 11/16/2020 
+// Create Date:    21:07:03 11/22/2020 
 // Design Name: 
-// Module Name:    IM 
+// Module Name:    ProgramCounter 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -19,19 +18,25 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module IM(
-    input wire [31:0] OpAddr,
-    output wire [31:0] Instr,
-	 output wire [31:0] FirstInstr
+module ProgramCounter(
+    input wire clk,
+    input wire reset,
+    input wire [31:0] NPC,
+    output wire [31:0] PC
     );
-	 
-	 reg [31:0] IM_Unit [0:1023];
-	 
-	 initial
+	 reg [31:0] ProgCnt;
+	 always@(posedge clk)
 	 begin
-		$readmemh("code.txt",IM_Unit);
+		if(reset)
+		begin
+			ProgCnt <= 32'h0000_3000;
+		end
+		else
+		begin
+			ProgCnt <= NPC;
+		end
 	 end
 	 
-	 assign Instr = IM_Unit[OpAddr];
-	 assign FirstInstr = IM_Unit[0];
+	 assign PC = ProgCnt;
+	 
 endmodule
