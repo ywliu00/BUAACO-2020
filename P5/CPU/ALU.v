@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "CPU_Param.h"
+`include "CPU_Param.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -23,19 +23,16 @@ module ALU(
     input wire [31:0] In0,
     input wire [31:0] In1,
     input wire [59:0] InstrType,
-    output wire Zero,
+	input wire [2:0] ALUOp,
+    //output wire Zero,
     output wire [31:0] Res
     );
-	 wire [2:0] ALUOp;
-	 assign ALUOp = (`addu | `lw | `sw ) ? ALU_add :
-	                (`subu) ? ALU_sub :
-						 (`ori) ? ALU_or :
-						 (`sll) ? ALU_lshift :
-	                                               ALU_add;
+	wire [4:0] ShiftBits;
+	assign ShiftBits = In0[4:0];
     assign Res = (ALU_add) ? In0 + In1 :
-	              (ALU_sub) ? In0 - In1 :
-					  (ALU_or) ? In0 | In1 :
-					  (ALU_lshift) ? In0 << In1 : 32'd0;
+	             (ALU_sub) ? In0 - In1 :
+				 (ALU_or) ? In0 | In1 :
+				 (ALU_lshift) ? In1 << ShiftBits : 32'd0;
 	 //always@(*)
 	 //begin
 	 

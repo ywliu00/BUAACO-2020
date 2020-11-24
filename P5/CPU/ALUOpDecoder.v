@@ -4,9 +4,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:47:55 11/22/2020 
+// Create Date:    22:39:13 11/24/2020 
 // Design Name: 
-// Module Name:    NPC 
+// Module Name:    ALUOpDecoder 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -19,18 +19,15 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module NPC(
-    input wire [31:0] PC,
-    input wire branch,
-    input wire jump,
-    input wire [31:0] branch_addr,
-    input wire [31:0] jump_addr,
-    output wire [31:0] NextPC,
-	 output wire [31:0] PC_4
+module ALUOpDecoder(
+    input wire [59:0] InstrType,
+    output wire ALUIn1Src,
+    output wire [2:0] ALUOp
     );
-	 assign PC_4 = PC + 31'd4;
-	 assign NextPC = (jump) ? jump_addr :
-	                 (branch) ? branch_addr :
-						  PC_4;
+	assign ALUIn1Src = (`ori||`lw||`sw) ? 1 : 0;
+	//为0则取RtData，为1则取32位立即数
+	assign ALUOp = (`sll) ? ALU_lshift :
+	               (`ori) ? ALU_or : 
+				   (`subu) ? ALU_sub : ALU_add;
 
 endmodule

@@ -1,0 +1,3 @@
+verilog isim_temp "ALUOpDecoder.v"
+verilog isim_temp "Ex.v"
+verilog isim_temp "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

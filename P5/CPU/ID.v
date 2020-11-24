@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "CPU_Param.h"
+`include "CPU_Param.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -19,34 +19,43 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module ID(
+module ID_working(
     input wire [31:0] Instr,
     input wire [31:0] PC,
     input wire [31:0] PC_4,
     input wire clk,
     input wire reset,
+	 input wire RegWrite,
+	 input wire [31:0] WData,
     output reg [4:0] Rs_ID_to_EX,
     output reg [4:0] Rt_ID_to_EX,
-    output reg [4:0] Rd_ID_to_EX,
+    output reg [4:0] RegWriteAddr_ID_to_EX, //非指令中Rd，而是真实的需写入的GPR地址
     output reg [4:0] Shamt_ID_to_EX,
     output reg [32:0] imm32_ID_to_EX,
 	 output reg [59:0] InstrType_ID_to_EX,
 	 output reg [31:0] RsData_ID_to_EX,
 	 output reg [31:0] RtData_ID_to_EX,
-    output wire branch,
+    output reg [31:0] luiRes_ID_to_EX,
+	output wire branch,
     output wire jump,
     output wire [31:0] branch_addr32,
     output wire [31:0] jump_addr32
     );
-	wire [31:0] RsData_wire, RtData_wire, imm32_wire;
+	wire [31:0] RsData_wire, RtData_wire, imm32_wire, luiRes_wire;
+	wire [25:0] imm26_wire;
 	wire [15:0] imm16_wire;
 	wire [4:0] Rs_wire, Rt_wire, Rd_wire, Shamt_wire;
 	wire sign;
 	wire [59:0] InstrType;
 	
-	assign sign = (`ori) ? 0 : 1 ; //括号里放应该0扩展的指令！！！
+	//转发还没写，等转发控制器写好后添加RsData_wire和RtData_wire的MUX
+	//以及T_use和T_new
+	
+	assign sign = (`ori || `sll) ? 0 : 1 ; //括号里放应该0扩展的指令！！！
 	assign {Rs_wire, Rt_wire, Rd_wire, Shamt_wire} = Instr[25:6];
-	assign imm16_wire = Instr[15:0];
+	assign imm26_wire = Instr[25:0];
+	assign imm16_wire = `sll ? {11'd0, Shamt_wire} : Instr[15:0];
+	assign luiRes_wire = {Instr[15:0], 16'd0};
 	
 	InstrDecoder InstrDecoder(
 	.Instr(Instr),
@@ -56,5 +65,63 @@ module ID(
 	.imm16(imm16_wire),
    .sign(sign),
    .imm32(imm32_wire));
+	
+	wire [4:0] WAddr_wire;
+	wire [31:0] RData0_wire, RData1_wire, RData0_read;
+	assign WAddr_wire = (`jal) ? 5'd31 :
+	               (`ori || `lw || `lui) ? Rt_wire : Rd_wire;
+	// Instructions write to GPR No.31 or Rt
+	GRF GRF(
+	.RAddr0(Rs_wire),
+   .RAddr1(Rt_wire),
+   .WAddr(WAddr_wire),
+   .WriteData(WData),
+	.PC(PC),
+   .RegWrite(RegWrite),
+   .clk(clk),
+   .reset(reset),
+   .RData0(RData0_read), //原始读出数据
+   .RData1(RData1_wire));
+   assign RData0_wire = (`sll) ? {27'd0, Shamt_wire} : RData0_read;
+   //若是sll，则将Rs换成Shamt，为sllv等剩下的左右移指令留出接口
+	
+	///////////////////// Branch ////////////////////////////
+	assign branch = (`beq && RsData_wire == RtData_wire) ? 1 : 0;
+	assign branch_addr32 = PC_4 + imm32_wire;
+	
+	///////////////////// Jump /////////////////////////
+	assign jump = (`j || `jal || `jr) ? 1 : 0;
+	assign jump_addr32 = `j || `jal ? {PC[31:28], imm26_wire, 2'b00}:
+	                     `jr ? RsData_wire : 32'h0000_3000;
+	
+	////////////////// ID/EX流水线寄存器 ////////////////////
+	
+	always@(posedge clk)
+	begin
+		if(reset)
+		begin
+			Rs_ID_to_EX <= 5'd0;
+			Rt_ID_to_EX <= 5'd0;
+			RegWriteAddr_ID_to_EX <= 5'd0;
+			Shamt_ID_to_EX <= 5'd0;
+			imm32_ID_to_EX <= 32'd0;
+			InstrType_ID_to_EX <= inst_sll; // Type of nop(sll)
+			RsData_ID_to_EX <= 32'd0;
+			RtData_ID_to_EX <= 32'd0;
+			luiRes_ID_to_EX <= 32'd0;
+		end
+		else
+		begin
+			Rs_ID_to_EX <= Rs_wire;
+			Rt_ID_to_EX <= Rt_wire;
+			RegWriteAddr_ID_to_EX <= WAddr_wire; //真实待写入地址
+			Shamt_ID_to_EX <= Shamt_wire;
+			imm32_ID_to_EX <= imm32_wire;
+			InstrType_ID_to_EX <= InstrType;
+			RsData_ID_to_EX <= RsData_wire;
+			RtData_ID_to_EX <= RtData_wire;
+			luiRes_ID_to_EX <= luiRes_wire;
+		end
+	end
 	
 endmodule

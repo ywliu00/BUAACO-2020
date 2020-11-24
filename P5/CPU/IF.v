@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "CPU_Param.h"
+`include "CPU_Param.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -48,6 +48,7 @@ module IF(
     .reset(reset),
     .NPC(NextPC_wire),
     .PC(PC_wire));
+	 
 	 
 	 IM IM(
 	 .OpAddr(OpAddr_wire),
