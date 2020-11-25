@@ -44,7 +44,8 @@ module DM(
 		end
 		else if(MemWrite)
 		begin
-			$display("@%h: *%h <= %h", WritePC, Addr, WData);
+			//$display("@%h: *%h <= %h", WritePC, Addr, WData);
+			$display("%d@%h: *%h <= %h", $time, WritePC, Addr, WData);
 			DM_Unit[RealAddr] <= WData;
 		end
 	 end

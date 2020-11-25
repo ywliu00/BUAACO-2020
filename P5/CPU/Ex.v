@@ -19,12 +19,12 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Ex(
+module EX(
     input wire [4:0] Rs_ID_to_EX,
     input wire [4:0] Rt_ID_to_EX,
     input wire [4:0] RegWriteAddr_ID_to_EX, //非指令中Rd，而是真实的需写入的GPR地址
     input wire [4:0] Shamt_ID_to_EX,
-    input wire [32:0] imm32_ID_to_EX,
+    input wire [31:0] imm32_ID_to_EX,
 	input wire [59:0] InstrType_ID_to_EX,
 	input wire [31:0] RsData_ID_to_EX,
 	input wire [31:0] RtData_ID_to_EX,
@@ -46,6 +46,8 @@ module Ex(
 	wire ALUIn1_Src; //为0则取RtData，为1则取32位立即数
     wire [2:0] ALUOp;
 	
+	assign InstrType = InstrType_ID_to_EX;
+	
 	ALUOpDecoder ALUOpDecoder(
 	.InstrType(InstrType),
     .ALUIn1Src(ALUIn1_Src),
@@ -63,8 +65,10 @@ module Ex(
     .InstrType(InstrType),
     .Res(ALURes_wire));
 	
-	assign ALUOut_wire = (`lui) ? luiRes_ID_wo_EX : ALURes_wire;
+	assign ALUOut_wire = (`lui) ? luiRes_ID_to_EX : 
+	                     (`jal) ? PC_ID_to_EX + 32'd8 : ALURes_wire;
 	//lui在ID级提前单独处理，因此在这里直接引用其值
+	//jal在这里产生值
 	
 	always@(posedge clk)
 	begin
@@ -82,7 +86,7 @@ module Ex(
 		begin
 			Rs_EX_to_Mem <= Rs_ID_to_EX;
 			Rt_EX_to_Mem <= Rt_ID_to_EX;
-			RegWriteAddr_EX_to_Mem <= Rd_ID_to_EX; //写回地址
+			RegWriteAddr_EX_to_Mem <= RegWriteAddr_ID_to_EX; //写回地址
 			InstrType_EX_to_Mem <= InstrType;
 			ALUOut_EX_to_Mem <= ALUOut_wire;
 			DMWriteData_EX_to_Mem <= ALUIn1_bypass; //ALUIn1原本接受的数据

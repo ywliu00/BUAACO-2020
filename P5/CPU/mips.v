@@ -1,5 +1,22 @@
 `timescale 1ns / 1ps
 `include "CPU_Param.v"
+//	parameter ALU_add = 3'b000,
+//			ALU_sub = 3'b001,
+//			ALU_or = 3'b010,
+//			ALU_lshift = 3'b011;
+//
+//	parameter inst_err = 60'd0,
+//			inst_addu = 60'd1 << 0,
+//			inst_subu = 60'd1 << 1,
+//			inst_ori = 60'd1 << 2,
+//			inst_lw = 60'd1 << 3,
+//			inst_sw = 60'd1 << 4,
+//			inst_beq = 60'd1 << 5,
+//			inst_lui = 60'd1 << 6,
+//			inst_j = 60'd1 << 7,
+//			inst_jal = 60'd1 << 8,
+//			inst_jr = 60'd1 << 9,
+//			inst_sll = 60'd1 << 10;
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -42,7 +59,7 @@ module mips(
     );
 	
 	////////////////////// ID ////////////////////////////
-	wire RegWrite;
+	wire RegWriteEn;
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
 	           Shamt_ID_to_EX;
 	wire [31:0] RegWriteData, RegWritePC, imm32_ID_to_EX, Data0_ID_to_EX,
@@ -54,9 +71,10 @@ module mips(
     .PC_4(PC_4_IF_to_ID),
     .clk(clk),
     .reset(reset),
-	.RegWrite(RegWrite),
-	.WData(RegWriteData),
-	.WritePC(RegWritePC),
+	.RegWrite(RegWriteEn),
+	.WData(RegWriteData_Mem_to_WB),
+	.WritePC(PC_Mem_to_WB),
+	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
 	
     .Rs_ID_to_EX(ReadAddr0_ID_to_EX),
     .Rt_ID_to_EX(ReadAddr1_ID_to_EX),
@@ -78,7 +96,7 @@ module mips(
 	wire [4:0] ReadAddr0_EX_to_Mem, ReadAddr1_EX_to_Mem, RegWriteAddr_EX_to_Mem;
 	wire [31:0] PC_EX_to_Mem, DMWriteData_EX_to_Mem, ALUOut_EX_to_Mem;
 	wire [59:0] InstrType_EX_to_Mem;
-	Ex(
+	EX EX(
     .Rs_ID_to_EX(ReadAddr0_ID_to_EX),
     .Rt_ID_to_EX(ReadAddr1_ID_to_EX),
     .RegWriteAddr_ID_to_EX(RegWriteAddr_ID_to_EX), //非指令中Rd，而是真实的需写入的GPR地址
@@ -102,7 +120,7 @@ module mips(
     );
 	
 	////////////////////// Mem ////////////////////////////
-	wire [31:0] ALUOut_Mem_to_WB, DMRead_Mem_to_WB, PC_Mem_to_WB;
+	wire [31:0] ALUOut_Mem_to_WB, DMRead_Mem_to_WB, PC_Mem_to_WB, RegWriteData_Mem_to_WB;
 	wire [4:0] RegWriteAddr_Mem_to_WB;
 	Mem Mem(
 	.Rs_EX_to_Mem(ReadAddr0_EX_to_Mem),
@@ -117,7 +135,9 @@ module mips(
 	
 	.ALUOut_Mem_to_WB(ALUOut_Mem_to_WB),
 	.DMRead_Mem_to_WB(DMRead_Mem_to_WB),
+	.RegWriteData_Mem_to_WB(RegWriteData_Mem_to_WB),
 	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
-	.PC_Mem_to_WB(PC_Mem_to_WB)
+	.PC_Mem_to_WB(PC_Mem_to_WB),
+	.RegWriteEn(RegWriteEn)
     );
 endmodule

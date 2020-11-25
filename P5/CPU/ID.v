@@ -28,14 +28,15 @@ module ID(
 	input wire RegWrite,
 	input wire [31:0] WData,
 	input wire [31:0] WritePC,
+	input wire [4:0] RegWriteAddr_Mem_to_WB,
     output reg [4:0] Rs_ID_to_EX,
     output reg [4:0] Rt_ID_to_EX,
-    output reg [4:0] RegWriteAddr_ID_to_EX, //非指令中Rd，而是真实的需写入的GPR地址
+    output reg [4:0] RegWriteAddr_ID_to_EX, //非指令中Rd，而是当前指令真实的需写入的GPR地址
     output reg [4:0] Shamt_ID_to_EX,
-    output reg [32:0] imm32_ID_to_EX,
-	 output reg [59:0] InstrType_ID_to_EX,
-	 output reg [31:0] RsData_ID_to_EX,
-	 output reg [31:0] RtData_ID_to_EX,
+    output reg [31:0] imm32_ID_to_EX,
+	output reg [59:0] InstrType_ID_to_EX,
+	output reg [31:0] RsData_ID_to_EX,
+	output reg [31:0] RtData_ID_to_EX,
     output reg [31:0] luiRes_ID_to_EX,
 	output reg [31:0] PC_ID_to_EX,
 	output wire branch,
@@ -76,7 +77,7 @@ module ID(
 	GRF GRF(
 	.RAddr0(Rs_wire),
 	.RAddr1(Rt_wire),
-	.WAddr(WAddr_wire),
+	.WAddr(RegWriteAddr_Mem_to_WB),
 	.WriteData(WData),
 	.WritePC(WritePC), //写指令的PC，非当前PC
 	.RegWrite(RegWrite),
@@ -86,14 +87,16 @@ module ID(
 	.RData1(RData1_wire));
 	assign RData0_wire = (`sll) ? {27'd0, Shamt_wire} : RData0_read;
 	//若是sll，则将Rs换成Shamt，为sllv等剩下的左右移指令留出接口
+	//注意这里是改的读出数据而非读的寄存器号，因此AT计算和这里不影响
 	
 	///////////////////// lui Shifter ////////////////////////
 	wire [31:0] luiRes_wire;
 	assign luiRes_wire = {Instr[15:0], 16'd0};
 	
 	///////////////////// Branch ////////////////////////////
+	
 	assign branch = (`beq && RsData_wire == RtData_wire) ? 1 : 0;
-	assign branch_addr32 = PC_4 + imm32_wire;
+	assign branch_addr32 = PC_4 + {imm32_wire[29:0], 2'b00};
 	
 	///////////////////// Jump /////////////////////////
 	assign jump = (`j || `jal || `jr) ? 1 : 0;
@@ -114,7 +117,7 @@ module ID(
 			RegWriteAddr_ID_to_EX <= 5'd0;
 			Shamt_ID_to_EX <= 5'd0;
 			imm32_ID_to_EX <= 32'd0;
-			InstrType_ID_to_EX <= inst_sll; // Type of nop(sll)
+			InstrType_ID_to_EX <= `inst_sll; // Type of nop(sll)
 			RsData_ID_to_EX <= 32'd0;
 			RtData_ID_to_EX <= 32'd0;
 			luiRes_ID_to_EX <= 32'd0;
@@ -124,7 +127,7 @@ module ID(
 		begin
 			Rs_ID_to_EX <= Rs_wire;
 			Rt_ID_to_EX <= Rt_wire;
-			RegWriteAddr_ID_to_EX <= WAddr_wire; //真实待写入地址
+			RegWriteAddr_ID_to_EX <= WAddr_wire; //当前指令真实待写入地址
 			Shamt_ID_to_EX <= Shamt_wire;
 			imm32_ID_to_EX <= imm32_wire;
 			InstrType_ID_to_EX <= InstrType;

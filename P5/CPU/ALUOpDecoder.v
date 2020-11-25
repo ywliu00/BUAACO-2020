@@ -26,8 +26,8 @@ module ALUOpDecoder(
     );
 	assign ALUIn1Src = (`ori||`lw||`sw) ? 1 : 0;
 	//为0则取RtData，为1则取32位立即数
-	assign ALUOp = (`sll) ? ALU_lshift :
-	               (`ori) ? ALU_or : 
-				   (`subu) ? ALU_sub : ALU_add;
+	assign ALUOp = (`sll) ? `ALU_lshift :
+	               (`ori) ? `ALU_or : 
+				   (`subu) ? `ALU_sub : `ALU_add;
 
 endmodule

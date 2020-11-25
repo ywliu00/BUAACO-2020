@@ -29,10 +29,10 @@ module ALU(
     );
 	wire [4:0] ShiftBits;
 	assign ShiftBits = In0[4:0];
-    assign Res = (ALU_add) ? In0 + In1 :
-	             (ALU_sub) ? In0 - In1 :
-				 (ALU_or) ? In0 | In1 :
-				 (ALU_lshift) ? In1 << ShiftBits : 32'd0;
+    assign Res = (ALUOp == `ALU_add) ? In0 + In1 :
+	             (ALUOp == `ALU_sub) ? In0 - In1 :
+				 (ALUOp == `ALU_or) ? In0 | In1 :
+				 (ALUOp == `ALU_lshift) ? In1 << ShiftBits : 32'd0;
 	 //always@(*)
 	 //begin
 	 
