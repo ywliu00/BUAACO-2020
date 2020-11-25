@@ -25,7 +25,7 @@ module DM(
     input wire MemWrite,
     input wire clk,
     input wire reset,
-	 input wire [31:0] PC,
+	input wire [31:0] WritePC,
     output wire [31:0] RData
     );
 	 reg [31:0] DM_Unit[0:1023];
@@ -44,7 +44,7 @@ module DM(
 		end
 		else if(MemWrite)
 		begin
-			$display("@%h: *%h <= %h", PC, Addr, WData);
+			$display("@%h: *%h <= %h", WritePC, Addr, WData);
 			DM_Unit[RealAddr] <= WData;
 		end
 	 end

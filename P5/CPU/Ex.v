@@ -29,11 +29,15 @@ module Ex(
 	input wire [31:0] RsData_ID_to_EX,
 	input wire [31:0] RtData_ID_to_EX,
 	input wire [31:0] luiRes_ID_to_EX,
+	input wire [31:0] PC_ID_to_EX,
+	input wire clk,
+    input wire reset,
+	output reg [31:0] PC_EX_to_Mem,
 	output reg [4:0] Rs_EX_to_Mem,
     output reg [4:0] Rt_EX_to_Mem,
     output reg [4:0] RegWriteAddr_EX_to_Mem,
 	output reg [59:0] InstrType_EX_to_Mem,
-	output reg [31:0] ALUOut,
+	output reg [31:0] ALUOut_EX_to_Mem,
 	output reg [31:0] DMWriteData_EX_to_Mem //待写入DM的数据
     );
 	wire [59:0] InstrType;
@@ -58,6 +62,7 @@ module Ex(
 	.ALUOp(ALUOp),
     .InstrType(InstrType),
     .Res(ALURes_wire));
+	
 	assign ALUOut_wire = (`lui) ? luiRes_ID_wo_EX : ALURes_wire;
 	//lui在ID级提前单独处理，因此在这里直接引用其值
 	
@@ -69,8 +74,9 @@ module Ex(
 			Rt_EX_to_Mem <= 32'd0;
 			RegWriteAddr_EX_to_Mem <= 32'd0;
 			InstrType_EX_to_Mem <= `sll;
-			ALUOut <= 32'd0;
+			ALUOut_EX_to_Mem <= 32'd0;
 			DMWriteData_EX_to_Mem <= 32'd0;
+			PC_EX_to_Mem <= 32'h0000_3000;
 		end
 		else
 		begin
@@ -78,8 +84,9 @@ module Ex(
 			Rt_EX_to_Mem <= Rt_ID_to_EX;
 			RegWriteAddr_EX_to_Mem <= Rd_ID_to_EX; //写回地址
 			InstrType_EX_to_Mem <= InstrType;
-			ALUOut <= ALUOut_wire;
+			ALUOut_EX_to_Mem <= ALUOut_wire;
 			DMWriteData_EX_to_Mem <= ALUIn1_bypass; //ALUIn1原本接受的数据
+			PC_EX_to_Mem <= PC_ID_to_EX;
 		end
 	end
 

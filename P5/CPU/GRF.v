@@ -24,7 +24,7 @@ module GRF(
     input wire [4:0] RAddr1,
     input wire [4:0] WAddr,
     input wire [31:0] WriteData,
-	 input wire [31:0] PC,
+	input wire [31:0] WritePC,
     input wire RegWrite,
     input wire clk,
     input wire reset,
@@ -49,7 +49,7 @@ module GRF(
 		begin
 			if(RegWrite)
 			begin
-				$display("@%h: $%d <= %h",PC, WAddr, WriteData);
+				$display("@%h: $%d <= %h",WritePC, WAddr, WriteData);
 				if(WAddr > 0)
 				begin
 					reg32[WAddr] <= WriteData;
