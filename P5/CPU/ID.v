@@ -29,6 +29,10 @@ module ID(
 	input wire RegWrite,
 	input wire [31:0] WData,
 	input wire [31:0] WritePC,
+	input wire [31:0] bypass_ID, // 从ID/EX寄存器转发来的数据
+	input wire [31:0] bypass_EX, // 从EX/Mem寄存器转发来的数据 注意转发只有一个数据源
+	input wire [1:0] RData0BypassCtrl,
+	input wire [1:0] RData1BypassCtrl,
 	input wire [4:0] RegWriteAddr_Mem_to_WB,
     output reg [4:0] RAddr0_ID_to_EX,
     output reg [4:0] RAddr1_ID_to_EX,
@@ -38,7 +42,7 @@ module ID(
 	output reg [59:0] InstrType_ID_to_EX,
 	output reg [31:0] RAddr0Data_ID_to_EX,
 	output reg [31:0] RAddr1Data_ID_to_EX,
-    output reg [31:0] luiRes_ID_to_EX,
+    output reg [31:0] ResFromID_ID_to_EX,  //若ID阶段就产生待写入结果，则将结果放在这里
 	output reg [31:0] PC_ID_to_EX,
 	output reg [2:0] Tuse_RAddr0_ID_to_EX,// 要用到的时间
 	output reg [2:0] Tuse_RAddr1_ID_to_EX,
@@ -115,10 +119,12 @@ module ID(
 	assign RData0_wire = (`sll) ? {27'd0, Shamt_wire} : RData0_read;
 	//若是sll，则将Rs换成Shamt，为sllv等剩下的左右移指令留出接口
 	//注意这里是改的读出数据而非读的寄存器号，因此AT计算和这里不影响
+	//sll的Rs字段为0，所以转发机制不应该触发
 	
-	///////////////////// lui Shifter ////////////////////////
-	wire [31:0] luiRes_wire;
-	assign luiRes_wire = {Instr[15:0], 16'd0};
+	///////////////////// ID级产生结果的指令 ////////////////////////
+	wire [31:0] ResFromID_wire;
+	assign ResFromID_wire = (`lui) ? {Instr[15:0], 16'd0} :
+	                        (`jal) ? PC + 32'd8 : 32'd0;
 	
 	///////////////////// Branch ////////////////////////////
 	
@@ -130,9 +136,15 @@ module ID(
 	assign jump_addr32 = `j || `jal ? {PC[31:28], imm26_wire, 2'b00}:
 	                     `jr ? RsData_wire : 32'h0000_3000;
 	
-	//////////////////// 分支（还没写）/////////////////////
-	assign RsData_wire = RData0_wire;
-	assign RtData_wire = RData1_wire;
+	//////////////////// 转发 /////////////////////
+	assign RsData_wire = (RData0BypassCtrl == `RData0_from_RData0) ? RData0_wire :
+	                     (RData0BypassCtrl == `RData0_from_ID) ? bypass_ID :
+						 (RData0BypassCtrl == `RData0_from_EX) ? bypass_EX :
+						                                                             32'h1234_ABCD; // Err Signal
+	assign RtData_wire = (RData1BypassCtrl == `RData1_from_RData1) ? RData1_wire :
+	                     (RData1BypassCtrl == `RData1_from_ID) ? bypass_ID :
+						 (RData1BypassCtrl == `RData1_from_EX) ? bypass_EX :
+						                                                             32'h1234_ABCD; // Err Signal
 	
 	///////////////////给阻塞和转发单元的信息 ///////////////
 	assign RegRead0_ID = Rs_wire;
@@ -154,7 +166,7 @@ module ID(
 			InstrType_ID_to_EX <= `inst_sll; // Type of nop(sll)
 			RAddr0Data_ID_to_EX <= 32'd0;
 			RAddr1Data_ID_to_EX <= 32'd0;
-			luiRes_ID_to_EX <= 32'd0;
+			ResFromID_ID_to_EX <= 32'd0;
 			PC_ID_to_EX <= 32'h0000_3000;
 			Tuse_RAddr0_ID_to_EX <= 3'b111; // 要用到的时间
 			Tuse_RAddr1_ID_to_EX <= 3'b111;
@@ -170,7 +182,7 @@ module ID(
 			InstrType_ID_to_EX <= InstrType;
 			RAddr0Data_ID_to_EX <= RsData_wire;
 			RAddr1Data_ID_to_EX <= RtData_wire;
-			luiRes_ID_to_EX <= luiRes_wire;
+			ResFromID_ID_to_EX <= ResFromID_wire;
 			PC_ID_to_EX <= PC;
 			Tuse_RAddr0_ID_to_EX <= Tuse_RAddr0_wire; // 要用到的时间
 			Tuse_RAddr1_ID_to_EX <= Tuse_RAddr1_wire;

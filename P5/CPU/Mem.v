@@ -33,8 +33,6 @@ module Mem(
 	input wire clk,
 	input wire reset,
 	
-	output reg [31:0] ALUOut_Mem_to_WB,
-	output reg [31:0] DMRead_Mem_to_WB,
 	output reg [31:0] RegWriteData_Mem_to_WB,
 	output reg [4:0] RegWriteAddr_Mem_to_WB,
 	output reg [31:0] PC_Mem_to_WB,
@@ -87,8 +85,6 @@ module Mem(
 	begin
 		if(reset)
 		begin
-			ALUOut_Mem_to_WB <= 32'd0;
-			DMRead_Mem_to_WB <= 32'd0;
 			RegWriteAddr_Mem_to_WB <= 5'd0;
 			PC_Mem_to_WB <= 32'h0000_3000;
 			RegWriteData_Mem_to_WB <= 32'd0;
@@ -99,8 +95,6 @@ module Mem(
 		end
 		else
 		begin
-			ALUOut_Mem_to_WB <= ALUOut_EX_to_Mem;
-			DMRead_Mem_to_WB <= DMRead_wire;
 			RegWriteAddr_Mem_to_WB <= RegWriteAddr_EX_to_Mem;
 			PC_Mem_to_WB <= PC_EX_to_Mem;
 			RegWriteData_Mem_to_WB <= RegWriteData_wire;

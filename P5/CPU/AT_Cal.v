@@ -31,11 +31,13 @@ module AT_Cal(
 	output reg [2:0] Tuse_RAddr1,// 产生时间
 	output reg [2:0] Tnew_Waddr
     );
-	wire typeR, load, save;
+	wire typeR, load, save, branch;
 	assign typeR = `addu || `subu || `sll;
+	//R型计算指令
 	assign load = `lw;
 	assign save = `sw;
-	//R型计算指令
+	assign branch = `beq;
+	//注意：bgez需要单独处理，其Rt字段非0，详见指令集
 	
 	always@(*)
 	begin
@@ -65,6 +67,15 @@ module AT_Cal(
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd2;
 			Tnew_Waddr <= 3'd0; // 不做写操作
+		end
+		else if(branch)
+		begin
+			RAddr0 <= Rs;
+			RAddr1 <= Rt;
+			WAddr <= 5'd0;
+			Tuse_RAddr0 <= 3'd0;
+			Tuse_RAddr1 <= 3'd0; //立即需要
+			Tnew_Waddr <= 3'd0; //不写
 		end
 		else if(`lui)
 		begin

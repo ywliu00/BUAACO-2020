@@ -85,7 +85,7 @@ module mips(
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
 	           Shamt_ID_to_EX;
 	wire [31:0] RegWriteData, RegWritePC, imm32_ID_to_EX, Data0_ID_to_EX,
-	            Data1_ID_to_EX, luiRes_ID_to_EX, PC_ID_to_EX;
+	            Data1_ID_to_EX, ResFromID_ID_to_EX, PC_ID_to_EX;
 	wire [59:0] InstrType_ID_to_EX;
 	ID ID(
     .Instr(Instr_IF_to_ID),
@@ -107,7 +107,7 @@ module mips(
 	.InstrType_ID_to_EX(InstrType_ID_to_EX),
 	.RAddr0Data_ID_to_EX(Data0_ID_to_EX),
 	.RAddr1Data_ID_to_EX(Data1_ID_to_EX),
-    .luiRes_ID_to_EX(luiRes_ID_to_EX),
+    .ResFromID_ID_to_EX(ResFromID_ID_to_EX),
 	.PC_ID_to_EX(PC_ID_to_EX),
 	.Tuse_RAddr0_ID_to_EX(Tuse_RAddr0_ID_to_EX),
 	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
@@ -137,7 +137,7 @@ module mips(
 	.InstrType_ID_to_EX(InstrType_ID_to_EX),
 	.RAddr0Data_ID_to_EX(Data0_ID_to_EX),
 	.RAddr1Data_ID_to_EX(Data1_ID_to_EX),
-    .luiRes_ID_to_EX(luiRes_ID_to_EX),
+    .ResFromID_ID_to_EX(ResFromID_ID_to_EX),
 	.PC_ID_to_EX(PC_ID_to_EX),
 	.Tuse_RAddr0_ID_to_EX(Tuse_RAddr0_ID_to_EX),
 	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
@@ -166,7 +166,7 @@ module mips(
 	
 	////////////////////// Mem ////////////////////////////
 	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, Tnew_WAddr_Mem_to_WB;
-	wire [31:0] ALUOut_Mem_to_WB, DMRead_Mem_to_WB, PC_Mem_to_WB, RegWriteData_Mem_to_WB;
+	wire [31:0] PC_Mem_to_WB, RegWriteData_Mem_to_WB;
 	wire [4:0] RegWriteAddr_Mem_to_WB;
 	Mem Mem(
 	.Rs_EX_to_Mem(ReadAddr0_EX_to_Mem),
@@ -182,8 +182,6 @@ module mips(
 	.clk(clk),
     .reset(reset),
 	
-	.ALUOut_Mem_to_WB(ALUOut_Mem_to_WB),
-	.DMRead_Mem_to_WB(DMRead_Mem_to_WB),
 	.RegWriteData_Mem_to_WB(RegWriteData_Mem_to_WB),
 	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
 	.PC_Mem_to_WB(PC_Mem_to_WB),
