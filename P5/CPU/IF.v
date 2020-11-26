@@ -24,24 +24,26 @@ module IF(
     input wire [31:0] jump_addr32,
     input wire branch,
     input wire jump,
-	 input wire clk,
-	 input wire reset,
+	input wire Stall,
+	input wire clk,
+	input wire reset,
     output reg [31:0] PC_4,
-	 output reg [31:0] Instr,
-	 output reg [31:0] PC
+	output reg [31:0] Instr,
+	output reg [31:0] PC
     );
 	 wire [31:0] PC_wire, NextPC_wire, PC_4_wire, 
 	             Instr_wire, OpAddr_wire, FirstInstr_wire;
     assign OpAddr_wire = (PC_wire - 32'h0000_3000) >> 2;
 	 
-	 NPC NPC(
-	 .PC(PC_wire),
+	NPC NPC(
+	.PC(PC_wire),
     .branch(branch),
+	.Stall(Stall),
     .jump(jump),
     .branch_addr(branch_addr32),
     .jump_addr(jump_addr32),
     .NextPC(NextPC_wire),
-	 .PC_4(PC_4_wire));
+	.PC_4(PC_4_wire));   //PC永远存的是下一条指令地址，因此Stall时NPC输出当前PC只即可
 	 
 	 ProgramCounter PCnt(
 	 .clk(clk),
@@ -62,6 +64,12 @@ module IF(
 			PC_4 <= 32'h0000_3004;
 			Instr <= FirstInstr_wire;
 			PC <= 32'h0000_3000;
+		end
+		else if(Stall)
+		begin
+			PC_4 <= PC_4;
+			Instr <= Instr;
+			PC <= PC;        //冻结IF/ID寄存器
 		end
 		else
 		begin

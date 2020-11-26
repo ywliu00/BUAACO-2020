@@ -45,7 +45,14 @@ module EX(
 	output reg [31:0] DMWriteData_EX_to_Mem, //待写入DM的数据
 	output reg [2:0] Tuse_RAddr0_EX_to_Mem,
 	output reg [2:0] Tuse_RAddr1_EX_to_Mem,
-	output reg [2:0] Tnew_WAddr_EX_to_Mem
+	output reg [2:0] Tnew_WAddr_EX_to_Mem,
+	
+	output wire [4:0] RAddr0_EX,
+	output wire [4:0] RAddr1_EX,
+	output wire [4:0] RegWriteAddr_EX,
+	output wire [2:0] Tuse_RAddr0_EX,
+	output wire [2:0] Tuse_RAddr1_EX,
+	output wire [2:0] Tnew_WAddr_EX
     );
 	wire [59:0] InstrType;
 	wire [31:0] ALUIn0, ALUIn1, ALURes_wire, ALUOut_wire,
@@ -80,6 +87,15 @@ module EX(
 	//lui在ID级提前单独处理，因此在这里直接引用其值
 	//jal在这里产生值
 	
+	/////////////////// 给冲突处理单元的数据 /////////////////////////
+	assign RAddr0_EX = RAddr0_ID_to_EX;
+	assign RAddr1_EX = RAddr1_ID_to_EX;
+	assign RegWriteAddr_EX = RegWriteAddr_ID_to_EX;
+	assign Tuse_RAddr0_EX = Tuse_RAddr0_wire;
+	assign Tuse_RAddr1_EX = Tuse_RAddr1_wire;
+	assign Tnew_WAddr_EX = Tnew_WAddr_wire;
+	
+	///////////////////// 流水线寄存器 ///////////////////////////////
 	always@(posedge clk)
 	begin
 		if(reset)

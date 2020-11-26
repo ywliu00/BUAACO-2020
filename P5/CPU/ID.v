@@ -25,6 +25,7 @@ module ID(
     input wire [31:0] PC_4,
     input wire clk,
     input wire reset,
+	input wire Stall,
 	input wire RegWrite,
 	input wire [31:0] WData,
 	input wire [31:0] WritePC,
@@ -46,7 +47,11 @@ module ID(
 	output wire branch,
     output wire jump,
     output wire [31:0] branch_addr32,
-    output wire [31:0] jump_addr32
+    output wire [31:0] jump_addr32,
+	output wire [4:0] RegRead0_ID,
+	output wire [4:0] RegRead1_ID,
+	output wire [2:0] Tuse_RAddr0_ID,
+	output wire [2:0] Tuse_RAddr1_ID
     );
 	wire [31:0] RsData_wire, RtData_wire, imm32_wire;
 	wire [25:0] imm26_wire;
@@ -128,11 +133,18 @@ module ID(
 	//////////////////// 分支（还没写）/////////////////////
 	assign RsData_wire = RData0_wire;
 	assign RtData_wire = RData1_wire;
+	
+	///////////////////给阻塞和转发单元的信息 ///////////////
+	assign RegRead0_ID = Rs_wire;
+	assign RegRead1_ID = Rt_wire;
+	assign Tuse_RAddr0_ID = Tuse_RAddr0_wire;
+	assign Tuse_RAddr1_ID = Tuse_RAddr0_wire;
+	
 	////////////////// ID/EX流水线寄存器 ////////////////////
 	
 	always@(posedge clk)
 	begin
-		if(reset)
+		if(reset || Stall)  //Stall时同步清空ID/EX寄存器
 		begin
 			RAddr0_ID_to_EX <= 5'd0;
 			RAddr1_ID_to_EX <= 5'd0;

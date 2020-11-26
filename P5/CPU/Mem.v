@@ -41,7 +41,14 @@ module Mem(
 	output reg RegWriteEn,
 	output reg [2:0] Tuse_RAddr0_Mem_to_WB,
 	output reg [2:0] Tuse_RAddr1_Mem_to_WB,
-	output reg [2:0] Tnew_WAddr_Mem_to_WB
+	output reg [2:0] Tnew_WAddr_Mem_to_WB,
+	
+	output wire [4:0] RAddr0_Mem,
+    output wire [4:0] RAddr1_Mem,
+    output wire [4:0] RegWriteAddr_Mem,
+	output wire [2:0] Tuse_RAddr0_Mem,
+	output wire [2:0] Tuse_RAddr1_Mem,
+	output wire [2:0] Tnew_WAddr_Mem
     );
 	wire [59:0] InstrType;
 	wire [31:0] DMRead_wire, DMWriteData_bypass, RegWriteData_wire;
@@ -66,7 +73,16 @@ module Mem(
 	assign RegWriteData_wire = (`lw) ? DMRead_wire : ALUOut_EX_to_Mem;
 	assign RegWriteEn_wire = (`addu || `subu || `ori || `lw || `lui ||
 	                          `jal || `sll) ? 1 : 0;
+							  
+	///////////////// 冲突处理单元信号 /////////////////////
+	assign RAddr0_Mem = RAddr0_EX_to_Mem;
+    assign RAddr1_Mem = RAddr1_EX_to_Mem;
+    assign RegWriteAddr_Mem = RegWriteAddr_EX_to_Mem;
+	assign Tuse_RAddr0_Mem = Tuse_RAddr0_wire;
+	assign Tuse_RAddr1_Mem = Tuse_RAddr1_wire;
+	assign Tnew_WAddr_Mem = Tnew_WAddr_wire;
 	
+	////////////////流水线寄存器//////////////////
 	always@(posedge clk)
 	begin
 		if(reset)

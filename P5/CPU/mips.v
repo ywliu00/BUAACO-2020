@@ -40,6 +40,26 @@ module mips(
     input wire clk,
     input wire reset
     );
+	wire Stall;
+	
+	///////////////////// Stall Unit /////////////////////////
+	wire [4:0] RAddr0_ID, RAddr0_EX, RAddr0_Mem,
+	           RAddr1_ID, RAddr1_EX, RAddr1_Mem,
+			   RegWriteAddr_ID, RegWriteAddr_EX, RegWriteAddr_Mem;
+	wire [2:0] Tuse_RAddr0_ID, Tuse_RAddr0_EX, Tuse_RAddr0_Mem,
+	           Tuse_RAddr1_ID, Tuse_RAddr1_EX, Tuse_RAddr1_Mem,
+			   Tnew_WAddr_ID, Tnew_WAddr_EX, Tnew_WAddr_Mem;
+	
+	StallUnit StallUnit(
+	.RegRead0(RAddr0_ID),
+    .T_useRead0(Tuse_RAddr0_ID),
+    .RegRead1(RAddr1_ID),
+    .T_useRead1(Tuse_RAddr1_ID),
+    .RegWrite_EX(RegWriteAddr_EX),
+    .T_new_EX(Tnew_WAddr_EX),
+    .RegWrite_Mem(RegWriteAddr_Mem),
+    .T_new_Mem(Tnew_WAddr_Mem),
+    .Stall(Stall));
 	
 	////////////////////// IF //////////////////////
 	wire [31:0] branch_addr32, jump_addr32, PC_4_IF_to_ID,
@@ -50,6 +70,7 @@ module mips(
     .jump_addr32(jump_addr32),
     .branch(branch),
     .jump(jump),
+	.Stall(Stall),
 	.clk(clk),
 	.reset(reset),
 	
@@ -72,6 +93,7 @@ module mips(
     .PC_4(PC_4_IF_to_ID),
     .clk(clk),
     .reset(reset),
+	.Stall(Stall),
 	.RegWrite(RegWriteEn),
 	.WData(RegWriteData_Mem_to_WB),
 	.WritePC(PC_Mem_to_WB),
@@ -90,10 +112,15 @@ module mips(
 	.Tuse_RAddr0_ID_to_EX(Tuse_RAddr0_ID_to_EX),
 	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
 	.Tnew_WAddr_ID_to_EX(Tnew_WAddr_ID_to_EX),
+	
 	.branch(branch),
     .jump(jump),
     .branch_addr32(branch_addr32),
-    .jump_addr32(jump_addr32)
+    .jump_addr32(jump_addr32),
+	.RegRead0_ID(RAddr0_ID),
+	.RegRead1_ID(RAddr1_ID),
+	.Tuse_RAddr0_ID(Tuse_RAddr0_ID),
+	.Tuse_RAddr1_ID(Tuse_RAddr1_ID)
     );
 	 
 	//////////////////// EX /////////////////////////////////
@@ -127,7 +154,14 @@ module mips(
 	.DMWriteData_EX_to_Mem(DMWriteData_EX_to_Mem), //待写入DM的数据
 	.Tuse_RAddr0_EX_to_Mem(Tuse_RAddr0_EX_to_Mem),
 	.Tuse_RAddr1_EX_to_Mem(Tuse_RAddr1_EX_to_Mem),
-	.Tnew_WAddr_EX_to_Mem(Tnew_WAddr_EX_to_Mem)
+	.Tnew_WAddr_EX_to_Mem(Tnew_WAddr_EX_to_Mem),
+	
+	.RAddr0_EX(RAddr0_EX),
+	.RAddr1_EX(RAddr1_EX),
+	.RegWriteAddr_EX(RegWriteAddr_EX),
+	.Tuse_RAddr0_EX(Tuse_RAddr0_EX),
+	.Tuse_RAddr1_EX(Tuse_RAddr1_EX),
+	.Tnew_WAddr_EX(Tnew_WAddr_EX)
     );
 	
 	////////////////////// Mem ////////////////////////////
@@ -156,6 +190,13 @@ module mips(
 	.RegWriteEn(RegWriteEn),
 	.Tuse_RAddr0_Mem_to_WB(Tuse_RAddr0_Mem_to_WB),
 	.Tuse_RAddr1_Mem_to_WB(Tuse_RAddr1_Mem_to_WB),
-	.Tnew_WAddr_Mem_to_WB(Tnew_WAddr_Mem_to_WB)
+	.Tnew_WAddr_Mem_to_WB(Tnew_WAddr_Mem_to_WB),
+	
+	.RAddr0_Mem(RAddr0_Mem),
+    .RAddr1_Mem(RAddr1_Mem),
+    .RegWriteAddr_Mem(RegWriteAddr_Mem),
+	.Tuse_RAddr0_Mem(Tuse_RAddr0_Mem),
+	.Tuse_RAddr1_Mem(Tuse_RAddr1_Mem),
+	.Tnew_WAddr_Mem(Tnew_WAddr_Mem)
     );
 endmodule
