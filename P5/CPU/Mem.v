@@ -20,13 +20,16 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module Mem(
-	input wire [4:0] Rs_EX_to_Mem,
-    input wire [4:0] Rt_EX_to_Mem,
+	input wire [4:0] RAddr0_EX_to_Mem,
+    input wire [4:0] RAddr1_EX_to_Mem,
     input wire [4:0] RegWriteAddr_EX_to_Mem,
 	input wire [59:0] InstrType_EX_to_Mem,
 	input wire [31:0] ALUOut_EX_to_Mem,
 	input wire [31:0] DMWriteData_EX_to_Mem, //待写入DM的数据
 	input wire [31:0] PC_EX_to_Mem,
+	input wire [2:0] Tuse_RAddr0_EX_to_Mem,
+	input wire [2:0] Tuse_RAddr1_EX_to_Mem,
+	input wire [2:0] Tnew_WAddr_EX_to_Mem,
 	input wire clk,
 	input wire reset,
 	
@@ -35,14 +38,21 @@ module Mem(
 	output reg [31:0] RegWriteData_Mem_to_WB,
 	output reg [4:0] RegWriteAddr_Mem_to_WB,
 	output reg [31:0] PC_Mem_to_WB,
-	output reg RegWriteEn
+	output reg RegWriteEn,
+	output reg [2:0] Tuse_RAddr0_Mem_to_WB,
+	output reg [2:0] Tuse_RAddr1_Mem_to_WB,
+	output reg [2:0] Tnew_WAddr_Mem_to_WB
     );
 	wire [59:0] InstrType;
 	wire [31:0] DMRead_wire, DMWriteData_bypass, RegWriteData_wire;
+	wire [2:0] Tuse_RAddr0_wire, Tuse_RAddr1_wire, Tnew_WAddr_wire;
 	wire DMWriteEn, RegWriteEn_wire;
 	assign DMWriteData_bypass = DMWriteData_EX_to_Mem;
 	assign InstrType = InstrType_EX_to_Mem;
 	assign DMWriteEn = (`sw) ? 1 : 0;
+	assign Tuse_RAddr0_wire = (Tuse_RAddr0_EX_to_Mem > 0) ? Tuse_RAddr0_EX_to_Mem - 3'b001 : Tuse_RAddr0_EX_to_Mem;
+	assign Tuse_RAddr1_wire = (Tuse_RAddr1_EX_to_Mem > 0) ? Tuse_RAddr1_EX_to_Mem - 3'b001 : Tuse_RAddr1_EX_to_Mem;
+	assign Tnew_WAddr_wire = (Tnew_WAddr_EX_to_Mem > 0) ? Tnew_WAddr_EX_to_Mem - 3'b001 : Tnew_WAddr_EX_to_Mem;
 	
 	DM DM(
 	.Addr(ALUOut_EX_to_Mem),
@@ -67,6 +77,9 @@ module Mem(
 			PC_Mem_to_WB <= 32'h0000_3000;
 			RegWriteData_Mem_to_WB <= 32'd0;
 			RegWriteEn <= 1'b0;
+			Tuse_RAddr0_Mem_to_WB <= 3'b111;
+			Tuse_RAddr1_Mem_to_WB <= 3'b111;
+			Tnew_WAddr_Mem_to_WB <= 3'b000;
 		end
 		else
 		begin
@@ -76,6 +89,9 @@ module Mem(
 			PC_Mem_to_WB <= PC_EX_to_Mem;
 			RegWriteData_Mem_to_WB <= RegWriteData_wire;
 			RegWriteEn <= RegWriteEn_wire;
+			Tuse_RAddr0_Mem_to_WB <= Tuse_RAddr0_wire;
+			Tuse_RAddr1_Mem_to_WB <= Tuse_RAddr1_wire;
+			Tnew_WAddr_Mem_to_WB <= Tnew_WAddr_wire;
 		end
 	end
 

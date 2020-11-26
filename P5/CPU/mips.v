@@ -60,6 +60,7 @@ module mips(
 	
 	////////////////////// ID ////////////////////////////
 	wire RegWriteEn;
+	wire [2:0] Tuse_RAddr0_ID_to_EX, Tuse_RAddr1_ID_to_EX, Tnew_WAddr_ID_to_EX;
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
 	           Shamt_ID_to_EX;
 	wire [31:0] RegWriteData, RegWritePC, imm32_ID_to_EX, Data0_ID_to_EX,
@@ -76,16 +77,19 @@ module mips(
 	.WritePC(PC_Mem_to_WB),
 	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
 	
-    .Rs_ID_to_EX(ReadAddr0_ID_to_EX),
-    .Rt_ID_to_EX(ReadAddr1_ID_to_EX),
+    .RAddr0_ID_to_EX(ReadAddr0_ID_to_EX),
+    .RAddr1_ID_to_EX(ReadAddr1_ID_to_EX),
     .RegWriteAddr_ID_to_EX(RegWriteAddr_ID_to_EX), //非指令中Rd，而是真实的需写入的GPR地址
     .Shamt_ID_to_EX(Shamt_ID_to_EX),
     .imm32_ID_to_EX(imm32_ID_to_EX),
 	.InstrType_ID_to_EX(InstrType_ID_to_EX),
-	.RsData_ID_to_EX(Data0_ID_to_EX),
-	.RtData_ID_to_EX(Data1_ID_to_EX),
+	.RAddr0Data_ID_to_EX(Data0_ID_to_EX),
+	.RAddr1Data_ID_to_EX(Data1_ID_to_EX),
     .luiRes_ID_to_EX(luiRes_ID_to_EX),
 	.PC_ID_to_EX(PC_ID_to_EX),
+	.Tuse_RAddr0_ID_to_EX(Tuse_RAddr0_ID_to_EX),
+	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
+	.Tnew_WAddr_ID_to_EX(Tnew_WAddr_ID_to_EX),
 	.branch(branch),
     .jump(jump),
     .branch_addr32(branch_addr32),
@@ -93,33 +97,41 @@ module mips(
     );
 	 
 	//////////////////// EX /////////////////////////////////
+	wire [2:0] Tuse_RAddr0_EX_to_Mem, Tuse_RAddr1_EX_to_Mem, Tnew_WAddr_EX_to_Mem;
 	wire [4:0] ReadAddr0_EX_to_Mem, ReadAddr1_EX_to_Mem, RegWriteAddr_EX_to_Mem;
 	wire [31:0] PC_EX_to_Mem, DMWriteData_EX_to_Mem, ALUOut_EX_to_Mem;
 	wire [59:0] InstrType_EX_to_Mem;
 	EX EX(
-    .Rs_ID_to_EX(ReadAddr0_ID_to_EX),
-    .Rt_ID_to_EX(ReadAddr1_ID_to_EX),
+    .RAddr0_ID_to_EX(ReadAddr0_ID_to_EX),
+    .RAddr1_ID_to_EX(ReadAddr1_ID_to_EX),
     .RegWriteAddr_ID_to_EX(RegWriteAddr_ID_to_EX), //非指令中Rd，而是真实的需写入的GPR地址
     .Shamt_ID_to_EX(Shamt_ID_to_EX),
     .imm32_ID_to_EX(imm32_ID_to_EX),
 	.InstrType_ID_to_EX(InstrType_ID_to_EX),
-	.RsData_ID_to_EX(Data0_ID_to_EX),
-	.RtData_ID_to_EX(Data1_ID_to_EX),
+	.RAddr0Data_ID_to_EX(Data0_ID_to_EX),
+	.RAddr1Data_ID_to_EX(Data1_ID_to_EX),
     .luiRes_ID_to_EX(luiRes_ID_to_EX),
 	.PC_ID_to_EX(PC_ID_to_EX),
+	.Tuse_RAddr0_ID_to_EX(Tuse_RAddr0_ID_to_EX),
+	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
+	.Tnew_WAddr_ID_to_EX(Tnew_WAddr_ID_to_EX),
 	.clk(clk),
     .reset(reset),
 	
 	.PC_EX_to_Mem(PC_EX_to_Mem),
-	.Rs_EX_to_Mem(ReadAddr0_EX_to_Mem),
-    .Rt_EX_to_Mem(ReadAddr1_EX_to_Mem),
+	.RAddr0_EX_to_Mem(ReadAddr0_EX_to_Mem),
+    .RAddr1_EX_to_Mem(ReadAddr1_EX_to_Mem),
     .RegWriteAddr_EX_to_Mem(RegWriteAddr_EX_to_Mem),
 	.InstrType_EX_to_Mem(InstrType_EX_to_Mem),
 	.ALUOut_EX_to_Mem(ALUOut_EX_to_Mem),
-	.DMWriteData_EX_to_Mem(DMWriteData_EX_to_Mem) //待写入DM的数据
+	.DMWriteData_EX_to_Mem(DMWriteData_EX_to_Mem), //待写入DM的数据
+	.Tuse_RAddr0_EX_to_Mem(Tuse_RAddr0_EX_to_Mem),
+	.Tuse_RAddr1_EX_to_Mem(Tuse_RAddr1_EX_to_Mem),
+	.Tnew_WAddr_EX_to_Mem(Tnew_WAddr_EX_to_Mem)
     );
 	
 	////////////////////// Mem ////////////////////////////
+	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, Tnew_WAddr_Mem_to_WB;
 	wire [31:0] ALUOut_Mem_to_WB, DMRead_Mem_to_WB, PC_Mem_to_WB, RegWriteData_Mem_to_WB;
 	wire [4:0] RegWriteAddr_Mem_to_WB;
 	Mem Mem(
@@ -130,6 +142,9 @@ module mips(
 	.ALUOut_EX_to_Mem(ALUOut_EX_to_Mem),
 	.DMWriteData_EX_to_Mem(DMWriteData_EX_to_Mem), //待写入DM的数据
 	.PC_EX_to_Mem(PC_EX_to_Mem),
+	.Tuse_RAddr0_EX_to_Mem(Tuse_RAddr0_EX_to_Mem),
+	.Tuse_RAddr1_EX_to_Mem(Tuse_RAddr1_EX_to_Mem),
+	.Tnew_WAddr_EX_to_Mem(Tnew_WAddr_EX_to_Mem),
 	.clk(clk),
     .reset(reset),
 	
@@ -138,6 +153,9 @@ module mips(
 	.RegWriteData_Mem_to_WB(RegWriteData_Mem_to_WB),
 	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
 	.PC_Mem_to_WB(PC_Mem_to_WB),
-	.RegWriteEn(RegWriteEn)
+	.RegWriteEn(RegWriteEn),
+	.Tuse_RAddr0_Mem_to_WB(Tuse_RAddr0_Mem_to_WB),
+	.Tuse_RAddr1_Mem_to_WB(Tuse_RAddr1_Mem_to_WB),
+	.Tnew_WAddr_Mem_to_WB(Tnew_WAddr_Mem_to_WB)
     );
 endmodule

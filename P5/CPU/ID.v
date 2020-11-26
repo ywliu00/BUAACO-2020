@@ -29,16 +29,20 @@ module ID(
 	input wire [31:0] WData,
 	input wire [31:0] WritePC,
 	input wire [4:0] RegWriteAddr_Mem_to_WB,
-    output reg [4:0] Rs_ID_to_EX,
-    output reg [4:0] Rt_ID_to_EX,
+    output reg [4:0] RAddr0_ID_to_EX,
+    output reg [4:0] RAddr1_ID_to_EX,
     output reg [4:0] RegWriteAddr_ID_to_EX, //非指令中Rd，而是当前指令真实的需写入的GPR地址
     output reg [4:0] Shamt_ID_to_EX,
     output reg [31:0] imm32_ID_to_EX,
 	output reg [59:0] InstrType_ID_to_EX,
-	output reg [31:0] RsData_ID_to_EX,
-	output reg [31:0] RtData_ID_to_EX,
+	output reg [31:0] RAddr0Data_ID_to_EX,
+	output reg [31:0] RAddr1Data_ID_to_EX,
     output reg [31:0] luiRes_ID_to_EX,
 	output reg [31:0] PC_ID_to_EX,
+	output reg [2:0] Tuse_RAddr0_ID_to_EX,// 要用到的时间
+	output reg [2:0] Tuse_RAddr1_ID_to_EX,
+	output reg [2:0] Tnew_WAddr_ID_to_EX, // 产生时间
+	
 	output wire branch,
     output wire jump,
     output wire [31:0] branch_addr32,
@@ -47,7 +51,8 @@ module ID(
 	wire [31:0] RsData_wire, RtData_wire, imm32_wire;
 	wire [25:0] imm26_wire;
 	wire [15:0] imm16_wire;
-	wire [4:0] Rs_wire, Rt_wire, Rd_wire, Shamt_wire;
+	wire [4:0] Rs_wire, Rt_wire, Rd_wire, Shamt_wire,
+	           Rs_inst, Rt_inst, Rd_inst;
 	wire sign;
 	wire [59:0] InstrType;
 	
@@ -55,7 +60,7 @@ module ID(
 	//以及T_use和T_new
 	
 	assign sign = (`ori || `sll) ? 0 : 1 ; //括号里放应该0扩展的指令！！！
-	assign {Rs_wire, Rt_wire, Rd_wire, Shamt_wire} = Instr[25:6];
+	assign {Rs_inst, Rt_inst, Rd_inst, Shamt_wire} = Instr[25:6];
 	assign imm26_wire = Instr[25:0];
 	assign imm16_wire = `sll ? {11'd0, Shamt_wire} : Instr[15:0];
 	
@@ -71,8 +76,25 @@ module ID(
 	
 	wire [4:0] WAddr_wire;
 	wire [31:0] RData0_wire, RData1_wire, RData0_read;
-	assign WAddr_wire = (`jal) ? 5'd31 :
-	               (`ori || `lw || `lui) ? Rt_wire : Rd_wire;
+	//assign WAddr_wire = (`jal) ? 5'd31 :
+	//               (`ori || `lw || `lui) ? Rt_wire : Rd_wire;
+	
+	// AT Calculate
+	wire [2:0] Tuse_RAddr0_wire, Tuse_RAddr1_wire, Tnew_WAddr_wire;
+	
+	AT_Cal AT_Cal(
+	.Rs(Rs_inst),
+	.Rt(Rt_inst),
+	.Rd(Rd_inst),
+    .InstrType(InstrType),
+	
+	.RAddr0(Rs_wire),
+	.RAddr1(Rt_wire),
+	.WAddr(WAddr_wire),
+	.Tuse_RAddr0(Tuse_RAddr0_wire),// 要用到的时间
+	.Tuse_RAddr1(Tuse_RAddr1_wire),
+	.Tnew_WAddr(Tnew_WAddr_wire));// 产生时间
+	
 	// Instructions write to GPR No.31 or Rt
 	GRF GRF(
 	.RAddr0(Rs_wire),
@@ -112,29 +134,35 @@ module ID(
 	begin
 		if(reset)
 		begin
-			Rs_ID_to_EX <= 5'd0;
-			Rt_ID_to_EX <= 5'd0;
+			RAddr0_ID_to_EX <= 5'd0;
+			RAddr1_ID_to_EX <= 5'd0;
 			RegWriteAddr_ID_to_EX <= 5'd0;
 			Shamt_ID_to_EX <= 5'd0;
 			imm32_ID_to_EX <= 32'd0;
 			InstrType_ID_to_EX <= `inst_sll; // Type of nop(sll)
-			RsData_ID_to_EX <= 32'd0;
-			RtData_ID_to_EX <= 32'd0;
+			RAddr0Data_ID_to_EX <= 32'd0;
+			RAddr1Data_ID_to_EX <= 32'd0;
 			luiRes_ID_to_EX <= 32'd0;
 			PC_ID_to_EX <= 32'h0000_3000;
+			Tuse_RAddr0_ID_to_EX <= 3'b111; // 要用到的时间
+			Tuse_RAddr1_ID_to_EX <= 3'b111;
+			Tnew_WAddr_ID_to_EX <= 3'b000; // 产生时间
 		end
 		else
 		begin
-			Rs_ID_to_EX <= Rs_wire;
-			Rt_ID_to_EX <= Rt_wire;
+			RAddr0_ID_to_EX <= Rs_wire;
+			RAddr1_ID_to_EX <= Rt_wire;
 			RegWriteAddr_ID_to_EX <= WAddr_wire; //当前指令真实待写入地址
 			Shamt_ID_to_EX <= Shamt_wire;
 			imm32_ID_to_EX <= imm32_wire;
 			InstrType_ID_to_EX <= InstrType;
-			RsData_ID_to_EX <= RsData_wire;
-			RtData_ID_to_EX <= RtData_wire;
+			RAddr0Data_ID_to_EX <= RsData_wire;
+			RAddr1Data_ID_to_EX <= RtData_wire;
 			luiRes_ID_to_EX <= luiRes_wire;
 			PC_ID_to_EX <= PC;
+			Tuse_RAddr0_ID_to_EX <= Tuse_RAddr0_wire; // 要用到的时间
+			Tuse_RAddr1_ID_to_EX <= Tuse_RAddr1_wire;
+			Tnew_WAddr_ID_to_EX <= Tnew_WAddr_wire; // 产生时间
 		end
 	end
 	
