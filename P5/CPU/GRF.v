@@ -49,8 +49,6 @@ module GRF(
 		begin
 			if(RegWrite)
 			begin
-				//$display("@%h: $%d <= %h",WritePC, WAddr, WriteData);
-				
 				if(WAddr > 0)
 				begin
 					$display("%d@%h: $%d <= %h", $time, WritePC, WAddr, WriteData);

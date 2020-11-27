@@ -1,32 +1,38 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Course/CO/P5/CPU/CPU_TestBench_isim_beh.exe" -prj "F:/Course/CO/P5/CPU/CPU_TestBench_beh.prj" "CPU_TestBench" "work.glbl" 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "D:/BUAACO/P5/CPU/CPU_TestBench_isim_beh.exe" -prj "D:/BUAACO/P5/CPU/CPU_TestBench_beh.prj" "work.CPU_TestBench" "work.glbl" 
 ISim P.20131013 (signature 0x7708f090)
-Number of CPUs detected in this system: 12
-Turning on mult-threading, number of parallel sub-compilation jobs: 24 
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Analyzing Verilog file "F:/Course/CO/P5/CPU/ProgramCounter.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/NPC.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/InstrDecoder.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/IM.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/GRF.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/Extender.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/DM.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/ALUOpDecoder.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/ALU.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/Mem.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/IF.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/ID.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/Ex.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/mips.v" into library work
-Analyzing Verilog file "F:/Course/CO/P5/CPU/CPU_TestBench.v" into library work
-Analyzing Verilog file "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/ProgramCounter.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/NPC.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/InstrDecoder.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/IM.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/GRF.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/Extender.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/DM.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/AT_Cal.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/ALUOpDecoder.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/ALU.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/StallUnit.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/Mem.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/IF.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/ID.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/Ex.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/BypassController.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/mips.v" into library work
+Analyzing Verilog file "D:/BUAACO/P5/CPU/CPU_TestBench.v" into library work
+Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
+Compiling module BypassController
+Compiling module StallUnit
 Compiling module NPC
 Compiling module ProgramCounter
 Compiling module IM
 Compiling module IF
 Compiling module InstrDecoder
 Compiling module Extender
+Compiling module AT_Cal
 Compiling module GRF
 Compiling module ID
 Compiling module ALUOpDecoder
@@ -39,7 +45,7 @@ Compiling module CPU_TestBench
 Compiling module glbl
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 16 Verilog Units
-Built simulation executable F:/Course/CO/P5/CPU/CPU_TestBench_isim_beh.exe
-Fuse Memory Usage: 32796 KB
-Fuse CPU Usage: 1218 ms
+Compiled 19 Verilog Units
+Built simulation executable D:/BUAACO/P5/CPU/CPU_TestBench_isim_beh.exe
+Fuse Memory Usage: 29788 KB
+Fuse CPU Usage: 749 ms

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "F:/Course/CO/P5/CPU/GRF.v";
+static const char *ng0 = "D:/BUAACO/P5/CPU/GRF.v";
 static int ng1[] = {0, 0};
 static int ng2[] = {32, 0};
 static unsigned int ng3[] = {0U, 0U};
@@ -188,7 +188,7 @@ LAB14:    t33 = *((unsigned int *)t15);
 
 LAB17:    xsi_set_current_line(51, ng0);
 
-LAB20:    xsi_set_current_line(54, ng0);
+LAB20:    xsi_set_current_line(52, ng0);
     t4 = (t0 + 1368U);
     t5 = *((char **)t4);
     t4 = ((char*)((ng1)));
@@ -224,9 +224,9 @@ LAB22:    t14 = (t13 + 4);
 LAB23:    *((unsigned int *)t13) = 1;
     goto LAB24;
 
-LAB26:    xsi_set_current_line(55, ng0);
+LAB26:    xsi_set_current_line(53, ng0);
 
-LAB29:    xsi_set_current_line(56, ng0);
+LAB29:    xsi_set_current_line(54, ng0);
     t18 = xsi_vlog_time(t38, 1000.0000000000000, 1000.0000000000000);
     t19 = (t0 + 1688U);
     t20 = *((char **)t19);
@@ -235,7 +235,7 @@ LAB29:    xsi_set_current_line(56, ng0);
     t19 = (t0 + 1528U);
     t22 = *((char **)t19);
     xsi_vlogfile_write(1, 0, 0, ng5, 5, t0, (char)118, t38, 64, (char)118, t20, 32, (char)118, t21, 5, (char)118, t22, 32);
-    xsi_set_current_line(57, ng0);
+    xsi_set_current_line(55, ng0);
     t2 = (t0 + 1528U);
     t3 = *((char **)t2);
     t2 = (t0 + 2888);
@@ -269,7 +269,7 @@ LAB30:    t8 = *((unsigned int *)t13);
 
 }
 
-static void Cont_66_1(char *t0)
+static void Cont_64_1(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -439,7 +439,7 @@ LAB0:    t1 = (t0 + 4216U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(66, ng0);
+LAB2:    xsi_set_current_line(64, ng0);
     t2 = (t0 + 1848U);
     t5 = *((char **)t2);
     memset(t6, 0, 8);
@@ -750,7 +750,7 @@ LAB46:    memcpy(t3, t140, 8);
 
 }
 
-static void Cont_67_2(char *t0)
+static void Cont_65_2(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -920,7 +920,7 @@ LAB0:    t1 = (t0 + 4464U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(67, ng0);
+LAB2:    xsi_set_current_line(65, ng0);
     t2 = (t0 + 1848U);
     t5 = *((char **)t2);
     memset(t6, 0, 8);
@@ -1234,7 +1234,7 @@ LAB46:    memcpy(t3, t140, 8);
 
 extern void work_m_00000000001995179269_1621229167_init()
 {
-	static char *pe[] = {(void *)Always_39_0,(void *)Cont_66_1,(void *)Cont_67_2};
+	static char *pe[] = {(void *)Always_39_0,(void *)Cont_64_1,(void *)Cont_65_2};
 	xsi_register_didat("work_m_00000000001995179269_1621229167", "isim/CPU_TestBench_isim_beh.exe.sim/work/m_00000000001995179269_1621229167.didat");
 	xsi_register_executes(pe);
 }

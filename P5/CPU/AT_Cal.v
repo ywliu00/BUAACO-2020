@@ -29,11 +29,13 @@ module AT_Cal(
 	output reg [4:0] WAddr,
 	output reg [2:0] Tuse_RAddr0,// 要用到的时间
 	output reg [2:0] Tuse_RAddr1,// 产生时间
-	output reg [2:0] Tnew_Waddr
+	output reg [2:0] Tnew_WAddr
     );
-	wire typeR, load, save, branch;
+	wire typeR, typeI, load, save, branch;
 	assign typeR = `addu || `subu || `sll;
 	//R型计算指令
+	assign typeI = `ori;
+	//立即数计算指令
 	assign load = `lw;
 	assign save = `sw;
 	assign branch = `beq;
@@ -48,7 +50,16 @@ module AT_Cal(
 			WAddr <= Rd;
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd1;
-			Tnew_Waddr <= 3'd1;
+			Tnew_WAddr <= 3'd1;
+		end
+		else if(typeI)
+		begin
+			RAddr0 <= Rs;
+			RAddr1 <= 5'd0;
+			WAddr <= Rt;
+			Tuse_RAddr0 <= 3'd1;
+			Tuse_RAddr1 <= 3'd7; //Rt不做读操作
+			Tnew_WAddr <= 3'd1; //EX出结果
 		end
 		else if(load)
 		begin
@@ -57,7 +68,7 @@ module AT_Cal(
 			WAddr <= Rt;
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd7; //Rt不做读操作
-			Tnew_Waddr <= 3'd2;
+			Tnew_WAddr <= 3'd2;
 		end
 		else if(save)
 		begin
@@ -66,7 +77,7 @@ module AT_Cal(
 			WAddr <= 5'd0;
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd2;
-			Tnew_Waddr <= 3'd0; // 不做写操作
+			Tnew_WAddr <= 3'd0; // 不做写操作
 		end
 		else if(branch)
 		begin
@@ -75,7 +86,7 @@ module AT_Cal(
 			WAddr <= 5'd0;
 			Tuse_RAddr0 <= 3'd0;
 			Tuse_RAddr1 <= 3'd0; //立即需要
-			Tnew_Waddr <= 3'd0; //不写
+			Tnew_WAddr <= 3'd0; //不写
 		end
 		else if(`lui)
 		begin
@@ -84,7 +95,7 @@ module AT_Cal(
 			WAddr <= Rt;
 			Tuse_RAddr0 <= 3'd7;//Rs不做读操作
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
-			Tnew_Waddr <= 3'd0; //值在当前流水已产生
+			Tnew_WAddr <= 3'd0; //值在当前流水已产生
 		end
 		else if(`jal)
 		begin
@@ -93,7 +104,7 @@ module AT_Cal(
 			WAddr <= 5'd31; //写31号寄存器
 			Tuse_RAddr0 <= 3'd7;//Rs不做读操作
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
-			Tnew_Waddr <= 3'd1; //值在EX产生
+			Tnew_WAddr <= 3'd1; //值在EX产生
 		end
 		else if(`jr)
 		begin
@@ -102,7 +113,7 @@ module AT_Cal(
 			WAddr <= 5'd0; //不写
 			Tuse_RAddr0 <= 3'd0;//立即需要Rs
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
-			Tnew_Waddr <= 3'd0; //不写
+			Tnew_WAddr <= 3'd0; //不写
 		end
 		else if(`j)
 		begin
@@ -111,7 +122,7 @@ module AT_Cal(
 			WAddr <= 5'd0;
 			Tuse_RAddr0 <= 3'd7;//Rs不做读操作
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
-			Tnew_Waddr <= 3'd0; //不写
+			Tnew_WAddr <= 3'd0; //不写
 		end
 	end
 	

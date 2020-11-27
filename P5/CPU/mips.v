@@ -145,8 +145,8 @@ module mips(
 	//转发需求部分
 	.bypass_ID(ResFromID_ID_to_EX), // 从ID/EX寄存器转发来的数据
 	.bypass_EX(ALUOut_EX_to_Mem), // 从EX/Mem寄存器转发来的数据 注意转发只有一个数据源
-	.RData0BypassCtrl(),
-	.RData1BypassCtrl()
+	.RData0BypassCtrl(RData0BypassCtrl),
+	.RData1BypassCtrl(RData1BypassCtrl)
     );
 	 
 	//////////////////// EX /////////////////////////////////
@@ -193,9 +193,9 @@ module mips(
 	//转发需求部分
 	.bypass_EX(ALUOut_EX_to_Mem),  //从EX/Mem转发来的
 	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
-	.ALUIn0BypassCtrl(),
-	.ALUIn1BypassCtrl(),
-	.DMWriteDataBypassCtrl()
+	.ALUIn0BypassCtrl(ALUIn0BypassCtrl),
+	.ALUIn1BypassCtrl(ALUIn1BypassCtrl),
+	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_EX)
     );
 	
 	////////////////////// Mem ////////////////////////////
@@ -203,8 +203,8 @@ module mips(
 	wire [31:0] PC_Mem_to_WB, RegWriteData_Mem_to_WB;
 	//wire [4:0] RegWriteAddr_Mem_to_WB;
 	Mem Mem(
-	.Rs_EX_to_Mem(ReadAddr0_EX_to_Mem),
-    .Rt_EX_to_Mem(ReadAddr1_EX_to_Mem),
+	.RAddr0_EX_to_Mem(ReadAddr0_EX_to_Mem),
+    .RAddr1_EX_to_Mem(ReadAddr1_EX_to_Mem),
     .RegWriteAddr_EX_to_Mem(RegWriteAddr_EX_to_Mem),
 	.InstrType_EX_to_Mem(InstrType_EX_to_Mem),
 	.ALUOut_EX_to_Mem(ALUOut_EX_to_Mem),
@@ -234,6 +234,6 @@ module mips(
 	
 	//转发需求部分
 	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
-	.DMWriteDataBypassCtrl()
+	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_Mem)
     );
 endmodule

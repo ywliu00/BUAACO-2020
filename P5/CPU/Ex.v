@@ -128,7 +128,7 @@ module EX(
 			RAddr0_EX_to_Mem <= 32'd0;
 			RAddr1_EX_to_Mem <= 32'd0;
 			RegWriteAddr_EX_to_Mem <= 32'd0;
-			InstrType_EX_to_Mem <= `sll;
+			InstrType_EX_to_Mem <= `inst_sll;
 			ALUOut_EX_to_Mem <= 32'd0;
 			DMWriteData_EX_to_Mem <= 32'd0;
 			PC_EX_to_Mem <= 32'h0000_3000;

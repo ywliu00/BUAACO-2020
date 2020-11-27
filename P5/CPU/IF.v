@@ -45,8 +45,8 @@ module IF(
     .NextPC(NextPC_wire),
 	.PC_4(PC_4_wire));   //PC永远存的是下一条指令地址，因此Stall时NPC输出当前PC只即可
 	 
-	 ProgramCounter PCnt(
-	 .clk(clk),
+	ProgramCounter PCnt(
+	.clk(clk),
     .reset(reset),
     .NPC(NextPC_wire),
     .PC(PC_wire));
