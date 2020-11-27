@@ -32,6 +32,8 @@ module Mem(
 	input wire [2:0] Tnew_WAddr_EX_to_Mem,
 	input wire clk,
 	input wire reset,
+	input wire [31:0] bypass_Mem, //从Mem/WB转发来的
+	input wire DMWriteDataBypassCtrl,
 	
 	output reg [31:0] RegWriteData_Mem_to_WB,
 	output reg [4:0] RegWriteAddr_Mem_to_WB,
@@ -41,6 +43,7 @@ module Mem(
 	output reg [2:0] Tuse_RAddr1_Mem_to_WB,
 	output reg [2:0] Tnew_WAddr_Mem_to_WB,
 	
+	// 冲突处理单元信号
 	output wire [4:0] RAddr0_Mem,
     output wire [4:0] RAddr1_Mem,
     output wire [4:0] RegWriteAddr_Mem,
@@ -52,13 +55,20 @@ module Mem(
 	wire [31:0] DMRead_wire, DMWriteData_bypass, RegWriteData_wire;
 	wire [2:0] Tuse_RAddr0_wire, Tuse_RAddr1_wire, Tnew_WAddr_wire;
 	wire DMWriteEn, RegWriteEn_wire;
-	assign DMWriteData_bypass = DMWriteData_EX_to_Mem;
+	
 	assign InstrType = InstrType_EX_to_Mem;
 	assign DMWriteEn = (`sw) ? 1 : 0;
 	assign Tuse_RAddr0_wire = (Tuse_RAddr0_EX_to_Mem > 0) ? Tuse_RAddr0_EX_to_Mem - 3'b001 : Tuse_RAddr0_EX_to_Mem;
 	assign Tuse_RAddr1_wire = (Tuse_RAddr1_EX_to_Mem > 0) ? Tuse_RAddr1_EX_to_Mem - 3'b001 : Tuse_RAddr1_EX_to_Mem;
 	assign Tnew_WAddr_wire = (Tnew_WAddr_EX_to_Mem > 0) ? Tnew_WAddr_EX_to_Mem - 3'b001 : Tnew_WAddr_EX_to_Mem;
 	
+	////////////////////// DM待写入数据从WB的转发 //////////////////////////
+	
+	assign DMWriteData_bypass = (DMWriteDataBypassCtrl == `DMWriteData_from_DMWD) ? DMWriteData_EX_to_Mem :
+	                            (DMWriteDataBypassCtrl == `DMWriteData_from_WB) ? bypass_Mem :
+								                                                               32'h1234_ABCD;
+	
+	////////////////////////////////////////////////////////////////////
 	DM DM(
 	.Addr(ALUOut_EX_to_Mem),
     .WData(DMWriteData_bypass),

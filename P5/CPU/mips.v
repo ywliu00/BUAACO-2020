@@ -1,22 +1,5 @@
 `timescale 1ns / 1ps
 `include "CPU_Param.v"
-//	parameter ALU_add = 3'b000,
-//			ALU_sub = 3'b001,
-//			ALU_or = 3'b010,
-//			ALU_lshift = 3'b011;
-//
-//	parameter inst_err = 60'd0,
-//			inst_addu = 60'd1 << 0,
-//			inst_subu = 60'd1 << 1,
-//			inst_ori = 60'd1 << 2,
-//			inst_lw = 60'd1 << 3,
-//			inst_sw = 60'd1 << 4,
-//			inst_beq = 60'd1 << 5,
-//			inst_lui = 60'd1 << 6,
-//			inst_j = 60'd1 << 7,
-//			inst_jal = 60'd1 << 8,
-//			inst_jr = 60'd1 << 9,
-//			inst_sll = 60'd1 << 10;
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -42,14 +25,49 @@ module mips(
     );
 	wire Stall;
 	
-	///////////////////// Stall Unit /////////////////////////
+	///////////////////// Bypass Control Unit //////////////////////
+	wire [4:0] RegWriteAddr_Mem_to_WB;
 	wire [4:0] RAddr0_ID, RAddr0_EX, RAddr0_Mem,
 	           RAddr1_ID, RAddr1_EX, RAddr1_Mem,
 			   RegWriteAddr_ID, RegWriteAddr_EX, RegWriteAddr_Mem;
 	wire [2:0] Tuse_RAddr0_ID, Tuse_RAddr0_EX, Tuse_RAddr0_Mem,
 	           Tuse_RAddr1_ID, Tuse_RAddr1_EX, Tuse_RAddr1_Mem,
 			   Tnew_WAddr_ID, Tnew_WAddr_EX, Tnew_WAddr_Mem;
+	wire [1:0] RData0BypassCtrl, RData1BypassCtrl,
+	           ALUIn0BypassCtrl, ALUIn1BypassCtrl;
+	wire DMWriteDataBypassCtrl_EX, DMWriteDataBypassCtrl_Mem;
 	
+	BypassController BypassController(
+	// ID级传来的数据
+	.RAddr0_ID(RAddr0_ID),
+	.RAddr1_ID(RAddr1_ID),
+	.Tuse_RAddr0_ID(Tuse_RAddr0_ID),
+	.Tuse_RAddr1_ID(Tuse_RAddr1_ID),
+	// EX级传来的数据
+	.RAddr0_EX(RAddr0_EX),
+	.RAddr1_EX(RAddr1_EX),
+	.RegWriteAddr_EX(RegWriteAddr_EX),
+	.Tuse_RAddr0_EX(Tuse_RAddr0_EX),
+	.Tuse_RAddr1_EX(Tuse_RAddr1_EX),
+	.Tnew_WAddr_EX(Tnew_WAddr_EX),
+	// Mem级传来的数据
+	.RAddr0_Mem(RAddr0_Mem),
+    .RAddr1_Mem(RAddr1_Mem),
+    .RegWriteAddr_Mem(RegWriteAddr_Mem),
+	.Tuse_RAddr0_Mem(Tuse_RAddr0_Mem),
+	.Tuse_RAddr1_Mem(Tuse_RAddr1_Mem),
+	.Tnew_WAddr_Mem(Tnew_WAddr_Mem),
+	//WB级传来的数据
+	.RegWriteAddr_WB(RegWriteAddr_Mem_to_WB),
+	// 输出控制信号
+	.RData0BypassCtrl(RData0BypassCtrl),
+	.RData1BypassCtrl(RData1BypassCtrl),//ID级两个
+	.ALUIn0BypassCtrl(ALUIn0BypassCtrl),
+	.ALUIn1BypassCtrl(ALUIn1BypassCtrl),
+	.DMWriteDataBypassCtrl_EX(DMWriteDataBypassCtrl_EX), //EX级三个
+	.DMWriteDataBypassCtrl_Mem(DMWriteDataBypassCtrl_Mem) //Mem级一个
+    );
+	///////////////////// Stall Unit /////////////////////////
 	StallUnit StallUnit(
 	.RegRead0(RAddr0_ID),
     .T_useRead0(Tuse_RAddr0_ID),
@@ -117,10 +135,18 @@ module mips(
     .jump(jump),
     .branch_addr32(branch_addr32),
     .jump_addr32(jump_addr32),
+	
+	// 给阻塞和转发控制器的信息
 	.RegRead0_ID(RAddr0_ID),
 	.RegRead1_ID(RAddr1_ID),
 	.Tuse_RAddr0_ID(Tuse_RAddr0_ID),
-	.Tuse_RAddr1_ID(Tuse_RAddr1_ID)
+	.Tuse_RAddr1_ID(Tuse_RAddr1_ID),
+	
+	//转发需求部分
+	.bypass_ID(ResFromID_ID_to_EX), // 从ID/EX寄存器转发来的数据
+	.bypass_EX(ALUOut_EX_to_Mem), // 从EX/Mem寄存器转发来的数据 注意转发只有一个数据源
+	.RData0BypassCtrl(),
+	.RData1BypassCtrl()
     );
 	 
 	//////////////////// EX /////////////////////////////////
@@ -156,18 +182,26 @@ module mips(
 	.Tuse_RAddr1_EX_to_Mem(Tuse_RAddr1_EX_to_Mem),
 	.Tnew_WAddr_EX_to_Mem(Tnew_WAddr_EX_to_Mem),
 	
+	// 给冲突处理单元的数据
 	.RAddr0_EX(RAddr0_EX),
 	.RAddr1_EX(RAddr1_EX),
 	.RegWriteAddr_EX(RegWriteAddr_EX),
 	.Tuse_RAddr0_EX(Tuse_RAddr0_EX),
 	.Tuse_RAddr1_EX(Tuse_RAddr1_EX),
-	.Tnew_WAddr_EX(Tnew_WAddr_EX)
+	.Tnew_WAddr_EX(Tnew_WAddr_EX),
+	
+	//转发需求部分
+	.bypass_EX(ALUOut_EX_to_Mem),  //从EX/Mem转发来的
+	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
+	.ALUIn0BypassCtrl(),
+	.ALUIn1BypassCtrl(),
+	.DMWriteDataBypassCtrl()
     );
 	
 	////////////////////// Mem ////////////////////////////
 	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, Tnew_WAddr_Mem_to_WB;
 	wire [31:0] PC_Mem_to_WB, RegWriteData_Mem_to_WB;
-	wire [4:0] RegWriteAddr_Mem_to_WB;
+	//wire [4:0] RegWriteAddr_Mem_to_WB;
 	Mem Mem(
 	.Rs_EX_to_Mem(ReadAddr0_EX_to_Mem),
     .Rt_EX_to_Mem(ReadAddr1_EX_to_Mem),
@@ -190,11 +224,16 @@ module mips(
 	.Tuse_RAddr1_Mem_to_WB(Tuse_RAddr1_Mem_to_WB),
 	.Tnew_WAddr_Mem_to_WB(Tnew_WAddr_Mem_to_WB),
 	
+	// 冲突处理单元信号
 	.RAddr0_Mem(RAddr0_Mem),
     .RAddr1_Mem(RAddr1_Mem),
     .RegWriteAddr_Mem(RegWriteAddr_Mem),
 	.Tuse_RAddr0_Mem(Tuse_RAddr0_Mem),
 	.Tuse_RAddr1_Mem(Tuse_RAddr1_Mem),
-	.Tnew_WAddr_Mem(Tnew_WAddr_Mem)
+	.Tnew_WAddr_Mem(Tnew_WAddr_Mem),
+	
+	//转发需求部分
+	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
+	.DMWriteDataBypassCtrl()
     );
 endmodule

@@ -26,6 +26,7 @@
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="ALUOpDecoder_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="ALUOpDecoder_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ALUOpDecoder_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="BypassController_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CPU_TestBench_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="CPU_TestBench_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="CPU_TestBench_isim_beh.wdb"/>
@@ -47,16 +48,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1606406660" xil_pn:in_ck="-4068445079565226247" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1606406660">
+    <transform xil_pn:end_ts="1606447959" xil_pn:in_ck="-6194828594590266733" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1606447959">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="ALU.v"/>
       <outfile xil_pn:name="ALUOpDecoder.v"/>
       <outfile xil_pn:name="AT_Cal.v"/>
+      <outfile xil_pn:name="BypassController.v"/>
       <outfile xil_pn:name="CPU_Param.v"/>
       <outfile xil_pn:name="CPU_TestBench.v"/>
       <outfile xil_pn:name="DM.v"/>

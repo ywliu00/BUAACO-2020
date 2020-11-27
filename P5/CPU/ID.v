@@ -52,6 +52,8 @@ module ID(
     output wire jump,
     output wire [31:0] branch_addr32,
     output wire [31:0] jump_addr32,
+	
+	// 给阻塞和转发单元的信息
 	output wire [4:0] RegRead0_ID,
 	output wire [4:0] RegRead1_ID,
 	output wire [2:0] Tuse_RAddr0_ID,
@@ -146,7 +148,7 @@ module ID(
 						 (RData1BypassCtrl == `RData1_from_EX) ? bypass_EX :
 						                                                             32'h1234_ABCD; // Err Signal
 	
-	///////////////////给阻塞和转发单元的信息 ///////////////
+	/////////////////// 给阻塞和转发单元的信息 ///////////////
 	assign RegRead0_ID = Rs_wire;
 	assign RegRead1_ID = Rt_wire;
 	assign Tuse_RAddr0_ID = Tuse_RAddr0_wire;

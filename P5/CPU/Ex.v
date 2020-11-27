@@ -37,7 +37,7 @@ module EX(
 	input wire [31:0] bypass_Mem, //从Mem/WB转发来的
 	input wire [1:0] ALUIn0BypassCtrl,
 	input wire [1:0] ALUIn1BypassCtrl,
-	input wire DMWriteDataBypassCtrl,
+	input wire DMWriteDataBypassCtrl, //三个转发控制信号
 	input wire clk,
     input wire reset,
 	
@@ -52,6 +52,7 @@ module EX(
 	output reg [2:0] Tuse_RAddr1_EX_to_Mem,
 	output reg [2:0] Tnew_WAddr_EX_to_Mem,
 	
+	// 给冲突处理单元的数据
 	output wire [4:0] RAddr0_EX,
 	output wire [4:0] RAddr1_EX,
 	output wire [4:0] RegWriteAddr_EX,
@@ -77,7 +78,7 @@ module EX(
 	
 	//ALUIn0 若用于左移，则只有最后5位有效，这个功能在ID写过了
 	
-	///////////////////// ALU入口转发 /////////////////////////////
+	///////////////////// ALU入口寄存器值转发 /////////////////////////////
 	assign ALUIn0 = RAddr0Data_ID_to_EX; //正常数据通路
 	assign ALUIn0_bypass = (ALUIn0BypassCtrl == `ALUIn0_from_ALUIn0) ? ALUIn0 :
 	                       (ALUIn0BypassCtrl == `ALUIn0_from_EX) ? bypass_EX :
@@ -96,10 +97,14 @@ module EX(
 								                                                               32'h1234_ABCD;
 	//此次DM待写入数据暂不考虑使用前面已转发过的ALUIn1_bypass的数据，而是
 	//重新从原始数据开始转发，保证两次转发之间的独立性
+	
+	//////////////////// ALU入口2的寄存器值与立即数的选择 //////////////////
+	wire [31:0] ALUIn1_Data;
+	assign ALUIn1_Data = (ALUIn1_Src) ? imm32_ID_to_EX : ALUIn1_bypass;
 	///////////////////////////////////////////////////////
 	ALU ALU(
 	.In0(ALUIn0_bypass),
-    .In1(ALUIn1_bypass),
+    .In1(ALUIn1_Data),
 	.ALUOp(ALUOp),
     .InstrType(InstrType),
     .Res(ALURes_wire));

@@ -22,8 +22,9 @@
 `define ALUIn1_from_EX 2'b01
 `define ALUIn0_from_Mem 2'b10
 `define ALUIn1_from_Mem 2'b10
-//EX级DM待写入数据
+//DM待写入数据的两处转发
 `define DMWriteData_from_ALUIn1 1'b0
+`define DMWriteData_from_DMWD 1'b0
 `define DMWriteData_from_WB 1'b1
 
 //ALU操作
