@@ -32,7 +32,7 @@ module IF(
 	output reg [31:0] PC
     );
 	 wire [31:0] PC_wire, NextPC_wire, PC_4_wire, 
-	             Instr_wire, OpAddr_wire, FirstInstr_wire;
+	             Instr_wire, OpAddr_wire;
     assign OpAddr_wire = (PC_wire - 32'h0000_3000) >> 2;
 	 
 	NPC NPC(
@@ -51,11 +51,9 @@ module IF(
     .NPC(NextPC_wire),
     .PC(PC_wire));
 	 
-	 
-	 IM IM(
-	 .OpAddr(OpAddr_wire),
-    .Instr(Instr_wire),
-	 .FirstInstr(FirstInstr_wire));
+	IM IM(
+	.OpAddr(OpAddr_wire),
+    .Instr(Instr_wire));
 	 
 	 always@(posedge clk)
 	 begin

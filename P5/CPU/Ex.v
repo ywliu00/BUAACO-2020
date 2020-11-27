@@ -92,9 +92,11 @@ module EX(
 	
 	///////////////////// DM待写入数据转发 /////////////////////////////
 	wire [31:0] DMWriteData_bypass;
-	assign DMWriteData_bypass = (DMWriteDataBypassCtrl == `DMWriteData_from_ALUIn1) ? ALUIn1 :
-	                            (DMWriteDataBypassCtrl == `DMWriteData_from_WB) ? bypass_Mem :
-								                                                               32'h1234_ABCD;
+	// assign DMWriteData_bypass = (DMWriteDataBypassCtrl == `DMWriteData_from_ALUIn1) ? ALUIn1 :
+	//                             (DMWriteDataBypassCtrl == `DMWriteData_from_WB) ? bypass_Mem :
+	// 							                                                               32'h1234_ABCD;
+	assign DMWriteData_bypass = ALUIn1_bypass;
+	
 	//此次DM待写入数据暂不考虑使用前面已转发过的ALUIn1_bypass的数据，而是
 	//重新从原始数据开始转发，保证两次转发之间的独立性
 	
@@ -106,7 +108,6 @@ module EX(
 	.In0(ALUIn0_bypass),
     .In1(ALUIn1_Data),
 	.ALUOp(ALUOp),
-    .InstrType(InstrType),
     .Res(ALURes_wire));
 	
 	assign ALUOut_wire = (`lui || `jal) ? ResFromID_ID_to_EX : ALURes_wire;

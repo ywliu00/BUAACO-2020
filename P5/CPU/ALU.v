@@ -22,9 +22,7 @@
 module ALU(
     input wire [31:0] In0,
     input wire [31:0] In1,
-    input wire [59:0] InstrType,
 	input wire [2:0] ALUOp,
-    //output wire Zero,
     output wire [31:0] Res
     );
 	wire [4:0] ShiftBits;

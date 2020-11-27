@@ -21,12 +21,12 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/BUAACO/P5/CPU/DM.v";
+static const char *ng0 = "F:/Course/CO/P5/CPU/DM.v";
 static unsigned int ng1[] = {0U, 0U};
 static int ng2[] = {0, 0};
 static int ng3[] = {1024, 0};
 static int ng4[] = {1, 0};
-static const char *ng5 = "@%h: *%h <= %h";
+static const char *ng5 = "%d@%h: *%h <= %h";
 
 
 
@@ -95,6 +95,7 @@ static void Always_36_1(char *t0)
     char t13[8];
     char t15[8];
     char t16[8];
+    char t37[16];
     char *t1;
     char *t2;
     char *t3;
@@ -244,14 +245,15 @@ LAB14:    t33 = *((unsigned int *)t15);
 
 LAB16:    xsi_set_current_line(46, ng0);
 
-LAB19:    xsi_set_current_line(47, ng0);
-    t4 = (t0 + 1848U);
-    t5 = *((char **)t4);
-    t4 = (t0 + 1048U);
-    t11 = *((char **)t4);
-    t4 = (t0 + 1208U);
-    t12 = *((char **)t4);
-    xsi_vlogfile_write(1, 0, 0, ng5, 4, t0, (char)118, t5, 32, (char)118, t11, 32, (char)118, t12, 32);
+LAB19:    xsi_set_current_line(48, ng0);
+    t4 = xsi_vlog_time(t37, 1000.0000000000000, 1000.0000000000000);
+    t5 = (t0 + 1848U);
+    t11 = *((char **)t5);
+    t5 = (t0 + 1048U);
+    t12 = *((char **)t5);
+    t5 = (t0 + 1208U);
+    t14 = *((char **)t5);
+    xsi_vlogfile_write(1, 0, 0, ng5, 5, t0, (char)118, t37, 64, (char)118, t11, 32, (char)118, t12, 32, (char)118, t14, 32);
     xsi_set_current_line(49, ng0);
     t2 = (t0 + 1208U);
     t3 = *((char **)t2);

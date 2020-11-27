@@ -152,7 +152,7 @@ module ID(
 	assign RegRead0_ID = Rs_wire;
 	assign RegRead1_ID = Rt_wire;
 	assign Tuse_RAddr0_ID = Tuse_RAddr0_wire;
-	assign Tuse_RAddr1_ID = Tuse_RAddr0_wire;
+	assign Tuse_RAddr1_ID = Tuse_RAddr1_wire;
 	
 	////////////////// ID/EXÁ÷Ë®Ïß¼Ä´æÆ÷ ////////////////////
 	

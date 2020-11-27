@@ -105,13 +105,13 @@ module BypassController(
 	//////////////////// EX级ALUIn1转发 /////////////////////
 	wire ALUIn1_fromEX, ALUIn1_fromMem;
 	assign ALUIn1_fromEX = (RAddr1_EX != 0) && 
-	                       (RAddr1_EX == RegWriteAddr_Mem) && 
-						   (Tuse_RAddr1_EX == 3'b000) &&
-						   (Tnew_WAddr_Mem == 3'b000);
+	                       (RAddr1_EX == RegWriteAddr_Mem) && (Tnew_WAddr_Mem == 3'b000);
+						   //(Tuse_RAddr1_EX == 3'b000) &&
+						   
 	//所读寄存器非0，所读寄存器与后续所写寄存器相同，Tuse为0（立即需要），Tnew为0（已经产生）
 	assign ALUIn1_fromMem = (RAddr1_EX != 0) && 
-	                        (RAddr1_EX == RegWriteAddr_WB) && 
-						    (Tuse_RAddr1_EX == 3'b000);
+	                        (RAddr1_EX == RegWriteAddr_WB); //&& 
+						    //(Tuse_RAddr1_EX == 3'b000);
 	//这里没有检查WB级的Tnew，因为WB级必然已经产生数据，不需要检查
 	assign ALUIn1BypassCtrl = (ALUIn1_fromEX) ? `ALUIn1_from_EX :
 	                          (ALUIn1_fromMem) ? `ALUIn1_from_Mem :
@@ -123,10 +123,11 @@ module BypassController(
 
 	//所读寄存器非0，所读寄存器与后续所写寄存器相同，Tuse为0（立即需要），Tnew为0（已经产生）
 	assign DMWriteData_EX_fromMem = (RAddr1_EX != 0) && 
-	                                (RAddr1_EX == RegWriteAddr_WB) && 
-						            (Tuse_RAddr1_EX == 3'b000);
+	                                (RAddr1_EX == RegWriteAddr_WB); //&& 
+						            //(Tuse_RAddr1_EX == 3'b000);
 	//这里没有检查WB级的Tnew，因为WB级必然已经产生数据，不需要检查
 	//注意store类指令需要读取的寄存器是Rt，即RAddr1_EX
+	//注意这里是提前转发，因此不需检查Tuse
 	assign DMWriteDataBypassCtrl_EX = (DMWriteData_EX_fromMem) ? `DMWriteData_from_WB :
 							                                     `DMWriteData_from_ALUIn1;
 	// 由近及远搜索转发
@@ -136,10 +137,11 @@ module BypassController(
 
 	//所读寄存器非0，所读寄存器与后续所写寄存器相同，Tuse为0（立即需要），Tnew为0（已经产生）
 	assign DMWriteData_Mem_fromMem = (RAddr1_Mem != 0) && 
-	                                 (RAddr1_Mem == RegWriteAddr_WB) && 
-						             (Tuse_RAddr1_Mem == 3'b000);
+	                                 (RAddr1_Mem == RegWriteAddr_WB); //&& 
+						             //(Tuse_RAddr1_Mem == 3'b000);
 	//这里没有检查WB级的Tnew，因为WB级必然已经产生数据，不需要检查
 	//注意store类指令需要读取的寄存器是Rt，即RAddr1_Mem
+	//注意这里只是将最新寄存器内容转发到写入流中，写入与否由DM写使能决定，因此不需要检测Tuse
 	assign DMWriteDataBypassCtrl_Mem = (DMWriteData_Mem_fromMem) ? `DMWriteData_from_WB :
 							                                       `DMWriteData_from_DMWD;
 	// 由近及远搜索转发

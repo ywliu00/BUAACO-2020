@@ -21,8 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module IM(
     input wire [31:0] OpAddr,
-    output wire [31:0] Instr,
-	 output wire [31:0] FirstInstr
+    output wire [31:0] Instr
     );
 	 
 	 reg [31:0] IM_Unit [0:1023];
@@ -33,5 +32,4 @@ module IM(
 	 end
 	 
 	 assign Instr = IM_Unit[OpAddr];
-	 assign FirstInstr = IM_Unit[0];
 endmodule

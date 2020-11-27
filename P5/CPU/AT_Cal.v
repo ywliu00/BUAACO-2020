@@ -31,13 +31,13 @@ module AT_Cal(
 	output reg [2:0] Tuse_RAddr1,// 产生时间
 	output reg [2:0] Tnew_WAddr
     );
-	wire typeR, typeI, load, save, branch;
+	wire typeR, typeI, load, store, branch;
 	assign typeR = `addu || `subu || `sll;
 	//R型计算指令
 	assign typeI = `ori || `addiu;
 	//立即数计算指令
 	assign load = `lw;
-	assign save = `sw;
+	assign store = `sw;
 	assign branch = `beq;
 	//注意：bgez需要单独处理，其Rt字段非0，详见指令集
 	
@@ -50,7 +50,8 @@ module AT_Cal(
 			WAddr <= Rd;
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd1;
-			Tnew_WAddr <= 3'd1;
+			//Tnew_WAddr <= 3'd1;
+			Tnew_WAddr <= 3'd2;
 		end
 		else if(typeI)
 		begin
@@ -59,7 +60,8 @@ module AT_Cal(
 			WAddr <= Rt;
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd7; //Rt不做读操作
-			Tnew_WAddr <= 3'd1; //EX出结果
+			//Tnew_WAddr <= 3'd1;
+			Tnew_WAddr <= 3'd2; //EX出结果
 		end
 		else if(load)
 		begin
@@ -68,15 +70,17 @@ module AT_Cal(
 			WAddr <= Rt;
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd7; //Rt不做读操作
-			Tnew_WAddr <= 3'd2;
+			//Tnew_WAddr <= 3'd2;
+			Tnew_WAddr <= 3'd3;
 		end
-		else if(save)
+		else if(store)
 		begin
 			RAddr0 <= Rs;
 			RAddr1 <= Rt;
 			WAddr <= 5'd0;
 			Tuse_RAddr0 <= 3'd1;
 			Tuse_RAddr1 <= 3'd2;
+			//Tuse_RAddr1 <= 3'd3;
 			Tnew_WAddr <= 3'd0; // 不做写操作
 		end
 		else if(branch)
@@ -95,7 +99,8 @@ module AT_Cal(
 			WAddr <= Rt;
 			Tuse_RAddr0 <= 3'd7;//Rs不做读操作
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
-			Tnew_WAddr <= 3'd0; //值在当前流水已产生
+			//Tnew_WAddr <= 3'd0;
+			Tnew_WAddr <= 3'd1;//值在当前流水产生
 		end
 		else if(`jal)
 		begin
@@ -104,7 +109,8 @@ module AT_Cal(
 			WAddr <= 5'd31; //写31号寄存器
 			Tuse_RAddr0 <= 3'd7;//Rs不做读操作
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
-			Tnew_WAddr <= 3'd1; //值在EX产生
+			//Tnew_WAddr <= 3'd0;
+			Tnew_WAddr <= 3'd1; //值在ID产生
 		end
 		else if(`jr)
 		begin
