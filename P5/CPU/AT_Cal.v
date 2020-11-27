@@ -34,7 +34,7 @@ module AT_Cal(
 	wire typeR, typeI, load, save, branch;
 	assign typeR = `addu || `subu || `sll;
 	//R型计算指令
-	assign typeI = `ori;
+	assign typeI = `ori || `addiu;
 	//立即数计算指令
 	assign load = `lw;
 	assign save = `sw;

@@ -62,7 +62,8 @@ module IF(
 		if(reset)
 		begin
 			PC_4 <= 32'h0000_3004;
-			Instr <= FirstInstr_wire;
+			//Instr <= FirstInstr_wire;
+			Instr = 32'h0000_0000;
 			PC <= 32'h0000_3000;
 		end
 		else if(Stall)

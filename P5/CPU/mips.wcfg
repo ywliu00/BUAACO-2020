@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="22" />
+   <WVObjectSize size="20" />
    <wvobject fp_name="/CPU_TestBench/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -41,54 +41,6 @@
    <wvobject fp_name="/CPU_TestBench/uut/EX/PC_ID_to_EX" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">PC_ID_to_EX[31:0]</obj_property>
       <obj_property name="ObjectShortName">PC_ID_to_EX[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/EX/RAddr0Data_ID_to_EX" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RAddr0Data_ID_to_EX[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RAddr0Data_ID_to_EX[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/EX/RAddr1Data_ID_to_EX" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RAddr1Data_ID_to_EX[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RAddr1Data_ID_to_EX[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/BypassController/RData1BypassCtrl" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RData1BypassCtrl[1:0]</obj_property>
-      <obj_property name="ObjectShortName">RData1BypassCtrl[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/EX/PC_EX_to_Mem" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">PC_EX_to_Mem[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PC_EX_to_Mem[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/EX/ALURes_wire" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ALURes_wire[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ALURes_wire[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/EX/ALUIn0" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ALUIn0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ALUIn0[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/ID/RsData_wire" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RsData_wire[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RsData_wire[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/ID/RtData_wire" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RtData_wire[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RtData_wire[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/ID/RData0_wire" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RData0_wire[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RData0_wire[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/ID/RData0_read" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RData0_read[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RData0_read[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/CPU_TestBench/uut/IF/PC_wire" type="array" db_ref_id="1">
@@ -123,5 +75,41 @@
       <obj_property name="ElementShortName">WritePC[31:0]</obj_property>
       <obj_property name="ObjectShortName">WritePC[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/ID/GRF/RegWrite" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RegWrite</obj_property>
+      <obj_property name="ObjectShortName">RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/Mem/InstrType_EX_to_Mem[11]" type="logic" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[11]</obj_property>
+      <obj_property name="ObjectShortName">InstrType_EX_to_Mem[11]</obj_property>
+      <obj_property name="label">¡¤addiu</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/Mem/InstrType_EX_to_Mem[10]" type="logic" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[10]</obj_property>
+      <obj_property name="ObjectShortName">InstrType_EX_to_Mem[10]</obj_property>
+      <obj_property name="label">`sll</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/ID/InstrType[11]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[11]</obj_property>
+      <obj_property name="ObjectShortName">InstrType[11]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/ID/InstrType[10]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[10]</obj_property>
+      <obj_property name="ObjectShortName">InstrType[10]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/InstrType" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">InstrType[59:0]</obj_property>
+      <obj_property name="ObjectShortName">InstrType[59:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/InstrType[11]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[11]</obj_property>
+      <obj_property name="ObjectShortName">InstrType[11]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/InstrType[10]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[10]</obj_property>
+      <obj_property name="ObjectShortName">InstrType[10]</obj_property>
    </wvobject>
 </wave_config>

@@ -39,6 +39,8 @@ module InstrDecoder(
                        (OpCode == 6'b000010) ? `inst_j :
                        (OpCode == 6'b000011) ? `inst_jal :
                        (typeR && Func == 6'b001000) ? `inst_jr :
-                       (typeR && Func == 6'b000000) ? `inst_sll : `inst_err;
+                       (typeR && Func == 6'b000000) ? `inst_sll : 
+					   (OpCode == 6'b001001) ? `inst_addiu :
+					                                              `inst_err;
 
 endmodule

@@ -47,13 +47,11 @@ module GRF(
 		end
 		else
 		begin
-			if(RegWrite)
+			if(RegWrite && WAddr > 0)
 			begin
-				if(WAddr > 0)
-				begin
-					$display("%d@%h: $%d <= %h", $time, WritePC, WAddr, WriteData);
-					reg32[WAddr] <= WriteData;
-				end
+				$display("%d@%h: $%d <= %h", $time, WritePC, WAddr, WriteData);
+				//$display("@%h: $%d <= %h", WritePC, WAddr, WriteData);
+				reg32[WAddr] <= WriteData;
 			end
 		end
 		

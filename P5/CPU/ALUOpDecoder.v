@@ -24,10 +24,11 @@ module ALUOpDecoder(
     output wire ALUIn1Src,
     output wire [2:0] ALUOp
     );
-	assign ALUIn1Src = (`ori||`lw||`sw) ? 1 : 0;
+	assign ALUIn1Src = (`ori||`lw||`sw||`addiu) ? 1 : 0;
 	//为0则取RtData，为1则取32位立即数
 	assign ALUOp = (`sll) ? `ALU_lshift :
 	               (`ori) ? `ALU_or : 
-				   (`subu) ? `ALU_sub : `ALU_add;
+				   (`subu) ? `ALU_sub : 
+				                          `ALU_add;
 
 endmodule
