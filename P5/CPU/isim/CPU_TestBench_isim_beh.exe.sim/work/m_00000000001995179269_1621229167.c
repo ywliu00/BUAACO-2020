@@ -345,7 +345,7 @@ LAB33:    t50 = *((unsigned int *)t41);
 
 LAB36:    xsi_set_current_line(51, ng0);
 
-LAB39:    xsi_set_current_line(52, ng0);
+LAB39:    xsi_set_current_line(53, ng0);
     t29 = xsi_vlog_time(t71, 1000.0000000000000, 1000.0000000000000);
     t72 = (t0 + 1688U);
     t73 = *((char **)t72);

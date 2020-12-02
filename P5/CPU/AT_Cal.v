@@ -130,6 +130,15 @@ module AT_Cal(
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
 			Tnew_WAddr <= 3'd0; //不写
 		end
+		else if(`jalr)
+		begin
+			RAddr0 <= Rs;
+			RAddr1 <= 5'd0;
+			WAddr <= Rd;
+			Tuse_RAddr0 <= 3'd0;//读Rs，立即需要
+			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
+			Tnew_WAddr <= 3'd1; //值在ID产生
+		end
 	end
 	
 

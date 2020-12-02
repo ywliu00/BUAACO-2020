@@ -110,8 +110,8 @@ module EX(
 	.ALUOp(ALUOp),
     .Res(ALURes_wire));
 	
-	assign ALUOut_wire = (`lui || `jal) ? ResFromID_ID_to_EX : ALURes_wire;
-	//在ID级产生的结果在这里并入数据通路
+	assign ALUOut_wire = (Tnew_WAddr_wire == 0 && RegWriteAddr_ID_to_EX != 5'd0) ? ResFromID_ID_to_EX : ALURes_wire;
+	//若在ID级产生了结果，则Tnew为0，在这里并入数据通路
 	
 	/////////////////// 给冲突处理单元的数据 /////////////////////////
 	assign RAddr0_EX = RAddr0_ID_to_EX;

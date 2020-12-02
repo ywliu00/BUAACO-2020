@@ -45,11 +45,11 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1606487462" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1606487462">
+    <transform xil_pn:end_ts="1606926212" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1606926212">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1606487462" xil_pn:in_ck="-6194828594590266733" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1606487462">
+    <transform xil_pn:end_ts="1606926212" xil_pn:in_ck="-4292187375198361062" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1606926212">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -61,7 +61,6 @@
       <outfile xil_pn:name="AT_Cal.v"/>
       <outfile xil_pn:name="BypassController.v"/>
       <outfile xil_pn:name="CPU_Param.v"/>
-      <outfile xil_pn:name="CPU_TestBench.v"/>
       <outfile xil_pn:name="DM.v"/>
       <outfile xil_pn:name="Ex.v"/>
       <outfile xil_pn:name="Extender.v"/>
@@ -75,20 +74,21 @@
       <outfile xil_pn:name="ProgramCounter.v"/>
       <outfile xil_pn:name="StallUnit.v"/>
       <outfile xil_pn:name="mips.v"/>
+      <outfile xil_pn:name="mips_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1606487462" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="2921163432605696350" xil_pn:start_ts="1606487462">
+    <transform xil_pn:end_ts="1606926212" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="2921163432605696350" xil_pn:start_ts="1606926212">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1606487462" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="2340424016432860932" xil_pn:start_ts="1606487462">
+    <transform xil_pn:end_ts="1606926212" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="2340424016432860932" xil_pn:start_ts="1606926212">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1606487462" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-6825801120149235046" xil_pn:start_ts="1606487462">
+    <transform xil_pn:end_ts="1606926212" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-6825801120149235046" xil_pn:start_ts="1606926212">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1606487462" xil_pn:in_ck="-6194828594590266733" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1606487462">
+    <transform xil_pn:end_ts="1606926212" xil_pn:in_ck="-4292187375198361062" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1606926212">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -101,7 +101,6 @@
       <outfile xil_pn:name="AT_Cal.v"/>
       <outfile xil_pn:name="BypassController.v"/>
       <outfile xil_pn:name="CPU_Param.v"/>
-      <outfile xil_pn:name="CPU_TestBench.v"/>
       <outfile xil_pn:name="DM.v"/>
       <outfile xil_pn:name="Ex.v"/>
       <outfile xil_pn:name="Extender.v"/>
@@ -115,11 +114,13 @@
       <outfile xil_pn:name="ProgramCounter.v"/>
       <outfile xil_pn:name="StallUnit.v"/>
       <outfile xil_pn:name="mips.v"/>
+      <outfile xil_pn:name="mips_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1606487467" xil_pn:in_ck="-6194828594590266733" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="5111796532506261241" xil_pn:start_ts="1606487462">
+    <transform xil_pn:end_ts="1606926217" xil_pn:in_ck="-4292187375198361062" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="5111796532506261241" xil_pn:start_ts="1606926212">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
@@ -131,9 +132,10 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1606487467" xil_pn:in_ck="-1785751446837280475" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1470864866174268092" xil_pn:start_ts="1606487467">
+    <transform xil_pn:end_ts="1606926218" xil_pn:in_ck="-1785751446837280475" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1470864866174268092" xil_pn:start_ts="1606926217">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>

@@ -28,7 +28,7 @@ module DM(
 	input wire [31:0] WritePC,
     output wire [31:0] RData
     );
-	 reg [31:0] DM_Unit[0:1023];
+	 reg [31:0] DM_Unit[0:4095];
 	 integer i;
 	 wire [31:0] RealAddr;
 	 assign RealAddr = {2'b0, Addr[31:2]};

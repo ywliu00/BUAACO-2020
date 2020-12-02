@@ -47,6 +47,8 @@
 `define inst_jr (60'd1 << 9)
 `define inst_sll (60'd1 << 10) // nop也在这里面
 `define inst_addiu (60'd1 << 11)
+`define inst_jalr (60'd1 << 12)
+
 
 //指令判断
 `define addu (InstrType[0])
@@ -61,3 +63,4 @@
 `define jr (InstrType[9])
 `define sll (InstrType[10])
 `define addiu (InstrType[11])
+`define jalr (InstrType[12])

@@ -126,7 +126,7 @@ module ID(
 	///////////////////// ID级产生结果的指令 ////////////////////////
 	wire [31:0] ResFromID_wire;
 	assign ResFromID_wire = (`lui) ? {Instr[15:0], 16'd0} :
-	                        (`jal) ? PC + 32'd8 : 32'd0;
+	                        (`jal || `jalr) ? PC + 32'd8 : 32'hABCDDCBA;
 	
 	///////////////////// Branch ////////////////////////////
 	
@@ -134,9 +134,9 @@ module ID(
 	assign branch_addr32 = PC_4 + {imm32_wire[29:0], 2'b00};
 	
 	///////////////////// Jump /////////////////////////
-	assign jump = (`j || `jal || `jr) ? 1 : 0;
+	assign jump = (`j || `jal || `jr || `jalr) ? 1 : 0;
 	assign jump_addr32 = `j || `jal ? {PC[31:28], imm26_wire, 2'b00}:
-	                     `jr ? RsData_wire : 32'h0000_3000;
+	                     (`jr || `jalr) ? RsData_wire : 32'h0000_3000;
 	
 	//////////////////// 转发 /////////////////////
 	assign RsData_wire = (RData0BypassCtrl == `RData0_from_RData0) ? RData0_wire :

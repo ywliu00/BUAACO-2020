@@ -41,6 +41,8 @@ module InstrDecoder(
                        (typeR && Func == 6'b001000) ? `inst_jr :
                        (typeR && Func == 6'b000000) ? `inst_sll : 
 					   (OpCode == 6'b001001) ? `inst_addiu :
+					   (typeR && Func == 6'b001001) ? `inst_jalr :
+					   (OpCode == 6'b001000) ? `inst_addiu :   //////////////为了测试临时写的，后面记得改！
 					                                              `inst_err;
 
 endmodule

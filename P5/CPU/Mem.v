@@ -80,7 +80,7 @@ module Mem(
 	
 	assign RegWriteData_wire = (`lw) ? DMRead_wire : ALUOut_EX_to_Mem;
 	assign RegWriteEn_wire = (`addu || `subu || `ori || `lw || `lui ||
-	                          `jal || `sll || `addiu) ? 1 : 0;
+	                          `jal || `sll || `addiu || `jalr ) ? 1 : 0;
 							  
 	///////////////// 冲突处理单元信号 /////////////////////
 	assign RAddr0_Mem = RAddr0_EX_to_Mem;
