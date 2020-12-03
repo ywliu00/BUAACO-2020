@@ -26,7 +26,7 @@ module ID(
     input wire clk,
     input wire reset,
 	input wire Stall,
-	input wire RegWrite,
+	//input wire RegWrite,
 	input wire [31:0] WData,
 	input wire [31:0] WritePC,
 	input wire [31:0] bypass_ID, // 从ID/EX寄存器转发来的数据
@@ -113,7 +113,7 @@ module ID(
 	.WAddr(RegWriteAddr_Mem_to_WB),
 	.WriteData(WData),
 	.WritePC(WritePC), //写指令的PC，非当前PC
-	.RegWrite(RegWrite),
+	//.RegWrite(RegWrite),
 	.clk(clk),
 	.reset(reset),
 	.RData0(RData0_read), //原始读出数据

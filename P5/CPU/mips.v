@@ -98,7 +98,7 @@ module mips(
     );
 	
 	////////////////////// ID ////////////////////////////
-	wire RegWriteEn;
+	//wire RegWriteEn;
 	wire [2:0] Tuse_RAddr0_ID_to_EX, Tuse_RAddr1_ID_to_EX, Tnew_WAddr_ID_to_EX;
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
 	           Shamt_ID_to_EX;
@@ -112,7 +112,7 @@ module mips(
     .clk(clk),
     .reset(reset),
 	.Stall(Stall),
-	.RegWrite(RegWriteEn),
+	//.RegWrite(RegWriteEn),
 	.WData(RegWriteData_Mem_to_WB),
 	.WritePC(PC_Mem_to_WB),
 	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
@@ -219,7 +219,7 @@ module mips(
 	.RegWriteData_Mem_to_WB(RegWriteData_Mem_to_WB),
 	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
 	.PC_Mem_to_WB(PC_Mem_to_WB),
-	.RegWriteEn(RegWriteEn),
+	//.RegWriteEn(RegWriteEn),
 	.Tuse_RAddr0_Mem_to_WB(Tuse_RAddr0_Mem_to_WB),
 	.Tuse_RAddr1_Mem_to_WB(Tuse_RAddr1_Mem_to_WB),
 	.Tnew_WAddr_Mem_to_WB(Tnew_WAddr_Mem_to_WB),

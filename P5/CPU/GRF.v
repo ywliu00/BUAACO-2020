@@ -25,7 +25,7 @@ module GRF(
     input wire [4:0] WAddr,
     input wire [31:0] WriteData,
 	input wire [31:0] WritePC,
-    input wire RegWrite,
+    //input wire RegWrite,
     input wire clk,
     input wire reset,
     output  wire [31:0] RData0,
@@ -47,7 +47,7 @@ module GRF(
 		end
 		else
 		begin
-			if(RegWrite && WAddr > 0)
+			if(WAddr > 0)
 			begin
 				//$display("@%h: $%d <= %h", WritePC, WAddr, WriteData);
 				$display("%d@%h: $%d <= %h", $time, WritePC, WAddr, WriteData);
@@ -59,7 +59,9 @@ module GRF(
 		//RData1 <= reg32[RAddr1];
 	 end
 	 //assign {RData0, RData1} = {reg32[RAddr0], reg32[RAddr1]};
-	 assign RData0 = RegWrite && WAddr && (WAddr == RAddr0) ? WriteData : reg32[RAddr0];
-	 assign RData1 = RegWrite && WAddr && (WAddr == RAddr1) ? WriteData : reg32[RAddr1];
+	 //assign RData0 = RegWrite && WAddr && (WAddr == RAddr0) ? WriteData : reg32[RAddr0];
+	 //assign RData1 = RegWrite && WAddr && (WAddr == RAddr1) ? WriteData : reg32[RAddr1];
+	 assign RData0 = (WAddr != 5'd0) && (WAddr == RAddr0) ? WriteData : reg32[RAddr0];
+	 assign RData1 = (WAddr != 5'd0) && (WAddr == RAddr1) ? WriteData : reg32[RAddr1];
 	 
 endmodule

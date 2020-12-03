@@ -38,7 +38,7 @@ module Mem(
 	output reg [31:0] RegWriteData_Mem_to_WB,
 	output reg [4:0] RegWriteAddr_Mem_to_WB,
 	output reg [31:0] PC_Mem_to_WB,
-	output reg RegWriteEn,
+	//output reg RegWriteEn,
 	output reg [2:0] Tuse_RAddr0_Mem_to_WB,
 	output reg [2:0] Tuse_RAddr1_Mem_to_WB,
 	output reg [2:0] Tnew_WAddr_Mem_to_WB,
@@ -54,7 +54,7 @@ module Mem(
 	wire [59:0] InstrType;
 	wire [31:0] DMRead_wire, DMWriteData_bypass, RegWriteData_wire;
 	wire [2:0] Tuse_RAddr0_wire, Tuse_RAddr1_wire, Tnew_WAddr_wire;
-	wire DMWriteEn, RegWriteEn_wire;
+	wire DMWriteEn;//, RegWriteEn_wire;
 	
 	assign InstrType = InstrType_EX_to_Mem;
 	assign DMWriteEn = (`sw) ? 1 : 0;
@@ -79,8 +79,8 @@ module Mem(
     .RData(DMRead_wire));
 	
 	assign RegWriteData_wire = (`lw) ? DMRead_wire : ALUOut_EX_to_Mem;
-	assign RegWriteEn_wire = (`addu || `subu || `ori || `lw || `lui ||
-	                          `jal || `sll || `addiu || `jalr ) ? 1 : 0;
+	//assign RegWriteEn_wire = (`addu || `subu || `ori || `lw || `lui ||
+	//                          `jal || `sll || `addiu || `jalr ) ? 1 : 0;
 							  
 	///////////////// 冲突处理单元信号 /////////////////////
 	assign RAddr0_Mem = RAddr0_EX_to_Mem;
@@ -98,7 +98,7 @@ module Mem(
 			RegWriteAddr_Mem_to_WB <= 5'd0;
 			PC_Mem_to_WB <= 32'h0000_3000;
 			RegWriteData_Mem_to_WB <= 32'd0;
-			RegWriteEn <= 1'b0;
+			//RegWriteEn <= 1'b0;
 			Tuse_RAddr0_Mem_to_WB <= 3'b111;
 			Tuse_RAddr1_Mem_to_WB <= 3'b111;
 			Tnew_WAddr_Mem_to_WB <= 3'b000;
@@ -108,7 +108,7 @@ module Mem(
 			RegWriteAddr_Mem_to_WB <= RegWriteAddr_EX_to_Mem;
 			PC_Mem_to_WB <= PC_EX_to_Mem;
 			RegWriteData_Mem_to_WB <= RegWriteData_wire;
-			RegWriteEn <= RegWriteEn_wire;
+			//RegWriteEn <= RegWriteEn_wire;
 			Tuse_RAddr0_Mem_to_WB <= Tuse_RAddr0_wire;
 			Tuse_RAddr1_Mem_to_WB <= Tuse_RAddr1_wire;
 			Tnew_WAddr_Mem_to_WB <= Tnew_WAddr_wire;
