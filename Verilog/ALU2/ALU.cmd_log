@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/ALU2/ALU.xst" -ofn "F:/Course/CO/Verilog/ALU2/ALU.syr" 

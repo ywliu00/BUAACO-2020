@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompilers" num="246" delta="new" ><arg fmt="%s" index="1">&quot;OrGate8Bits.v&quot; line 33 </arg>Reference to <arg fmt="%s" index="2">vector reg &apos;o2&apos;</arg> is not a legal net lvalue
+</msg>
+
+<msg type="error" file="HDLCompilers" num="53" delta="new" ><arg fmt="%s" index="1">&quot;OrGate8Bits.v&quot; line 33 </arg>Illegal left hand side of continuous assign
+</msg>
+
+<msg type="error" file="HDLCompilers" num="191" delta="new" ><arg fmt="%s" index="1">&quot;OrGate8Bits.v&quot; line 33 </arg>Indices in part-select of <arg fmt="%s" index="2">vector wire &apos;c&apos;</arg> are reversed
+</msg>
+
+<msg type="error" file="HDLCompilers" num="185" delta="new" ><arg fmt="%s" index="1">&quot;OrGate8Bits.v&quot; line 33 </arg>Illegal right hand side of continuous assign
+</msg>
+
+</messages>
+

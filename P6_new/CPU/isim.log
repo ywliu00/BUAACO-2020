@@ -1,0 +1,136 @@
+ISim log file
+Running: F:\Course\CO\P6_new\CPU\CPU_TestBench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.wdb 
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+                 245@00003014: *005b8d80 <= 005b8d80
+                 255@00003018: *00000000 <= 00000000
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+                 245@00003014: *005b8d80 <= 005b8d80
+                 255@00003018: *00000000 <= 00000000
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+                 245@00003014: *005b8d80 <= 005b8d80
+                 255@00003018: *00000000 <= 00000000
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+                 245@00003014: *005b8d80 <= 005b8d80
+                 255@00003018: *00000000 <= 00000000
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+                 245@00003014: *005b8d80 <= 005b8d80
+                 255@00003018: *00000000 <= 00000000
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+                 245@00003014: *005b8d80 <= 005b8d80
+                 255@00003018: *00000000 <= 00000000
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $11 <= 07d00000
+                 235@0000300c: $13 <= 005b8d80
+                 245@00003010: $14 <= 00000000
+                 245@00003014: *00000007 <= 005b8d80
+                 255@00003018: *0000000a <= 00000000
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $10 <= 0bb807b4
+                 165@00003008: $11 <= 4e200000
+                 175@0000300c: $11 <= 4e200520
+                 255@00003014: $13 <= 03938995
+                 265@00003018: $14 <= dda77a80
+                 265@0000301c: *00000007 <= 03938995
+                 275@00003020: *0000000a <= dda77a80
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $10 <= 0bb807b4
+                 165@00003008: $11 <= 4e200000
+                 175@0000300c: $11 <= 4e200520
+                 255@00003014: $13 <= 03938995
+                 265@00003018: $14 <= dda77a80
+                 265@0000301c: *00000007 <= 03938995
+                 275@00003020: *0000000a <= dda77a80
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $10 <= 0bb807b4
+                 165@00003008: $11 <= 4e200000
+                 175@0000300c: $11 <= 4e200520
+                 255@00003014: $13 <= 03938995
+                 265@00003018: $14 <= dda77a80
+                 265@0000301c: *00000007 <= 03938995
+                 275@00003020: *0000000a <= dda77a80
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $10 <= 0bb807b4
+                 165@00003008: $11 <= 4e200000
+                 175@0000300c: $11 <= 4e200520
+                 255@00003014: $13 <= 03938995
+                 265@00003018: $14 <= dda77a80
+                 265@0000301c: *00000007 <= 95000000
+                 275@00003020: *0000000a <= 7a800000

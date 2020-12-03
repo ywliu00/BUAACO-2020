@@ -1,0 +1,6 @@
+vhdtdtfi -lib work F:/Course/CO/Verilog/Homework1/Voter.v -lang verilog -prj Homework1 -o Voter.spl -module Voter -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family aspartan3 Voter.spl F:/Course/CO/Verilog/Homework1/Voter.sym 
+vhdtdtfi -lang verilog -prj Homework1 -o F:/Course/CO/Verilog/Homework1/Voter.tfi -lib work F:/Course/CO/Verilog/Homework1//Voter.v -module Voter -template D:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
+vhdtdtfi -lang verilog -prj Homework1 -o F:/Course/CO/Verilog/Homework1/Voter.tfi -lib work F:/Course/CO/Verilog/Homework1//Voter.v -module Voter -template D:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
+vhdtdtfi -lang verilog -prj Homework1 -o F:/Course/CO/Verilog/Homework1/Voter.tfi -lib work F:/Course/CO/Verilog/Homework1//Voter.v -module Voter -template D:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/Homework1/Voter.xst" -ofn "F:/Course/CO/Verilog/Homework1/Voter.syr" 

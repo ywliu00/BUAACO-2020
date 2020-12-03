@@ -1,0 +1,12 @@
+
+
+
+// Instantiate the module
+Voter instance_name (
+    .A(A), 
+    .B(B), 
+    .C(C), 
+    .F(F)
+    );
+
+

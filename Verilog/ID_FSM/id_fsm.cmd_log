@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/ID_FSM/id_fsm.xst" -ofn "F:/Course/CO/Verilog/ID_FSM/id_fsm.syr" 

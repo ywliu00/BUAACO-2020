@@ -1,0 +1,32 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/Course/CO/Verilog/counter/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> Parameter xsthdpdir set to F:/Course/CO/Verilog/counter/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "OrGate8Bits.v" in library work
+ERROR:HDLCompilers:26 - "OrGate8Bits.v" line 22 expecting ')', found ';'
+Module <OrGate8Bits> compiled
+ERROR:HDLCompilers:26 - "OrGate8Bits.v" line 24 expecting 'endmodule', found 'input'
+Analysis of file <"OrGate8Bits.prj"> failed.
+--> 
+
+Total memory usage is 4480092 kilobytes
+
+Number of errors   :    2 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

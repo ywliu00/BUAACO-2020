@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Course/CO/Verilog/FSM_practice/FSM_practice/L1_tb_isim_beh.exe" -prj "F:/Course/CO/Verilog/FSM_practice/FSM_practice/L1_tb_beh.prj" "work.L1_tb" "work.glbl" 

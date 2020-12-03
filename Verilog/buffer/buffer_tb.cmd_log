@@ -1,0 +1,11 @@
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/buffer/buffer_tb.xst" -ofn "F:/Course/CO/Verilog/buffer/buffer_tb.syr" 
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/buffer/buffer_tb.xst" -ofn "F:/Course/CO/Verilog/buffer/buffer_tb.syr" 
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/buffer/buffer_tb.xst" -ofn "F:/Course/CO/Verilog/buffer/buffer_tb.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xa3s50-vqg100-4 buffer_tb.ngc buffer_tb.ngd  
+map -intstyle ise -p xa3s50-vqg100-4 -cm area -ir off -pr off -c 100 -o buffer_tb_map.ncd buffer_tb.ngd buffer_tb.pcf 
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/buffer/buffer_tb.xst" -ofn "F:/Course/CO/Verilog/buffer/buffer_tb.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xa3s50-vqg100-4 buffer_tb.ngc buffer_tb.ngd  
+map -intstyle ise -p xa3s50-vqg100-4 -cm area -ir off -pr off -c 100 -o buffer_tb_map.ncd buffer_tb.ngd buffer_tb.pcf 
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/buffer/buffer_tb.xst" -ofn "F:/Course/CO/Verilog/buffer/buffer_tb.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xa3s50-vqg100-4 buffer_tb.ngc buffer_tb.ngd  
+map -intstyle ise -p xa3s50-vqg100-4 -cm area -ir off -pr off -c 100 -o buffer_tb_map.ncd buffer_tb.ngd buffer_tb.pcf 

@@ -1,0 +1,10 @@
+[Inputs]
+A
+B
+C
+[Outputs]
+F
+[BiDir]
+[ATTRIBUTES]
+VeriModel Voter
+

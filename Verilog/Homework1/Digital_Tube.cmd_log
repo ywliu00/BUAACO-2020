@@ -1,0 +1,3 @@
+vhdtdtfi -lang verilog -prj Homework1 -o F:/Course/CO/Verilog/Homework1/Digital_Tube.tfi -lib work F:/Course/CO/Verilog/Homework1//Digital_Tube.v -module Digital_Tube -template D:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
+vhdtdtfi -lib work F:/Course/CO/Verilog/Homework1/Digital_Tube.v -lang verilog -prj Homework1 -o Digital_Tube.spl -module Digital_Tube -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family aspartan3 Digital_Tube.spl F:/Course/CO/Verilog/Homework1/Digital_Tube.sym 

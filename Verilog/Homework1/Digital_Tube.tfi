@@ -1,0 +1,16 @@
+
+
+
+// Instantiate the module
+Digital_Tube instance_name (
+    .x(x), 
+    .a(a), 
+    .b(b), 
+    .c(c), 
+    .d(d), 
+    .e(e), 
+    .f(f), 
+    .g(g)
+    );
+
+

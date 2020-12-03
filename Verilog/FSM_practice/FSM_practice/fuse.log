@@ -1,0 +1,18 @@
+Running: D:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o F:/Course/CO/Verilog/FSM_practice/FSM_practice/L1_tb_isim_beh.exe -prj F:/Course/CO/Verilog/FSM_practice/FSM_practice/L1_tb_beh.prj work.L1_tb work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 12
+Turning on mult-threading, number of parallel sub-compilation jobs: 24 
+Determining compilation order of HDL files
+Analyzing Verilog file "F:/Course/CO/Verilog/FSM_practice/FSM_practice/Lemmings1.v" into library work
+Analyzing Verilog file "F:/Course/CO/Verilog/FSM_practice/FSM_practice/L1_tb.v" into library work
+Analyzing Verilog file "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module Lemmings1
+Compiling module L1_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Compiled 3 Verilog Units
+Built simulation executable F:/Course/CO/Verilog/FSM_practice/FSM_practice/L1_tb_isim_beh.exe
+Fuse Memory Usage: 31644 KB
+Fuse CPU Usage: 500 ms

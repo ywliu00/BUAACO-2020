@@ -1,0 +1,5 @@
+set -tmpdir "F:/Course/CO/Verilog/Homework1/xst/projnav.tmp"
+set -xsthdpdir "F:/Course/CO/Verilog/Homework1/xst"
+elaborate
+-ifn Digital_Tube.prj
+-ifmt mixed

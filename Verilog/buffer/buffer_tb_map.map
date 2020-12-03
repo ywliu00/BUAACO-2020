@@ -1,0 +1,20 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Map Application Log File for Design 'buffer_tb'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xa3s50-vqg100-4 -cm area -ir off -pr off
+-c 100 -o buffer_tb_map.ncd buffer_tb.ngd buffer_tb.pcf 
+Target Device  : xa3s50
+Target Package : vqg100
+Target Speed   : -4
+Mapper Version : aspartan3 -- $Revision: 1.55 $
+Mapped Date    : Sat Sep 12 19:18:01 2020
+
+ERROR:Map:116 - The design is empty.  No processing will be done.
+ERROR:Map:52 - Problem encountered processing RPMs. 
+
+Design Summary
+--------------
+Number of errors   :   2
+Number of warnings :   0

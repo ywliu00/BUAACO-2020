@@ -1,0 +1,14 @@
+[Inputs]
+=x[3:0]=
+[Outputs]
+a
+b
+c
+d
+e
+f
+g
+[BiDir]
+[ATTRIBUTES]
+VeriModel Digital_Tube
+

@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/buffer/buffer.xst" -ofn "F:/Course/CO/Verilog/buffer/buffer.syr" 
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/buffer/buffer.xst" -ofn "F:/Course/CO/Verilog/buffer/buffer.syr" 

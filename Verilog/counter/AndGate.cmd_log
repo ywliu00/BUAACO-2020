@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/counter/AndGate.xst" -ofn "F:/Course/CO/Verilog/counter/AndGate.syr" 
+xst -intstyle ise -ifn "F:/Course/CO/Verilog/counter/AndGate.xst" -ofn "F:/Course/CO/Verilog/counter/AndGate.syr" 

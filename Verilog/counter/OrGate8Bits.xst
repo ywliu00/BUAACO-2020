@@ -1,0 +1,5 @@
+set -tmpdir "F:/Course/CO/Verilog/counter/xst/projnav.tmp"
+set -xsthdpdir "F:/Course/CO/Verilog/counter/xst"
+elaborate
+-ifn OrGate8Bits.prj
+-ifmt mixed

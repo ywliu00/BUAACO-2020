@@ -1,6 +1,0 @@
-verilog isim_temp "InstrDecoder.v"
-verilog isim_temp "GRF.v"
-verilog isim_temp "Extender.v"
-verilog isim_temp "AT_Cal.v"
-verilog isim_temp "ID.v"
-verilog isim_temp "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
