@@ -68,6 +68,7 @@ module mips(
 	.DMWriteDataBypassCtrl_Mem(DMWriteDataBypassCtrl_Mem) //Mem级一个
     );
 	///////////////////// Stall Unit /////////////////////////
+	wire MultBusy, MultTypeInstr;
 	StallUnit StallUnit(
 	.RegRead0(RAddr0_ID),
     .T_useRead0(Tuse_RAddr0_ID),
@@ -77,6 +78,8 @@ module mips(
     .T_new_EX(Tnew_WAddr_EX),
     .RegWrite_Mem(RegWriteAddr_Mem),
     .T_new_Mem(Tnew_WAddr_Mem),
+	.MultTypeInstr(MultTypeInstr),
+	.MultBusy(MultBusy),
     .Stall(Stall));
 	
 	////////////////////// IF //////////////////////
@@ -98,7 +101,7 @@ module mips(
     );
 	
 	////////////////////// ID ////////////////////////////
-	//wire RegWriteEn;
+	wire Start_ID_to_EX;//RegWriteEn;
 	wire [2:0] Tuse_RAddr0_ID_to_EX, Tuse_RAddr1_ID_to_EX, Tnew_WAddr_ID_to_EX;
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
 	           Shamt_ID_to_EX;
@@ -130,6 +133,7 @@ module mips(
 	.Tuse_RAddr0_ID_to_EX(Tuse_RAddr0_ID_to_EX),
 	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
 	.Tnew_WAddr_ID_to_EX(Tnew_WAddr_ID_to_EX),
+	.Start_ID_to_EX(Start_ID_to_EX),
 	
 	.branch(branch),
     .jump(jump),
@@ -141,6 +145,7 @@ module mips(
 	.RegRead1_ID(RAddr1_ID),
 	.Tuse_RAddr0_ID(Tuse_RAddr0_ID),
 	.Tuse_RAddr1_ID(Tuse_RAddr1_ID),
+	.MultTypeInstr(MultTypeInstr),
 	
 	//转发需求部分
 	.bypass_ID(ResFromID_ID_to_EX), // 从ID/EX寄存器转发来的数据
@@ -168,6 +173,7 @@ module mips(
 	.Tuse_RAddr0_ID_to_EX(Tuse_RAddr0_ID_to_EX),
 	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
 	.Tnew_WAddr_ID_to_EX(Tnew_WAddr_ID_to_EX),
+	.Start_ID_to_EX(Start_ID_to_EX),
 	.clk(clk),
     .reset(reset),
 	
@@ -189,6 +195,7 @@ module mips(
 	.Tuse_RAddr0_EX(Tuse_RAddr0_EX),
 	.Tuse_RAddr1_EX(Tuse_RAddr1_EX),
 	.Tnew_WAddr_EX(Tnew_WAddr_EX),
+	.MultBusy(MultBusy),
 	
 	//转发需求部分
 	.bypass_EX(ALUOut_EX_to_Mem),  //从EX/Mem转发来的

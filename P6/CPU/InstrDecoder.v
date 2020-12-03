@@ -42,7 +42,15 @@ module InstrDecoder(
                        (typeR && Func == 6'b000000) ? `inst_sll : 
 					   (OpCode == 6'b001001) ? `inst_addiu :
 					   (typeR && Func == 6'b001001) ? `inst_jalr :
-					   (OpCode == 6'b001000) ? `inst_addiu :   //////////////为了测试临时写的，后面记得改！
-					                                              `inst_err;
+					   (OpCode == 6'b001000) ? `inst_addiu :   //////////////为了P5测试临时写的，后面记得改！
+					   (typeR && Func == 6'b011000) ? `inst_mult :
+					   (typeR && Func == 6'b011001) ? `inst_multu :
+					   (typeR && Func == 6'b011010) ? `inst_div :
+					   (typeR && Func == 6'b011011) ? `inst_divu :
+					   (typeR && Func == 6'b010000) ? `inst_mfhi :
+					   (typeR && Func == 6'b010010) ? `inst_mflo :
+					   (typeR && Func == 6'b010001) ? `inst_mthi :
+					   (typeR && Func == 6'b010011) ? `inst_mtlo :
+					                                               `inst_err;
 
 endmodule

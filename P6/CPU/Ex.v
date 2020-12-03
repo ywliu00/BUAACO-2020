@@ -38,6 +38,7 @@ module EX(
 	input wire [1:0] ALUIn0BypassCtrl,
 	input wire [1:0] ALUIn1BypassCtrl,
 	input wire DMWriteDataBypassCtrl, //三个转发控制信号
+	input wire Start_ID_to_EX, /////////////////乘除模块开始运算信号
 	input wire clk,
     input wire reset,
 	
@@ -58,7 +59,8 @@ module EX(
 	output wire [4:0] RegWriteAddr_EX,
 	output wire [2:0] Tuse_RAddr0_EX,
 	output wire [2:0] Tuse_RAddr1_EX,
-	output wire [2:0] Tnew_WAddr_EX
+	output wire [2:0] Tnew_WAddr_EX,
+	output wire MultBusy   //////乘除模块运行中信号
     );
 	wire [59:0] InstrType;
 	wire [31:0] ALUIn0, ALUIn1, ALURes_wire, ALUOut_wire,
@@ -103,14 +105,31 @@ module EX(
 	//////////////////// ALU入口2的寄存器值与立即数的选择 //////////////////
 	wire [31:0] ALUIn1_Data;
 	assign ALUIn1_Data = (ALUIn1_Src) ? imm32_ID_to_EX : ALUIn1_bypass;
-	///////////////////////////////////////////////////////
+	
+	////////////////////////// ALU /////////////////////////////
 	ALU ALU(
 	.In0(ALUIn0_bypass),
     .In1(ALUIn1_Data),
 	.ALUOp(ALUOp),
     .Res(ALURes_wire));
 	
-	assign ALUOut_wire = (Tnew_WAddr_wire == 0 && RegWriteAddr_ID_to_EX != 5'd0) ? ResFromID_ID_to_EX : ALURes_wire;
+	//////////////////////// 乘除模块 ////////////////////////////
+	wire Busy;
+	wire [31:0] HI_wire, LO_wire;
+	MultDivModule MultDiv(
+	.InstrType(InstrType),
+    .D1(ALUIn0_bypass),
+    .D2(ALUIn1_Data),
+    .Start(Start_ID_to_EX),
+    .clk(clk),
+	.reset(reset),
+    .Busy(Busy),
+    .HI(HI_wire),
+    .LO(LO_wire));
+	
+	assign ALUOut_wire = (Tnew_WAddr_wire == 0 && RegWriteAddr_ID_to_EX != 5'd0) ? ResFromID_ID_to_EX : 
+						 (`mfhi) ? HI_wire : 
+						 (`mflo) ? LO_wire : ALURes_wire;
 	//若在ID级产生了结果，则Tnew为0，在这里并入数据通路
 	
 	/////////////////// 给冲突处理单元的数据 /////////////////////////
@@ -120,6 +139,7 @@ module EX(
 	assign Tuse_RAddr0_EX = Tuse_RAddr0_wire;
 	assign Tuse_RAddr1_EX = Tuse_RAddr1_wire;
 	assign Tnew_WAddr_EX = Tnew_WAddr_wire;
+	assign MultBusy = Start_ID_to_EX || Busy;
 	
 	///////////////////// 流水线寄存器 ///////////////////////////////
 	always@(posedge clk)

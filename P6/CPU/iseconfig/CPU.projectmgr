@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>mips (F:/Course/CO/P5/CPU/mips.v)</SelectedItem>
+         <SelectedItem>mips (D:/BUAACO/P6/CPU/mips.v)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a1000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a10000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>mips (F:/Course/CO/P5/CPU/mips.v)</CurrentItem>
+      <CurrentItem>mips (D:/BUAACO/P6/CPU/mips.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -38,7 +38,7 @@
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000003a3000000040101000100000000000000000000000064ffffffff0000008100000000000000040000003d0000000100000000000000240000000100000000000000780000000100000000000002ca0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000027e000000040101000100000000000000000000000064ffffffff0000008100000000000000040000003d0000000100000000000000240000000100000000000000780000000100000000000001a50000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>ALU.v</CurrentItem>
    </ItemView>
@@ -69,7 +69,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000d1000000010000000100000000000000000000000064ffffffff000000810000000000000001000000d10000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -80,13 +80,13 @@
          <ClosedNode>/mips F:|Course|CO|P5|CPU|mips.v/IF - IF</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>GRF - GRF (F:/Course/CO/P5/CPU/GRF.v)</SelectedItem>
+         <SelectedItem>StallUnit - StallUnit (D:/BUAACO/P6/CPU/StallUnit.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >6</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >5</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001b5000000020000000000000000000000000200000064ffffffff000000810000000300000002000001b50000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>GRF - GRF (F:/Course/CO/P5/CPU/GRF.v)</CurrentItem>
+      <CurrentItem>StallUnit - StallUnit (D:/BUAACO/P6/CPU/StallUnit.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -94,13 +94,13 @@
          <ClosedNode>Design Utilities/Compile HDL Simulation Libraries</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Design Utilities</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000d1000000010000000100000000000000000000000064ffffffff000000810000000000000001000000d10000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Design Utilities</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="ManualCompile" >
       <ClosedNodes>
@@ -122,7 +122,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000d1000000010000000100000000000000000000000064ffffffff000000810000000000000001000000d10000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>

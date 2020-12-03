@@ -31,7 +31,7 @@ module AT_Cal(
 	output reg [2:0] Tuse_RAddr1,// 产生时间
 	output reg [2:0] Tnew_WAddr
     );
-	wire typeR, typeI, load, store, branch;
+	wire typeR, typeI, load, store, branch, MoveInMult1, MoveInMult2, MoveOutMult;
 	assign typeR = `addu || `subu || `sll;
 	//R型计算指令
 	assign typeI = `ori || `addiu;
@@ -40,6 +40,9 @@ module AT_Cal(
 	assign store = `sw;
 	assign branch = `beq;
 	//注意：bgez需要单独处理，其Rt字段非0，详见指令集
+	assign MoveInMult1 = `mtlo || `mthi;
+	assign MoveInMult2 = `mult || `multu || `div || `divu;
+	assign MoveOutMult = `mflo || `mfhi;
 	
 	always@(*)
 	begin
@@ -138,6 +141,33 @@ module AT_Cal(
 			Tuse_RAddr0 <= 3'd0;//读Rs，立即需要
 			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
 			Tnew_WAddr <= 3'd1; //值在ID产生
+		end
+		else if(MoveInMult1)
+		begin
+			RAddr0 <= Rs;
+			RAddr1 <= 5'd0;
+			WAddr <= 5'd0;
+			Tuse_RAddr0 <= 3'd1;//读Rs，EX级需要
+			Tuse_RAddr1 <= 3'd7;//Rt不做读操作
+			Tnew_WAddr <= 3'd0; //不写
+		end
+		else if(MoveInMult2)
+		begin
+			RAddr0 <= Rs;
+			RAddr1 <= Rt;
+			WAddr <= 5'd0;
+			Tuse_RAddr0 <= 3'd1;//读Rs，EX级需要
+			Tuse_RAddr1 <= 3'd1;//读Rt，EX级需要
+			Tnew_WAddr <= 3'd0; //不写
+		end
+		else if(MoveOutMult)
+		begin
+			RAddr0 <= 5'd0;
+			RAddr1 <= 5'd0;
+			WAddr <= Rd;
+			Tuse_RAddr0 <= 3'd7;//不读
+			Tuse_RAddr1 <= 3'd7;//不读
+			Tnew_WAddr <= 3'd2; //写Rd，EX级出结果
 		end
 	end
 	

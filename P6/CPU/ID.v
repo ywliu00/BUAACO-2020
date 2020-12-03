@@ -47,6 +47,7 @@ module ID(
 	output reg [2:0] Tuse_RAddr0_ID_to_EX,// 要用到的时间
 	output reg [2:0] Tuse_RAddr1_ID_to_EX,
 	output reg [2:0] Tnew_WAddr_ID_to_EX, // 产生时间
+	output wire Start_ID_to_EX,
 	
 	output wire branch,
     output wire jump,
@@ -57,7 +58,8 @@ module ID(
 	output wire [4:0] RegRead0_ID,
 	output wire [4:0] RegRead1_ID,
 	output wire [2:0] Tuse_RAddr0_ID,
-	output wire [2:0] Tuse_RAddr1_ID
+	output wire [2:0] Tuse_RAddr1_ID,
+	output wire MultTypeInstr
     );
 	wire [31:0] RsData_wire, RtData_wire, imm32_wire;
 	wire [25:0] imm26_wire;
@@ -148,11 +150,17 @@ module ID(
 						 (RData1BypassCtrl == `RData1_from_EX) ? bypass_EX :
 						                                                             32'h1234_ABCD; // Err Signal
 	
+	/////////////////// 乘除单元控制信号生成 /////////////////////
+	wire Start_wire;
+	assign Start_wire = `mult || `multu || `div || `divu;
+	
 	/////////////////// 给阻塞和转发单元的信息 ///////////////
 	assign RegRead0_ID = Rs_wire;
 	assign RegRead1_ID = Rt_wire;
 	assign Tuse_RAddr0_ID = Tuse_RAddr0_wire;
 	assign Tuse_RAddr1_ID = Tuse_RAddr1_wire;
+	assign MultTypeInstr = (`mult) || (`multu) || (`div) || (`divu) ||
+	                       (`mflo) || (`mfhi) || (`mtlo) || (`mthi);
 	
 	////////////////// ID/EX流水线寄存器 ////////////////////
 	
@@ -173,6 +181,7 @@ module ID(
 			Tuse_RAddr0_ID_to_EX <= 3'b111; // 要用到的时间
 			Tuse_RAddr1_ID_to_EX <= 3'b111;
 			Tnew_WAddr_ID_to_EX <= 3'b000; // 产生时间
+			Start_ID_to_EX <= 1'b0;
 		end
 		else
 		begin
@@ -189,6 +198,7 @@ module ID(
 			Tuse_RAddr0_ID_to_EX <= Tuse_RAddr0_wire; // 要用到的时间
 			Tuse_RAddr1_ID_to_EX <= Tuse_RAddr1_wire;
 			Tnew_WAddr_ID_to_EX <= Tnew_WAddr_wire; // 产生时间
+			Start_ID_to_EX <= Start_wire;
 		end
 	end
 	

@@ -27,10 +27,12 @@ module StallUnit(
     input wire [2:0] T_new_EX,
     input wire [4:0] RegWrite_Mem,
     input wire [2:0] T_new_Mem,
+	input wire MultTypeInstr,
+	input wire MultBusy,
     output wire Stall
     );
 	
-	wire Stall0, Stall1,
+	wire Stall0, Stall1, Stall2,
 	     Read0NotEqZero, Read1NotEqZero,
 		 Stall0_EX, Stall1_EX,
 		 Stall0_Mem, Stall1_Mem;
@@ -44,7 +46,8 @@ module StallUnit(
 	
 	assign Stall0 = Read0NotEqZero && (Stall0_EX || Stall0_Mem);
 	assign Stall1 = Read1NotEqZero && (Stall1_EX || Stall1_Mem);
+	assign Stall2 = MultTypeInstr && MultBusy;
 	
-	assign Stall = Stall0 || Stall1;
+	assign Stall = Stall0 || Stall1 || Stall2;
 	
 endmodule

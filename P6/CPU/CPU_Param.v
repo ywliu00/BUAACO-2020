@@ -48,6 +48,14 @@
 `define inst_sll (60'd1 << 10) // nop也在这里面
 `define inst_addiu (60'd1 << 11)
 `define inst_jalr (60'd1 << 12)
+`define inst_mult (60'd1 << 13)
+`define inst_multu (60'd1 << 14)
+`define inst_div (60'd1 << 15)
+`define inst_divu (60'd1 << 16)
+`define inst_mfhi (60'd1 << 17)
+`define inst_mflo (60'd1 << 18)
+`define inst_mthi (60'd1 << 19)
+`define inst_mtlo (60'd1 << 20)
 
 
 //指令判断
@@ -64,3 +72,11 @@
 `define sll (InstrType[10])
 `define addiu (InstrType[11])
 `define jalr (InstrType[12])
+`define mult (InstrType[13])
+`define multu (InstrType[14])
+`define div (InstrType[15])
+`define divu (InstrType[16])
+`define mfhi (InstrType[17])
+`define mflo (InstrType[18])
+`define mthi (InstrType[19])
+`define mtlo (InstrType[20])

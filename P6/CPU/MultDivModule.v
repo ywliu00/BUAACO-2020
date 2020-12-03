@@ -42,7 +42,7 @@ module MultDivModule(
 			HI <= 32'h0000_0000;
 			LO <= 32'h0000_0000;
 			i <= 32'h0000_0000;
-			DelayTime <= 32'0FFF_FFFF;
+			DelayTime <= 32'h0FFF_FFFF;
 		end
 		else if(Start)
 		begin
@@ -72,6 +72,13 @@ module MultDivModule(
 		end
 		else if(`mthi) HI <= D1;
 		else if(`mtlo) LO <= D1;
+		else
+		begin
+			HI <= HI;
+			LO <= LO;
+			i <= 32'h0000_0000;
+			DelayTime <= 32'h0FFF_FFFF;
+		end
 	end
 	
 endmodule
