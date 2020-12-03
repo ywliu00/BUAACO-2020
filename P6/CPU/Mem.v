@@ -68,7 +68,15 @@ module Mem(
 	                            (DMWriteDataBypassCtrl == `DMWriteData_from_WB) ? bypass_Mem :
 								                                                               32'h1234_ABCD;
 	
-	////////////////////////////////////////////////////////////////////
+	///////////////////////// ByteEn–≈∫≈ /////////////////////////////
+	wire [1:0] Addr2;
+	wire [3:0] ByteEn;
+	assign Addr2 = ALUOut_EX_to_Mem[1:0];
+	ByteEnExtend(
+    .InstrType(InstrType),
+    .Addr2(Addr2),
+    .BE(ByteEn));
+	/////////////////////////////// DM /////////////////////////////////
 	DM DM(
 	.Addr(ALUOut_EX_to_Mem),
     .WData(DMWriteData_bypass),
@@ -76,6 +84,7 @@ module Mem(
     .clk(clk),
     .reset(reset),
 	.WritePC(PC_EX_to_Mem),
+	.ByteEn(ByteEn),
     .RData(DMRead_wire));
 	
 	assign RegWriteData_wire = (`lw) ? DMRead_wire : ALUOut_EX_to_Mem;

@@ -26,12 +26,29 @@ module DM(
     input wire clk,
     input wire reset,
 	input wire [31:0] WritePC,
+	input wire [3:0] ByteEn,
     output wire [31:0] RData
     );
 	 reg [31:0] DM_Unit[0:4095];
 	 integer i;
-	 wire [31:0] RealAddr;
+	 wire [31:0] RealAddr, WriteData;
+	 wire [7:0] byte3, byte2, byte1, byte0;
 	 assign RealAddr = {2'b0, Addr[31:2]};
+	 assign RData = DM_Unit[RealAddr];
+	 
+	 assign byte3 = (& ByteEn) ? WData[31:24] :
+					(& ByteEn[3:2]) && !ByteEn[1] ? WData[15:8] : 
+					(ByteEn[3] && !ByteEn[2]) ? WData[7:0] : RData[31:24];
+	 
+	 assign byte2 = (& ByteEn) ? WData[23:16] :
+					(& ByteEn[3:2]) && (!ByteEn[1]) ? WData[7:0] : RData[23:16];
+	 
+	 assign byte1 = (& ByteEn[1:0]) ? WData[15:8] : 
+					(ByteEn[1] && !ByteEn[0]) ? WData[7:0] : RData[15:8];
+	 
+	 assign byte0 = (& ByteEn[0]) ? WData[7:0] : RData[7:0];
+	 
+	 assign WriteData = {byte3, byte2, byte1, byte0};
 	 
 	 always@(posedge clk)
 	 begin
@@ -46,10 +63,8 @@ module DM(
 		begin
 			//$display("@%h: *%h <= %h", WritePC, Addr, WData);
 			$display("%d@%h: *%h <= %h", $time, WritePC, Addr, WData);
-			DM_Unit[RealAddr] <= WData;
+			DM_Unit[RealAddr] <= WriteData;
 		end
 	 end
 	 
-	 assign RData = DM_Unit[RealAddr];
-
 endmodule
