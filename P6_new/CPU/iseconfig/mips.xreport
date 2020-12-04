@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2020-12-04T09:53:56</DateModified>
+  <DateModified>2020-12-04T14:01:57</DateModified>
   <ModuleName>mips</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>F:/Course/CO/P6_new/CPU/iseconfig/mips.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>F:/Course/CO/P6_new/CPU\</ImplementationReportsDirectory>
+  <SavedFilePath>D:/BUAACO/P6_new/CPU/iseconfig/mips.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>D:/BUAACO/P6_new/CPU\</ImplementationReportsDirectory>
   <DateInitialized>2020-12-03T23:53:27</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

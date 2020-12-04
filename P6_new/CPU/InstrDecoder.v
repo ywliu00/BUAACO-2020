@@ -65,6 +65,18 @@ module InstrDecoder(
 					   (typeR && Func == 6'b100110) ? `inst_XOR :
 					   (OpCode == 6'b001110) ? `inst_xori :
 					   (typeR && Func == 6'b100111) ? `inst_NOR :
+					   (typeR && Func == 6'b000100) ? `inst_sllv :
+					   (typeR && Func == 6'b000010) ? `inst_srl :
+					   (typeR && Func == 6'b000110) ? `inst_srlv :
+					   (typeR && Func == 6'b000011) ? `inst_sra :
+					   (typeR && Func == 6'b000111) ? `inst_srav :
+					   (typeR && Func == 6'b101010) ? `inst_slt :
+					   (typeR && Func == 6'b101011) ? `inst_sltu :
+					   (OpCode == 6'b001010) ? `inst_slti :
+					   (OpCode == 6'b001011) ? `inst_sltiu :
+					   (OpCode == 6'b000111) ? `inst_bgtz :
+					   //bgez, blez, bltz, bne»¹Ã»Ð´
+					   
 					                                               `inst_err;
 
 endmodule

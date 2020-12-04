@@ -23,10 +23,15 @@ module ALU(
     input wire [31:0] In0,
     input wire [31:0] In1,
 	input wire [3:0] ALUOp,
+	input wire SpecialSign,
     output wire [31:0] Res
     );
 	wire [4:0] ShiftBits;
+	wire [32:0] In0HighExt, In1HighExt;
 	assign ShiftBits = In0[4:0];
+	assign In0HighExt = {SpecialSign & In0[31], In0};
+	assign In1HighExt = {SpecialSign & In1[31], In1};
+	
     assign Res = (ALUOp == `ALU_add) ? In0 + In1 :
 	             (ALUOp == `ALU_sub) ? In0 - In1 :
 				 (ALUOp == `ALU_or) ? In0 | In1 :
@@ -34,6 +39,9 @@ module ALU(
 				 (ALUOp == `ALU_and) ? In0 & In1 : 
 				 (ALUOp == `ALU_xor) ? In0 ^ In1 : 
 				 (ALUOp == `ALU_nor) ? In0 ^~ In1 : 
+				 (ALUOp == `ALU_rshiftL) ? In1 >> ShiftBits :
+				 (ALUOp == `ALU_rshiftA) ? (In1 >>> ShiftBits) :
+				 (ALUOp == `ALU_slt) ? (In0HighExt < In1HighExt) :
 															32'd0;
 	 //always@(*)
 	 //begin

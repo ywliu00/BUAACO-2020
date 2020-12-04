@@ -72,7 +72,7 @@ module ID(
 	//转发还没写，等转发控制器写好后添加RsData_wire和RtData_wire的MUX
 	//以及T_use和T_new
 	
-	assign sign = (`ori || `sll) ? 0 : 1 ; //括号里放应该0扩展的指令！！！
+	assign sign = (`ori || `sll || `andi || `xori) ? 0 : 1 ; //括号里放应该0扩展的指令！！！
 	assign {Rs_inst, Rt_inst, Rd_inst, Shamt_wire} = Instr[25:6];
 	assign imm26_wire = Instr[25:0];
 	assign imm16_wire = `sll ? {11'd0, Shamt_wire} : Instr[15:0];
@@ -120,7 +120,7 @@ module ID(
 	.reset(reset),
 	.RData0(RData0_read), //原始读出数据
 	.RData1(RData1_wire));
-	assign RData0_wire = (`sll) ? {27'd0, Shamt_wire} : RData0_read;
+	assign RData0_wire = (`sll || `srl || `sra) ? {27'd0, Shamt_wire} : RData0_read;
 	//若是sll，则将Rs换成Shamt，为sllv等剩下的左右移指令留出接口
 	//注意这里是改的读出数据而非读的寄存器号，因此AT计算和这里不影响
 	//sll的Rs字段为0，所以转发机制不应该触发
@@ -132,7 +132,13 @@ module ID(
 	
 	///////////////////// Branch ////////////////////////////
 	
-	assign branch = (`beq && RsData_wire == RtData_wire) ? 1 : 0;
+	//assign branch = (`beq && RsData_wire == RtData_wire) ? 1 : 0;
+	BranchJudge BranchJudge(
+    .In0(RsData_wire),
+    .In1(RtData_wire),
+    .InstrType(InstrType),
+    .Branch(branch)
+    );
 	assign branch_addr32 = PC_4 + {imm32_wire[29:0], 2'b00};
 	
 	///////////////////// Jump /////////////////////////

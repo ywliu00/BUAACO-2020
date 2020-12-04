@@ -31,10 +31,14 @@ module AT_Cal(
 	output reg [2:0] Tuse_RAddr1,// 产生时间
 	output reg [2:0] Tnew_WAddr
     );
-	wire typeR, typeI, load, store, branch, MoveInMult1, MoveInMult2, MoveOutMult;
-	assign typeR = `addu || `subu || `sll || `add || `sub || `AND || `OR || `XOR || `NOR;
+	wire typeR, typeI, load, store, branch, MoveInMult1, 
+		 MoveInMult2, MoveOutMult, Typeslt;
+	assign typeR = `addu || `subu || `sll || `add || 
+					`sub || `AND || `OR || `XOR || `NOR ||
+					`sllv || `srl || `srlv || `sra || `srav ||
+					`slt || `sltu;
 	//R型计算指令
-	assign typeI = `ori || `addiu || `addi || `andi || `xori;
+	assign typeI = `ori || `addiu || `addi || `andi || `xori || `slti || `sltiu;
 	//立即数计算指令
 	assign load = `lw || `lb || `lbu || `lh || `lhu;
 	assign store = `sw || `sh || `sb;
