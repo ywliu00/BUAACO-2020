@@ -32,11 +32,11 @@ module AT_Cal(
 	output reg [2:0] Tnew_WAddr
     );
 	wire typeR, typeI, load, store, branch, MoveInMult1, MoveInMult2, MoveOutMult;
-	assign typeR = `addu || `subu || `sll;
+	assign typeR = `addu || `subu || `sll || `add || `sub || `AND || `OR || `XOR || `NOR;
 	//R型计算指令
-	assign typeI = `ori || `addiu;
+	assign typeI = `ori || `addiu || `addi || `andi || `xori;
 	//立即数计算指令
-	assign load = `lw;
+	assign load = `lw || `lb || `lbu || `lh || `lhu;
 	assign store = `sw || `sh || `sb;
 	assign branch = `beq;
 	//注意：bgez需要单独处理，其Rt字段非0，详见指令集

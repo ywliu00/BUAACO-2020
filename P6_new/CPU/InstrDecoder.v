@@ -42,7 +42,7 @@ module InstrDecoder(
                        (typeR && Func == 6'b000000) ? `inst_sll : 
 					   (OpCode == 6'b001001) ? `inst_addiu :
 					   (typeR && Func == 6'b001001) ? `inst_jalr :
-					   (OpCode == 6'b001000) ? `inst_addiu :   //////////////为了P5测试临时写的，后面记得改！
+					   (OpCode == 6'b001000) ? `inst_addi :
 					   (typeR && Func == 6'b011000) ? `inst_mult :
 					   (typeR && Func == 6'b011001) ? `inst_multu :
 					   (typeR && Func == 6'b011010) ? `inst_div :
@@ -53,6 +53,18 @@ module InstrDecoder(
 					   (typeR && Func == 6'b010011) ? `inst_mtlo :
 					   (OpCode == 6'b101001) ? `inst_sh :
 					   (OpCode == 6'b101000) ? `inst_sb :
+					   (OpCode == 6'b100000) ? `inst_lb :
+					   (OpCode == 6'b100100) ? `inst_lbu :
+					   (OpCode == 6'b100001) ? `inst_lh :
+					   (OpCode == 6'b100101) ? `inst_lhu :
+					   (typeR && Func == 6'b100000) ? `inst_add :
+					   (typeR && Func == 6'b100010) ? `inst_sub :
+					   (typeR && Func == 6'b100100) ? `inst_AND :
+					   (OpCode == 6'b001100) ? `inst_andi :
+					   (typeR && Func == 6'b100101) ? `inst_OR :
+					   (typeR && Func == 6'b100110) ? `inst_XOR :
+					   (OpCode == 6'b001110) ? `inst_xori :
+					   (typeR && Func == 6'b100111) ? `inst_NOR :
 					                                               `inst_err;
 
 endmodule

@@ -22,16 +22,19 @@
 module ALUOpDecoder(
     input wire [59:0] InstrType,
     output wire ALUIn1Src,
-    output wire [2:0] ALUOp
+    output wire [3:0] ALUOp
     );
 	wire load, store;
-	assign load = `lw;
+	assign load = `lw || `lb || `lbu || `lh || `lhu;
 	assign store = `sw || `sh || `sb;
-	assign ALUIn1Src = (`ori||load||store||`addiu) ? 1 : 0;
+	assign ALUIn1Src = (`ori || load || store ||`addiu || `addi || `andi || `xori) ? 1 : 0;
 	//为0则取RtData，为1则取32位立即数
 	assign ALUOp = (`sll) ? `ALU_lshift :
-	               (`ori) ? `ALU_or : 
-				   (`subu) ? `ALU_sub : 
+	               (`ori || `OR) ? `ALU_or : 
+				   (`subu || `sub) ? `ALU_sub : 
+				   (`AND || `andi) ? `ALU_and :
+				   (`XOR || `xori) ? `ALU_xor :
+				   (`NOR) ? `ALU_nor :
 				                          `ALU_add;
 
 endmodule

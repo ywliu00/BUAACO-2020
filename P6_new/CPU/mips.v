@@ -106,7 +106,8 @@ module mips(
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
 	           Shamt_ID_to_EX;
 	wire [31:0] RegWriteData, RegWritePC, imm32_ID_to_EX, Data0_ID_to_EX,
-	            Data1_ID_to_EX, ResFromID_ID_to_EX, PC_ID_to_EX;
+	            Data1_ID_to_EX, ResFromID_ID_to_EX, PC_ID_to_EX,
+				RegWriteData_Mem_to_WB;
 	wire [59:0] InstrType_ID_to_EX;
 	ID ID(
     .Instr(Instr_IF_to_ID),
@@ -206,8 +207,12 @@ module mips(
     );
 	
 	////////////////////// Mem ////////////////////////////
-	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, Tnew_WAddr_Mem_to_WB;
-	wire [31:0] PC_Mem_to_WB, RegWriteData_Mem_to_WB;
+	wire LoadInst_Mem_to_WB;
+	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, 
+				Tnew_WAddr_Mem_to_WB, DMExtOp_Mem_to_WB;
+	wire [31:0] PC_Mem_to_WB, ALUOut_Mem_to_WB, DMRead_Mem_to_WB, 
+				DMDataExtended;
+	wire [59:0] InstrType_Mem_to_WB;
 	//wire [4:0] RegWriteAddr_Mem_to_WB;
 	Mem Mem(
 	.RAddr0_EX_to_Mem(ReadAddr0_EX_to_Mem),
@@ -223,7 +228,12 @@ module mips(
 	.clk(clk),
     .reset(reset),
 	
-	.RegWriteData_Mem_to_WB(RegWriteData_Mem_to_WB),
+	.InstrType_Mem_to_WB(InstrType_Mem_to_WB),
+	.DMReadData_Mem_to_WB(DMReadData_Mem_to_WB),
+	.DMExtOp_Mem_to_WB(DMExtOp_Mem_to_WB),
+	.LoadInst_Mem_to_WB(LoadInst_Mem_to_WB),
+	
+	.ALUOut_Mem_to_WB(ALUOut_Mem_to_WB),
 	.RegWriteAddr_Mem_to_WB(RegWriteAddr_Mem_to_WB),
 	.PC_Mem_to_WB(PC_Mem_to_WB),
 	//.RegWriteEn(RegWriteEn),
@@ -243,4 +253,14 @@ module mips(
 	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
 	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_Mem)
     );
+	
+	DMOutExtend(
+    .Addr2(ALUOut_Mem_to_WB[1:0]),
+    .DataIn(DMReadData_Mem_to_WB),
+    .Op(DMExtOp_Mem_to_WB),
+    .DataOut(DMDataExtended)
+    );
+	
+	assign RegWriteData_Mem_to_WB = LoadInst_Mem_to_WB ? DMDataExtended : ALUOut_Mem_to_WB;
+	
 endmodule

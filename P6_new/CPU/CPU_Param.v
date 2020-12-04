@@ -28,10 +28,13 @@
 `define DMWriteData_from_WB 1'b1
 
 //ALU操作
-`define ALU_add (3'b000)
-`define ALU_sub (3'b001)
-`define ALU_or (3'b010)
-`define ALU_lshift (3'b011)
+`define ALU_add (4'b0000)
+`define ALU_sub (4'b0001)
+`define ALU_or (4'b0010)
+`define ALU_lshift (3'b0011)
+`define ALU_and (4'b0100)
+`define ALU_xor (4'b0101)
+`define ALU_nor (4'b0110)
 
 //指令独热码
 `define inst_err (60'd0)
@@ -58,6 +61,19 @@
 `define inst_mtlo (60'd1 << 20)
 `define inst_sh (60'd1 << 21)
 `define inst_sb (60'd1 << 22)
+`define inst_lb (60'd1 << 23)
+`define inst_lbu (60'd1 << 24)
+`define inst_lh (60'd1 << 25)
+`define inst_lhu (60'd1 << 26)
+`define inst_addi (60'd1 << 27)
+`define inst_add (60'd1 << 28)
+`define inst_sub (60'd1 << 29)
+`define inst_AND (60'd1 << 30)  //与内置关键字撞车，改大写
+`define inst_andi (60'd1 << 31)
+`define inst_OR (60'd1 << 32) //与内置关键字撞车，改大写
+`define inst_XOR (60'd1 << 33)
+`define inst_xori (60'd1 << 34)
+`define inst_NOR (60'd1 << 35)
 
 
 //指令判断
@@ -84,3 +100,16 @@
 `define mtlo (InstrType[20])
 `define sh (InstrType[21])
 `define sb (InstrType[22])
+`define lb (InstrType[23])
+`define lbu (InstrType[24])
+`define lh (InstrType[25])
+`define lhu (InstrType[26])
+`define addi (InstrType[27])
+`define add (InstrType[28])
+`define sub (InstrType[29])
+`define AND (InstrType[30])
+`define andi (InstrType[31])
+`define OR (InstrType[32])
+`define XOR (InstrType[33])
+`define xori (InstrType[34])
+`define NOR (InstrType[35])
