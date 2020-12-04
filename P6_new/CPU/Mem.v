@@ -124,7 +124,7 @@ module Mem(
 			Tnew_WAddr_Mem_to_WB <= 3'b000;
 			InstrType_Mem_to_WB <= `inst_sll;
 			DMReadData_Mem_to_WB <= 32'h1234_ABCD;
-			DMExtOp <= 3'b000;
+			DMExtOp_Mem_to_WB <= 3'b000;
 			LoadInst_Mem_to_WB <= 1'b0;
 		end
 		else
@@ -138,7 +138,7 @@ module Mem(
 			Tnew_WAddr_Mem_to_WB <= Tnew_WAddr_wire;
 			InstrType_Mem_to_WB <= InstrType_EX_to_Mem;
 			DMReadData_Mem_to_WB <= DMRead_wire;
-			DMExtOp <= DMExtOp_wire;
+			DMExtOp_Mem_to_WB <= DMExtOp_wire;
 			LoadInst_Mem_to_WB <= `lw || `lh || `lb || `lbu || `lhu;
 		end
 	end

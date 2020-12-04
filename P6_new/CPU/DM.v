@@ -41,7 +41,7 @@ module DM(
 					(ByteEn[3] && !ByteEn[2]) ? WData[7:0] : RData[31:24];
 	 
 	 assign byte2 = (& ByteEn) ? WData[23:16] :
-					(& ByteEn[3:2]) && (!ByteEn[1]) ? WData[7:0] : RData[23:16];
+					(& ByteEn[2]) && (!ByteEn[1]) ? WData[7:0] : RData[23:16];
 	 
 	 assign byte1 = (& ByteEn[1:0]) ? WData[15:8] : 
 					(ByteEn[1] && !ByteEn[0]) ? WData[7:0] : RData[15:8];
@@ -62,7 +62,7 @@ module DM(
 		else if(MemWrite)
 		begin
 			//$display("@%h: *%h <= %h", WritePC, Addr, WriteData);
-			$display("%d@%h: *%h <= %h", $time, WritePC, Addr, WriteData);
+			$display("%d@%h: *%h <= %h", $time, WritePC, {RealAddr << 2}, WriteData);
 			DM_Unit[RealAddr] <= WriteData;
 		end
 	 end

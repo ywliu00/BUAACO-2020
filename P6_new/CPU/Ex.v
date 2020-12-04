@@ -66,7 +66,8 @@ module EX(
 	wire [31:0] ALUIn0, ALUIn1, ALURes_wire, ALUOut_wire,
 	            ALUIn0_bypass, ALUIn1_bypass;
 	wire ALUIn1_Src, SpecialSign; //为0则取RtData，为1则取32位立即数
-    wire [2:0] ALUOp, Tuse_RAddr0_wire, Tuse_RAddr1_wire, Tnew_WAddr_wire;
+	wire [3:0] ALUOp;
+    wire [2:0] Tuse_RAddr0_wire, Tuse_RAddr1_wire, Tnew_WAddr_wire;
 	
 	assign InstrType = InstrType_ID_to_EX;
 	assign Tuse_RAddr0_wire = (Tuse_RAddr0_ID_to_EX > 0) ? Tuse_RAddr0_ID_to_EX - 3'b001 : Tuse_RAddr0_ID_to_EX;
@@ -76,7 +77,7 @@ module EX(
 	ALUOpDecoder ALUOpDecoder(
 	.InstrType(InstrType),
     .ALUIn1Src(ALUIn1_Src),
-    .ALUOp(ALUOp)，
+    .ALUOp(ALUOp),
 	.SpecialSign(SpecialSign));
 	
 	//ALUIn0 若用于左移，则只有最后5位有效，这个功能在ID写过了

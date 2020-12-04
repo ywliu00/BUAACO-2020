@@ -210,7 +210,7 @@ module mips(
 	wire LoadInst_Mem_to_WB;
 	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, 
 				Tnew_WAddr_Mem_to_WB, DMExtOp_Mem_to_WB;
-	wire [31:0] PC_Mem_to_WB, ALUOut_Mem_to_WB, DMRead_Mem_to_WB, 
+	wire [31:0] PC_Mem_to_WB, ALUOut_Mem_to_WB, DMReadData_Mem_to_WB, 
 				DMDataExtended;
 	wire [59:0] InstrType_Mem_to_WB;
 	//wire [4:0] RegWriteAddr_Mem_to_WB;
@@ -254,7 +254,7 @@ module mips(
 	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_Mem)
     );
 	
-	DMOutExtend(
+	DMOutExtend DMOutExt(
     .Addr2(ALUOut_Mem_to_WB[1:0]),
     .DataIn(DMReadData_Mem_to_WB),
     .Op(DMExtOp_Mem_to_WB),

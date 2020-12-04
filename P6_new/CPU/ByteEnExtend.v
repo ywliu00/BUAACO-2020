@@ -27,7 +27,7 @@ module ByteEnExtend(
 	
 	assign BE[3] = `sw || (`sh && Addr2[1]) || (`sb && Addr2[1] && Addr2[0]);
 	assign BE[2] = `sw || (`sh && Addr2[1]) || (`sb && Addr2[1] && !Addr2[0]);
-	assign BE[1] = `sw || (`sh && Addr2[0]) || (`sb && !Addr2[1] && Addr2[0]);
-	assign BE[0] = `sw || (`sh && Addr2[0]) || (`sb && !Addr2[1] && !Addr2[0]);
+	assign BE[1] = `sw || (`sh && !Addr2[1]) || (`sb && !Addr2[1] && Addr2[0]);
+	assign BE[0] = `sw || (`sh && !Addr2[1]) || (`sb && !Addr2[1] && !Addr2[0]);
 	
 endmodule

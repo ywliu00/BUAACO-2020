@@ -42,7 +42,7 @@ module AT_Cal(
 	//立即数计算指令
 	assign load = `lw || `lb || `lbu || `lh || `lhu;
 	assign store = `sw || `sh || `sb;
-	assign branch = `beq;
+	assign branch = `beq || `bgez || `bgtz || `blez || `bltz || `bne;
 	//注意：bgez需要单独处理，其Rt字段非0，详见指令集
 	assign MoveInMult1 = `mtlo || `mthi;
 	assign MoveInMult2 = `mult || `multu || `div || `divu;

@@ -41,7 +41,7 @@ module ALU(
 				 (ALUOp == `ALU_nor) ? In0 ^~ In1 : 
 				 (ALUOp == `ALU_rshiftL) ? In1 >> ShiftBits :
 				 (ALUOp == `ALU_rshiftA) ? (In1 >>> ShiftBits) :
-				 (ALUOp == `ALU_slt) ? (In0HighExt < In1HighExt) :
+				 (ALUOp == `ALU_slt) ? ($signed(In0HighExt) < $signed(In1HighExt) ? 32'd1 : 32'd0) :
 															32'd0;
 	 //always@(*)
 	 //begin

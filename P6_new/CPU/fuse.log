@@ -10,8 +10,10 @@ Analyzing Verilog file "F:/Course/CO/P6_new/CPU/InstrDecoder.v" into library wor
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/IM.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/GRF.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/Extender.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/DMExtendOp.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/DM.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ByteEnExtend.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/BranchJudge.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/AT_Cal.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ALUOpDecoder.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ALU.v" into library work
@@ -20,6 +22,7 @@ Analyzing Verilog file "F:/Course/CO/P6_new/CPU/Mem.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/IF.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ID.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/Ex.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/DMOutExtend.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/BypassController.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/mips.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/mips_tb.v" into library work
@@ -36,6 +39,7 @@ Compiling module InstrDecoder
 Compiling module Extender
 Compiling module AT_Cal
 Compiling module GRF
+Compiling module BranchJudge
 Compiling module ID
 Compiling module ALUOpDecoder
 Compiling module ALU
@@ -43,12 +47,15 @@ Compiling module MultDivModule
 Compiling module EX
 Compiling module ByteEnExtend
 Compiling module DM
+Compiling module DMExtendOp
 Compiling module Mem
+Compiling module DMOutExtend
 Compiling module mips
 Compiling module CPU_TestBench
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Compiled 21 Verilog Units
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 24 Verilog Units
 Built simulation executable F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.exe
-Fuse Memory Usage: 33384 KB
-Fuse CPU Usage: 1687 ms
+Fuse Memory Usage: 35236 KB
+Fuse CPU Usage: 1296 ms

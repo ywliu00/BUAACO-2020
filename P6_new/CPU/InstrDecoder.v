@@ -24,10 +24,12 @@ module InstrDecoder(
     output wire [59:0] InstrType
     );
 	 wire [5:0] OpCode, Func;
+	 wire [4:0] Rt;
 	 wire typeR;
 	 
 	 assign {OpCode, Func} = {Instr[31:26], Instr[5:0]};
-	 assign typeR = & (!OpCode);
+	 assign Rt = Instr[20:16];
+	 assign typeR = & (~OpCode);
 	 
 	 assign InstrType = (typeR && Func == 6'b100001) ? `inst_addu :
 	                    (typeR && Func == 6'b100011) ? `inst_subu :
@@ -75,8 +77,10 @@ module InstrDecoder(
 					   (OpCode == 6'b001010) ? `inst_slti :
 					   (OpCode == 6'b001011) ? `inst_sltiu :
 					   (OpCode == 6'b000111) ? `inst_bgtz :
-					   //bgez, blez, bltz, bne»¹Ã»Ð´
-					   
+					   (OpCode == 6'b000001 && Rt == 5'b00001) ? `inst_bgez :
+					   (OpCode == 6'b000110) ? `inst_blez :
+					   (OpCode == 6'b000001 && Rt == 5'b00000) ? `inst_bltz :
+					   (OpCode == 6'b000101) ? `inst_bne :
 					                                               `inst_err;
 
 endmodule

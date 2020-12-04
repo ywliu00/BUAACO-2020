@@ -27,6 +27,7 @@ static int ng2[] = {0, 0};
 static int ng3[] = {1024, 0};
 static int ng4[] = {1, 0};
 static const char *ng5 = "%d@%h: *%h <= %h";
+static int ng6[] = {2, 0};
 
 
 
@@ -1013,7 +1014,7 @@ static void Cont_43_3(char *t0)
     char t36[8];
     char t37[8];
     char t38[8];
-    char t39[8];
+    char t41[8];
     char t54[8];
     char t66[8];
     char t69[8];
@@ -1052,8 +1053,8 @@ static void Cont_43_3(char *t0)
     unsigned int t33;
     unsigned int t34;
     unsigned int t35;
+    char *t39;
     char *t40;
-    char *t41;
     char *t42;
     unsigned int t43;
     unsigned int t44;
@@ -1290,27 +1291,25 @@ LAB12:    t23 = (t0 + 1208U);
     *((unsigned int *)t23) = (t31 & 255U);
     goto LAB13;
 
-LAB14:    t40 = (t0 + 2008U);
-    t41 = *((char **)t40);
-    memset(t39, 0, 8);
-    t40 = (t39 + 4);
-    t42 = (t41 + 4);
-    t43 = *((unsigned int *)t41);
+LAB14:    t39 = (t0 + 2008U);
+    t40 = *((char **)t39);
+    memset(t41, 0, 8);
+    t39 = (t41 + 4);
+    t42 = (t40 + 4);
+    t43 = *((unsigned int *)t40);
     t44 = (t43 >> 2);
-    *((unsigned int *)t39) = t44;
-    t45 = *((unsigned int *)t42);
-    t46 = (t45 >> 2);
-    *((unsigned int *)t40) = t46;
-    t47 = *((unsigned int *)t39);
-    *((unsigned int *)t39) = (t47 & 3U);
-    t48 = *((unsigned int *)t40);
-    *((unsigned int *)t40) = (t48 & 3U);
+    t45 = (t44 & 1);
+    *((unsigned int *)t41) = t45;
+    t46 = *((unsigned int *)t42);
+    t47 = (t46 >> 2);
+    t48 = (t47 & 1);
+    *((unsigned int *)t39) = t48;
     memset(t38, 0, 8);
-    t49 = (t39 + 4);
-    t50 = *((unsigned int *)t39);
+    t49 = (t41 + 4);
+    t50 = *((unsigned int *)t41);
     t51 = *((unsigned int *)t49);
     t52 = (t50 | t51);
-    if (t52 != 3U)
+    if (t52 != 1U)
         goto LAB22;
 
 LAB21:    if (*((unsigned int *)t49) == 0)
@@ -2506,11 +2505,15 @@ LAB19:    xsi_set_current_line(65, ng0);
     t4 = xsi_vlog_time(t37, 1000.0000000000000, 1000.0000000000000);
     t5 = (t0 + 1848U);
     t11 = *((char **)t5);
-    t5 = (t0 + 1048U);
+    t5 = (t0 + 2328U);
     t12 = *((char **)t5);
-    t5 = (t0 + 2488U);
-    t14 = *((char **)t5);
-    xsi_vlogfile_write(1, 0, 0, ng5, 5, t0, (char)118, t37, 64, (char)118, t11, 32, (char)118, t12, 32, (char)118, t14, 32);
+    t5 = ((char*)((ng6)));
+    memset(t15, 0, 8);
+    xsi_vlog_unsigned_lshift(t15, 32, t12, 32, t5, 32);
+    xsi_vlogtype_concat(t13, 32, 32, 1U, t15, 32);
+    t14 = (t0 + 2488U);
+    t17 = *((char **)t14);
+    xsi_vlogfile_write(1, 0, 0, ng5, 5, t0, (char)118, t37, 64, (char)118, t11, 32, (char)118, t13, 32, (char)118, t17, 32);
     xsi_set_current_line(66, ng0);
     t2 = (t0 + 2488U);
     t3 = *((char **)t2);
