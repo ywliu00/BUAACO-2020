@@ -166,7 +166,7 @@ lui和jal指令仅对立即数处理，因此在ID阶段就可以得到结果，
 
     * EX/Mem寄存器中的ALUOut_EX_to_Mem，对应于在EX及其之前阶段产生的结果；
 
-    * Mem/WB寄存器中的RegWriteData_Mem_to_WB，对应于在Mem及其之前阶段产生的结果。
+    * Mem/WB寄存器后，DM数据扩展单元后的RegWriteData_Mem_to_WB，对应于在Mem及其之前阶段产生的结果。
 
 * 转发需求：
 
