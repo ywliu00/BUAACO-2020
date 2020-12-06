@@ -29,10 +29,10 @@ module BranchJudge(
 		 Branch_blez, Branch_bltz, Branch_bne;
 	
 	assign Branch_beq = `beq && (In0 == In1);
-	assign Branch_bgez = `bgez && (In0 >= 32'd0);
-	assign Branch_bgtz = `bgtz && (In0 > 32'd0);
-	assign Branch_blez = `blez && (In0 <= 32'd0);
-	assign Branch_bltz = `bltz && (In0 < 32'd0);
+	assign Branch_bgez = `bgez && (In0[31] == 1'd0);
+	assign Branch_bgtz = `bgtz && (In0[31] == 1'd0 && In0 != 32'd0);
+	assign Branch_blez = `blez && (In0[31] == 1'd1 || In0 == 32'd0);
+	assign Branch_bltz = `bltz && (In0[31] == 1'd1);
 	assign Branch_bne = `bne && (In0 != In1);
 	
 	assign Branch = Branch_beq || Branch_bgez || Branch_bgtz || 

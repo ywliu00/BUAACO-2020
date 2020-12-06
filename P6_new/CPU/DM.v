@@ -61,8 +61,8 @@ module DM(
 		end
 		else if(MemWrite)
 		begin
-			//$display("@%h: *%h <= %h", WritePC, Addr, WriteData);
-			$display("%d@%h: *%h <= %h", $time, WritePC, {RealAddr << 2}, WriteData);
+			//$display("@%h: *%h <= %h", WritePC, RealAddr << 2, WriteData);
+			$display("%d@%h: *%h <= %h", $time, WritePC, RealAddr << 2, WriteData);
 			DM_Unit[RealAddr] <= WriteData;
 		end
 	 end

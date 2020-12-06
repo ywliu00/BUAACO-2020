@@ -31,6 +31,9 @@ module MultDivModule(
     output reg [31:0] LO
     );
 	reg [63:0] result;
+	wire [63:0] D1_Ext, D2_Ext;
+	assign D1_Ext = {{32{D1[31]}}, D1};
+	assign D2_Ext = {{32{D2[31]}}, D2};
 	
 	integer i, DelayTime;
 	
@@ -47,13 +50,26 @@ module MultDivModule(
 		else if(Start)
 		begin
 			Busy <= 1'b1;
-			if(`mult || `multu)
+			if(`mult)
+			begin
+				result <= $signed(D1) * $signed(D2);
+				DelayTime <= 5;
+				i <= 1;
+			end
+			if(`multu)
 			begin
 				result <= D1 * D2;
 				DelayTime <= 5;
 				i <= 1;
 			end
-			else if(`div || `divu)
+			else if(`div)
+			begin
+				result[31:0] <= $signed(D1) / $signed(D2);
+				result[63:32] <= $signed(D1) % $signed(D2);
+				DelayTime <= 10;
+				i <= 1;
+			end
+			else if(`divu)
 			begin
 				result[31:0] <= D1 / D2;
 				result[63:32] <= D1 % D2;

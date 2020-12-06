@@ -1,7 +1,6 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.exe" -prj "F:/Course/CO/P6_new/CPU/CPU_TestBench_beh.prj" "work.CPU_TestBench" "work.glbl" 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.exe" -prj "F:/Course/CO/P6_new/CPU/CPU_TestBench_beh.prj" "work.CPU_TestBench" "work.glbl" -mt "off" 
 ISim P.20131013 (signature 0x7708f090)
-Number of CPUs detected in this system: 12
-Turning on mult-threading, number of parallel sub-compilation jobs: 24 
+Turned off multi-threading for compilation
 Determining compilation order of HDL files
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ProgramCounter.v" into library work
 Analyzing Verilog file "F:/Course/CO/P6_new/CPU/NPC.v" into library work
@@ -54,8 +53,7 @@ Compiling module mips
 Compiling module CPU_TestBench
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
 Compiled 24 Verilog Units
 Built simulation executable F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.exe
-Fuse Memory Usage: 35236 KB
-Fuse CPU Usage: 1296 ms
+Fuse Memory Usage: 33112 KB
+Fuse CPU Usage: 1562 ms

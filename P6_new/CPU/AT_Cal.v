@@ -31,8 +31,8 @@ module AT_Cal(
 	output reg [2:0] Tuse_RAddr1,// 产生时间
 	output reg [2:0] Tnew_WAddr
     );
-	wire typeR, typeI, load, store, branch, MoveInMult1, 
-		 MoveInMult2, MoveOutMult, Typeslt;
+	wire typeR, typeI, load, store, branch1, branch2, 
+		 MoveInMult1, MoveInMult2, MoveOutMult, Typeslt;
 	assign typeR = `addu || `subu || `sll || `add || 
 					`sub || `AND || `OR || `XOR || `NOR ||
 					`sllv || `srl || `srlv || `sra || `srav ||
@@ -42,7 +42,8 @@ module AT_Cal(
 	//立即数计算指令
 	assign load = `lw || `lb || `lbu || `lh || `lhu;
 	assign store = `sw || `sh || `sb;
-	assign branch = `beq || `bgez || `bgtz || `blez || `bltz || `bne;
+	assign branch1 = `bgez || `bgtz || `blez || `bltz;
+	assign branch2 = `beq || `bne;
 	//注意：bgez需要单独处理，其Rt字段非0，详见指令集
 	assign MoveInMult1 = `mtlo || `mthi;
 	assign MoveInMult2 = `mult || `multu || `div || `divu;
@@ -90,7 +91,16 @@ module AT_Cal(
 			//Tuse_RAddr1 <= 3'd3;
 			Tnew_WAddr <= 3'd0; // 不做写操作
 		end
-		else if(branch)
+		else if(branch1)
+		begin
+			RAddr0 <= Rs;
+			RAddr1 <= 5'd0;
+			WAddr <= 5'd0;
+			Tuse_RAddr0 <= 3'd0;//立即需要
+			Tuse_RAddr1 <= 3'd7;
+			Tnew_WAddr <= 3'd0; //不写
+		end
+		else if(branch2)
 		begin
 			RAddr0 <= Rs;
 			RAddr1 <= Rt;
