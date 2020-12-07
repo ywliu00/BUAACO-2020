@@ -1,0 +1,59 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.exe" -prj "F:/Course/CO/P6_new/CPU/CPU_TestBench_beh.prj" "work.CPU_TestBench" "work.glbl" -mt "off" 
+ISim P.20131013 (signature 0x7708f090)
+Turned off multi-threading for compilation
+Determining compilation order of HDL files
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ProgramCounter.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/NPC.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/MultDivModule.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/InstrDecoder.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/IM.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/GRF.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/Extender.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/DMExtendOp.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/DM.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ByteEnExtend.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/BranchJudge.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/AT_Cal.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ALUOpDecoder.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ALU.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/StallUnit.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/Mem.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/IF.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/ID.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/Ex.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/DMOutExtend.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/BypassController.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/mips.v" into library work
+Analyzing Verilog file "F:/Course/CO/P6_new/CPU/mips_tb.v" into library work
+Analyzing Verilog file "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module BypassController
+Compiling module StallUnit
+Compiling module NPC
+Compiling module ProgramCounter
+Compiling module IM
+Compiling module IF
+Compiling module InstrDecoder
+Compiling module Extender
+Compiling module AT_Cal
+Compiling module GRF
+Compiling module BranchJudge
+Compiling module ID
+Compiling module ALUOpDecoder
+Compiling module ALU
+Compiling module MultDivModule
+Compiling module EX
+Compiling module ByteEnExtend
+Compiling module DM
+Compiling module DMExtendOp
+Compiling module Mem
+Compiling module DMOutExtend
+Compiling module mips
+Compiling module CPU_TestBench
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Compiled 24 Verilog Units
+Built simulation executable F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.exe
+Fuse Memory Usage: 33112 KB
+Fuse CPU Usage: 1562 ms

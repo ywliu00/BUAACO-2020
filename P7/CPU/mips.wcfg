@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="F:/Course/CO/P6_new/CPU/CPU_TestBench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="CPU_TestBench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/CPU_TestBench/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/IF/PC_wire" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_wire[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_wire[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/ID/PC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/PC_ID_to_EX" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_ID_to_EX[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_ID_to_EX[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/Mem/PC_EX_to_Mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_EX_to_Mem[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_EX_to_Mem[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/Mem/PC_Mem_to_WB" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_Mem_to_WB[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_Mem_to_WB[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/MultDiv/D1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">D1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">D1[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/MultDiv/D2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">D2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">D2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/MultDiv/D1_Ext" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">D1_Ext[63:0]</obj_property>
+      <obj_property name="ObjectShortName">D1_Ext[63:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/MultDiv/D2_Ext" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">D2_Ext[63:0]</obj_property>
+      <obj_property name="ObjectShortName">D2_Ext[63:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/MultDiv/HI" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">HI[31:0]</obj_property>
+      <obj_property name="ObjectShortName">HI[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/MultDiv/LO" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">LO[31:0]</obj_property>
+      <obj_property name="ObjectShortName">LO[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/EX/MultDiv/result" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">result[63:0]</obj_property>
+      <obj_property name="ObjectShortName">result[63:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>
