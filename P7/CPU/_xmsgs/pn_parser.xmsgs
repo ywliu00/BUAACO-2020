@@ -8,10 +8,153 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P6_new/CPU/ALU.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/ALU.v&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P6_new/CPU/ALU.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P6_new/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P6_new/CPU/ALU.v&quot; line 2
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/ALU.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/ALU.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/ALUOpDecoder.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/ALUOpDecoder.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/ALUOpDecoder.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/AT_Cal.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/AT_Cal.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/AT_Cal.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/BranchJudge.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/BranchJudge.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/BranchJudge.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/BypassController.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/BypassController.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/BypassController.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/ByteEnExtend.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/ByteEnExtend.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/ByteEnExtend.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/DM.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/DM.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/DM.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/DMExtendOp.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/DMExtendOp.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/DMExtendOp.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/DMOutExtend.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/DMOutExtend.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/DMOutExtend.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/Ex.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/Ex.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/Ex.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/Extender.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/Extender.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/Extender.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/GRF.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/GRF.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/GRF.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/ID.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/ID.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/ID.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/IF.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/IF.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/IF.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/IM.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/IM.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/IM.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/InstrDecoder.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/InstrDecoder.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/InstrDecoder.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/Mem.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/Mem.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/Mem.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/MultDivModule.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/MultDivModule.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/MultDivModule.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/NPC.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/NPC.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/NPC.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/P7_standard_timer_2019.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/ProgramCounter.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/ProgramCounter.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/ProgramCounter.v&quot; line 2
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;F:/Course/CO/P7/CPU/mips.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">F:/Course/CO/P7/CPU/mips.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Include file found: &apos;F:/Course/CO/P7/CPU/CPU_Param.v&apos; in file &quot;F:/Course/CO/P7/CPU/mips.v&quot; line 2
 </arg>
 </msg>
 
