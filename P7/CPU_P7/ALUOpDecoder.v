@@ -34,14 +34,16 @@ module ALUOpDecoder(
 	//为0则取RtData，为1则取32位立即数
 	assign ALUOp = (`sll || `sllv) ? `ALU_lshift :
 	               (`ori || `OR) ? `ALU_or : 
-				   (`subu || `sub) ? `ALU_sub : 
+				   (`sub) ? `ALU_sub : 
+				   (`subu) ? `ALU_subu : 
 				   (`AND || `andi) ? `ALU_and :
 				   (`XOR || `xori) ? `ALU_xor :
 				   (`NOR) ? `ALU_nor :
 				   (`srl || `srlv) ? `ALU_rshiftL :
 				   (`sra || `srav) ? `ALU_rshiftA :
 				   (`slt || `slti || `sltiu || `sltu) ? `ALU_slt :
-				                          `ALU_add;
+				   (`addu || `addiu) ? `ALU_addu : 
+													`ALU_add;
 	assign SpecialSign = (`slt || `slti) ? 1 : 0;
 
 endmodule

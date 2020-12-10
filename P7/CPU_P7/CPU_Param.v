@@ -38,6 +38,8 @@
 `define ALU_rshiftL (4'b0111)
 `define ALU_rshiftA (4'b1000)
 `define ALU_slt (4'b1001)
+`define ALU_addu (4'b1010)
+`define ALU_subu (4'b1011)
 
 //Ö¸Áî¶ÀÈÈÂë
 `define inst_err (60'd0)
@@ -94,6 +96,7 @@
 
 
 //Ö¸ÁîÅĞ¶Ï
+`define insterr (| InstrType == 0)
 `define addu (InstrType[0])
 `define subu (InstrType[1])
 `define ori (InstrType[2])

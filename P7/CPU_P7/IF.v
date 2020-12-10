@@ -60,7 +60,7 @@ module IF(
     .Instr(Instr_wire));
 	
 	////////////////////// Error Detect ///////////////
-	assign Err_wire = (PC_wire[1:0] != 2'b00) ? 1 : 0;
+	assign Err_wire = (PC_wire[1:0] != 2'b00 || PC_wire > 32'h0000_4fff || PC_wire < 32'h0000_3000) ? 1 : 0;
 	assign ErrStat_wire = Err_wire ? `AdEL : 5'd31;
 	/////////////////////////////////////////////////
 	 
@@ -83,11 +83,12 @@ module IF(
 			ErrStat_IF_to_ID <= 5'd31;
 			Err_IF_to_ID <= 0;
 		end
+		
 		else
 		begin
 			PC_4 <= PC_4_wire;
-			Instr <= Instr_wire;
-			PC <= PC_wire;
+			Instr <= Err_wire ? 32'h0000_0000 : Instr_wire; //出错就清成nop
+			PC <= {PC_wire[31:2], 2'b0};
 			ErrStat_IF_to_ID <= ErrStat_wire;
 			Err_IF_to_ID <= Err_wire;
 		end

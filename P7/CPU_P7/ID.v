@@ -59,14 +59,20 @@ module ID(
 	output wire [4:0] RegRead1_ID,
 	output wire [2:0] Tuse_RAddr0_ID,
 	output wire [2:0] Tuse_RAddr1_ID,
-	output wire MultTypeInstr
+	output wire MultTypeInstr,
+	
+	// 异常处理信息
+	input wire [4:0] ErrStat_IF_to_ID,
+	input wire Err_IF_to_ID,
+	output reg [4:0] ErrStat_ID_to_EX,
+	output reg Err_ID_to_EX
     );
 	wire [31:0] RsData_wire, RtData_wire, imm32_wire;
 	wire [25:0] imm26_wire;
 	wire [15:0] imm16_wire;
 	wire [4:0] Rs_wire, Rt_wire, Rd_wire, Shamt_wire,
 	           Rs_inst, Rt_inst, Rd_inst;
-	wire sign;
+	wire sign, Err_wire;
 	wire [59:0] InstrType;
 	
 	//转发还没写，等转发控制器写好后添加RsData_wire和RtData_wire的MUX
@@ -87,7 +93,7 @@ module ID(
 	.sign(sign),
 	.imm32(imm32_wire));
 	
-	wire [4:0] WAddr_wire;
+	wire [4:0] WAddr_wire, ErrStat_wire;
 	wire [31:0] RData0_wire, RData1_wire, RData0_read;
 	//assign WAddr_wire = (`jal) ? 5'd31 :
 	//               (`ori || `lw || `lui) ? Rt_wire : Rd_wire;
@@ -168,6 +174,9 @@ module ID(
 	assign MultTypeInstr = (`mult) || (`multu) || (`div) || (`divu) ||
 	                       (`mflo) || (`mfhi) || (`mtlo) || (`mthi);
 	
+	////////////////// Error Detect /////////////////////
+	assign ErrStat_wire = `insterr ? `RI : ErrStat_IF_to_ID;
+	assign Err_wire = `insterr ? 1 : Err_IF_to_ID;
 	////////////////// ID/EX流水线寄存器 ////////////////////
 	
 	always@(posedge clk)
@@ -188,6 +197,8 @@ module ID(
 			Tuse_RAddr1_ID_to_EX <= 3'b111;
 			Tnew_WAddr_ID_to_EX <= 3'b000; // 产生时间
 			Start_ID_to_EX <= 1'b0;
+			ErrStat_ID_to_EX <= 5'd31;
+			Err_ID_to_EX <= 0;
 		end
 		else
 		begin
@@ -205,6 +216,8 @@ module ID(
 			Tuse_RAddr1_ID_to_EX <= Tuse_RAddr1_wire;
 			Tnew_WAddr_ID_to_EX <= Tnew_WAddr_wire; // 产生时间
 			Start_ID_to_EX <= Start_wire;
+			ErrStat_ID_to_EX <= ErrStat_wire;
+			Err_ID_to_EX <= Err_wire;
 		end
 	end
 	

@@ -54,7 +54,11 @@ module Mem(
     output wire [4:0] RegWriteAddr_Mem,
 	output wire [2:0] Tuse_RAddr0_Mem,
 	output wire [2:0] Tuse_RAddr1_Mem,
-	output wire [2:0] Tnew_WAddr_Mem
+	output wire [2:0] Tnew_WAddr_Mem,
+	
+	// 异常处理信息
+	input wire [4:0] ErrStat_EX_to_Mem,
+	input wire Err_EX_to_Mem
     );
 	wire [59:0] InstrType;
 	wire [31:0] DMRead_wire, DMWriteData_bypass;
@@ -77,11 +81,15 @@ module Mem(
 	wire [1:0] Addr2;
 	wire [3:0] ByteEn;
 	assign Addr2 = ALUOut_EX_to_Mem[1:0];
+	
 	ByteEnExtend ByteEnModule(
     .InstrType(InstrType),
     .Addr2(Addr2),
     .BE(ByteEn));
 	/////////////////////////////// DM /////////////////////////////////
+	wire [3:0] ByteEnErr;
+	assign ByteEnErr = ByteEn & ~{4{Err}};
+	
 	DM DM(
 	.Addr(ALUOut_EX_to_Mem),
     .WData(DMWriteData_bypass),
@@ -89,7 +97,7 @@ module Mem(
     .clk(clk),
     .reset(reset),
 	.WritePC(PC_EX_to_Mem),
-	.ByteEn(ByteEn),
+	.ByteEn(ByteEnErr),
     .RData(DMRead_wire));
 	
 	//assign ALUOut_wire = ALUOut_EX_to_Mem;
@@ -109,6 +117,18 @@ module Mem(
 	assign Tuse_RAddr0_Mem = Tuse_RAddr0_wire;
 	assign Tuse_RAddr1_Mem = Tuse_RAddr1_wire;
 	assign Tnew_WAddr_Mem = Tnew_WAddr_wire;
+	
+	////////////////// Error Detect ////////////////
+	wire Err;
+	wire [4:0] ErrStat;
+	
+	MemErrDect MemErrDet(
+    .InstrType(InstrType),
+    .Err_EX_to_Mem(Err_EX_to_Mem),
+    .ErrStat_EX_to_Mem(ErrStat_EX_to_Mem),
+    .MemRWAddr(ALUOut_EX_to_Mem),
+    .Err(Err),
+    .ErrStat(ErrStat));
 	
 	////////////////流水线寄存器//////////////////
 	always@(posedge clk)

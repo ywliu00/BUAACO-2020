@@ -60,14 +60,22 @@ module EX(
 	output wire [2:0] Tuse_RAddr0_EX,
 	output wire [2:0] Tuse_RAddr1_EX,
 	output wire [2:0] Tnew_WAddr_EX,
-	output wire MultBusy   //////乘除模块运行中信号
+	output wire MultBusy,   //////乘除模块运行中信号
+	
+	// 异常处理信息
+	input wire [4:0] ErrStat_ID_to_EX,
+	input wire Err_ID_to_EX,
+	output reg [4:0] ErrStat_EX_to_Mem,
+	output reg Err_EX_to_Mem
     );
 	wire [59:0] InstrType;
 	wire [31:0] ALUIn0, ALUIn1, ALURes_wire, ALUOut_wire,
 	            ALUIn0_bypass, ALUIn1_bypass;
 	wire ALUIn1_Src, SpecialSign; //为0则取RtData，为1则取32位立即数
+	wire [4:0] ErrStat_wire;
 	wire [3:0] ALUOp;
     wire [2:0] Tuse_RAddr0_wire, Tuse_RAddr1_wire, Tnew_WAddr_wire;
+	wire Err_wire, OverFlow_wire;
 	
 	assign InstrType = InstrType_ID_to_EX;
 	assign Tuse_RAddr0_wire = (Tuse_RAddr0_ID_to_EX > 0) ? Tuse_RAddr0_ID_to_EX - 3'b001 : Tuse_RAddr0_ID_to_EX;
@@ -114,7 +122,8 @@ module EX(
     .In1(ALUIn1_Data),
 	.ALUOp(ALUOp),
 	.SpecialSign(SpecialSign),
-    .Res(ALURes_wire));
+    .Res(ALURes_wire),
+	.OverFlow(OverFlow_wire));
 	
 	//////////////////////// 乘除模块 ////////////////////////////
 	wire Busy;
@@ -144,6 +153,15 @@ module EX(
 	assign Tnew_WAddr_EX = Tnew_WAddr_wire;
 	assign MultBusy = Start_ID_to_EX || Busy;
 	
+	////////////////// Error Detect /////////////////////
+	wire LoadType, StoreType;
+	assign LoadType = `lw || `lh || `lhu || `lb || `lbu;
+	assign StoreType = `sw || `sh || `sb;
+	assign ErrStat_wire = OverFlow_wire && (`add || `sub || `addi) ? `Ov :
+						  OverFlow_wire && LoadType ? `AdEL : 
+						  OverFlow_wire && StoreType ? `AdES : ErrStat_ID_to_EX;
+	assign Err_wire = OverFlow_wire ? 1 : Err_ID_to_EX;
+	
 	///////////////////// 流水线寄存器 ///////////////////////////////
 	always@(posedge clk)
 	begin
@@ -159,6 +177,8 @@ module EX(
 			Tuse_RAddr0_EX_to_Mem <= 3'b111;
 			Tuse_RAddr1_EX_to_Mem <= 3'b111;
 			Tnew_WAddr_EX_to_Mem <= 3'b000;
+			ErrStat_EX_to_Mem <= 5'd31;
+			Err_EX_to_Mem <= 0;
 		end
 		else
 		begin
@@ -172,6 +192,8 @@ module EX(
 			Tuse_RAddr0_EX_to_Mem <= Tuse_RAddr0_wire;
 			Tuse_RAddr1_EX_to_Mem <= Tuse_RAddr1_wire;
 			Tnew_WAddr_EX_to_Mem <= Tnew_WAddr_wire;
+			ErrStat_EX_to_Mem <= ErrStat_wire;
+			Err_EX_to_Mem <= Err_wire;
 		end
 	end
 

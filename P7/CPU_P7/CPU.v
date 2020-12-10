@@ -85,7 +85,8 @@ module CPU(
 	////////////////////// IF //////////////////////
 	wire [31:0] branch_addr32, jump_addr32, PC_4_IF_to_ID,
 	            Instr_IF_to_ID, PC_IF_to_ID;
-	wire branch, jump;
+	wire [4:0] ErrStat_IF_to_ID;
+	wire branch, jump, Err_IF_to_ID;
 	IF IF(
     .branch_addr32(branch_addr32),
     .jump_addr32(jump_addr32),
@@ -99,15 +100,15 @@ module CPU(
 	.Instr(Instr_IF_to_ID),
 	.PC(PC_IF_to_ID),
 	
-	.ErrStat_IF_to_ID(Kud_Nyan),
-	.Err_IF_to_ID(Kud_Nyan)
+	.ErrStat_IF_to_ID(ErrStat_IF_to_ID),
+	.Err_IF_to_ID(Err_IF_to_ID)
     );
 	
 	////////////////////// ID ////////////////////////////
-	wire Start_ID_to_EX;//RegWriteEn;
+	wire Start_ID_to_EX, Err_ID_to_EX;//RegWriteEn;
 	wire [2:0] Tuse_RAddr0_ID_to_EX, Tuse_RAddr1_ID_to_EX, Tnew_WAddr_ID_to_EX;
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
-	           Shamt_ID_to_EX;
+	           Shamt_ID_to_EX, ErrStat_ID_to_EX;
 	wire [31:0] RegWriteData, RegWritePC, imm32_ID_to_EX, Data0_ID_to_EX,
 	            Data1_ID_to_EX, ResFromID_ID_to_EX, PC_ID_to_EX,
 				RegWriteData_Mem_to_WB;
@@ -155,12 +156,19 @@ module CPU(
 	.bypass_ID(ResFromID_ID_to_EX), // 从ID/EX寄存器转发来的数据
 	.bypass_EX(ALUOut_EX_to_Mem), // 从EX/Mem寄存器转发来的数据 注意转发只有一个数据源
 	.RData0BypassCtrl(RData0BypassCtrl),
-	.RData1BypassCtrl(RData1BypassCtrl)
+	.RData1BypassCtrl(RData1BypassCtrl),
+	
+	.ErrStat_IF_to_ID(ErrStat_IF_to_ID),
+	.Err_IF_to_ID(Err_IF_to_ID),
+	.ErrStat_ID_to_EX(ErrStat_ID_to_EX),
+	.Err_ID_to_EX(Err_ID_to_EX)
     );
 	 
 	//////////////////// EX /////////////////////////////////
+	wire Err_EX_to_Mem;
 	wire [2:0] Tuse_RAddr0_EX_to_Mem, Tuse_RAddr1_EX_to_Mem, Tnew_WAddr_EX_to_Mem;
-	wire [4:0] ReadAddr0_EX_to_Mem, ReadAddr1_EX_to_Mem, RegWriteAddr_EX_to_Mem;
+	wire [4:0] ReadAddr0_EX_to_Mem, ReadAddr1_EX_to_Mem, 
+			   RegWriteAddr_EX_to_Mem, ErrStat_EX_to_Mem;
 	wire [31:0] PC_EX_to_Mem, DMWriteData_EX_to_Mem, ALUOut_EX_to_Mem;
 	wire [59:0] InstrType_EX_to_Mem;
 	EX EX(
@@ -206,7 +214,12 @@ module CPU(
 	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
 	.ALUIn0BypassCtrl(ALUIn0BypassCtrl),
 	.ALUIn1BypassCtrl(ALUIn1BypassCtrl),
-	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_EX)
+	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_EX),
+	
+	.ErrStat_ID_to_EX(ErrStat_ID_to_EX),
+	.Err_ID_to_EX(Err_ID_to_EX),
+	.ErrStat_EX_to_Mem(ErrStat_EX_to_Mem),
+	.Err_EX_to_Mem(Err_EX_to_Mem)
     );
 	
 	////////////////////// Mem ////////////////////////////
@@ -254,7 +267,10 @@ module CPU(
 	
 	//转发需求部分
 	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
-	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_Mem)
+	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_Mem),
+	
+	.ErrStat_EX_to_Mem(ErrStat_EX_to_Mem),
+	.Err_EX_to_Mem(Err_EX_to_Mem)
     );
 	
 	DMOutExtend DMOutExt(

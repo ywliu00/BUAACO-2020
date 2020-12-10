@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2020-12-10T14:13:13</DateModified>
+  <DateModified>2020-12-10T23:51:31</DateModified>
   <ModuleName>CPU</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>D:/BUAACO/P7/CPU_P7/iseconfig/CPU.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>D:/BUAACO/P7/CPU_P7\</ImplementationReportsDirectory>
+  <SavedFilePath>F:/Course/CO/P7/CPU_P7/iseconfig/CPU.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>F:/Course/CO/P7/CPU_P7\</ImplementationReportsDirectory>
   <DateInitialized>2020-12-10T10:44:58</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
