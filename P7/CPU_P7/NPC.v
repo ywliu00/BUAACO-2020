@@ -27,7 +27,7 @@ module NPC(
     input wire [31:0] branch_addr,
     input wire [31:0] jump_addr,
     output wire [31:0] NextPC,
-	 output wire [31:0] PC_4
+	output wire [31:0] PC_4
     );
 	 assign PC_4 = PC + 31'd4;
 	 assign NextPC = (Stall) ? PC :

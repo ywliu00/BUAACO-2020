@@ -144,3 +144,10 @@
 `define blez (InstrType[47])
 `define bltz (InstrType[48])
 `define bne (InstrType[49])
+
+//´íÎóĞÅÏ¢
+`define Interrupt (5'd0)
+`define AdEL (5'd4)
+`define AdES (5'd5)
+`define RI (5'd10)
+`define Ov (5'd12)

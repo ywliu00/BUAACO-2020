@@ -29,10 +29,14 @@ module IF(
 	input wire reset,
     output reg [31:0] PC_4,
 	output reg [31:0] Instr,
-	output reg [31:0] PC
+	output reg [31:0] PC,
+	output reg [4:0] ErrStat_IF_to_ID,
+	output reg Err_IF_to_ID
     );
 	 wire [31:0] PC_wire, NextPC_wire, PC_4_wire, 
 	             Instr_wire, OpAddr_wire;
+	wire [4:0] ErrStat_wire;
+	wire Err_wire;
     assign OpAddr_wire = (PC_wire - 32'h0000_3000) >> 2;
 	 
 	NPC NPC(
@@ -54,6 +58,11 @@ module IF(
 	IM IM(
 	.OpAddr(OpAddr_wire),
     .Instr(Instr_wire));
+	
+	////////////////////// Error Detect ///////////////
+	assign Err_wire = (PC_wire[1:0] != 2'b00) ? 1 : 0;
+	assign ErrStat_wire = Err_wire ? `AdEL : 5'd31;
+	/////////////////////////////////////////////////
 	 
 	 always@(posedge clk)
 	 begin
@@ -63,18 +72,24 @@ module IF(
 			//Instr <= FirstInstr_wire;
 			Instr = 32'h0000_0000;
 			PC <= 32'h0000_3000;
+			ErrStat_IF_to_ID <= 5'd31;
+			Err_IF_to_ID <= 0;
 		end
 		else if(Stall)
 		begin
 			PC_4 <= PC_4;
 			Instr <= Instr;
 			PC <= PC;        //¶³½áIF/ID¼Ä´æÆ÷
+			ErrStat_IF_to_ID <= 5'd31;
+			Err_IF_to_ID <= 0;
 		end
 		else
 		begin
 			PC_4 <= PC_4_wire;
 			Instr <= Instr_wire;
 			PC <= PC_wire;
+			ErrStat_IF_to_ID <= ErrStat_wire;
+			Err_IF_to_ID <= Err_wire;
 		end
 	 end
 

@@ -97,7 +97,10 @@ module CPU(
 	
     .PC_4(PC_4_IF_to_ID),
 	.Instr(Instr_IF_to_ID),
-	.PC(PC_IF_to_ID)
+	.PC(PC_IF_to_ID),
+	
+	.ErrStat_IF_to_ID(Kud_Nyan),
+	.Err_IF_to_ID(Kud_Nyan)
     );
 	
 	////////////////////// ID ////////////////////////////
