@@ -1,7 +1,0 @@
-verilog work "InstrDecoder.v"
-verilog work "GRF.v"
-verilog work "Extender.v"
-verilog work "BranchJudge.v"
-verilog work "AT_Cal.v"
-verilog work "ID.v"
-verilog work "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

@@ -1,5 +1,0 @@
-verilog work "ProgramCounter.v"
-verilog work "NPC.v"
-verilog work "IM.v"
-verilog work "IF.v"
-verilog work "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
