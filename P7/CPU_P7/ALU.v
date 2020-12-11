@@ -36,8 +36,8 @@ module ALU(
 	assign In0SignedExt = {In0[31], In0};
 	assign In1SignedExt = {In1[31], In1};
 	
-	assign Res33 = (ALUOp == `ALU_add) ? In0SignedExt + In0SignedExt :
-				   (ALUOp == `ALU_sub) ? In0SignedExt - In0SignedExt : 33'h123456789;
+	assign Res33 = (ALUOp == `ALU_add) ? In0SignedExt + In1SignedExt :
+				   (ALUOp == `ALU_sub) ? In0SignedExt - In1SignedExt : 33'h123456789;
 				 
     assign Res = (ALUOp == `ALU_addu) ? In0 + In1 :
 	             (ALUOp == `ALU_subu) ? In0 - In1 :

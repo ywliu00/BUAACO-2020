@@ -21,9 +21,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 module CPU(
     input wire clk,
-    input wire reset
+    input wire reset,
+	output wire [31:2] PrAddr,
+	input wire [31:0] PrRD,
+	output wire [31:0] PrWD,
+	output wire PrWE,
+	input wire [7:2] HWInt,
+	output wire [31:0] CurAddr
     );
-	wire Stall;
+	wire Stall, ErrSignal;
 	
 	///////////////////// Bypass Control Unit //////////////////////
 	wire [4:0] RegWriteAddr_Mem_to_WB;
@@ -100,6 +106,7 @@ module CPU(
 	.Instr(Instr_IF_to_ID),
 	.PC(PC_IF_to_ID),
 	
+	.ErrSignal(ErrSignal),
 	.ErrStat_IF_to_ID(ErrStat_IF_to_ID),
 	.Err_IF_to_ID(Err_IF_to_ID)
     );
@@ -158,6 +165,7 @@ module CPU(
 	.RData0BypassCtrl(RData0BypassCtrl),
 	.RData1BypassCtrl(RData1BypassCtrl),
 	
+	.ErrSignal(ErrSignal),
 	.ErrStat_IF_to_ID(ErrStat_IF_to_ID),
 	.Err_IF_to_ID(Err_IF_to_ID),
 	.ErrStat_ID_to_EX(ErrStat_ID_to_EX),
@@ -216,6 +224,7 @@ module CPU(
 	.ALUIn1BypassCtrl(ALUIn1BypassCtrl),
 	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_EX),
 	
+	.ErrSignal(ErrSignal),
 	.ErrStat_ID_to_EX(ErrStat_ID_to_EX),
 	.Err_ID_to_EX(Err_ID_to_EX),
 	.ErrStat_EX_to_Mem(ErrStat_EX_to_Mem),
@@ -223,13 +232,14 @@ module CPU(
     );
 	
 	////////////////////// Mem ////////////////////////////
-	wire LoadInst_Mem_to_WB;
+	wire LoadInst_Mem_to_WB, Err_Mem_to_C0;
 	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, 
 				Tnew_WAddr_Mem_to_WB, DMExtOp_Mem_to_WB;
 	wire [31:0] PC_Mem_to_WB, ALUOut_Mem_to_WB, DMReadData_Mem_to_WB, 
-				DMDataExtended;
+				DMDataExtended, Data_Mem_to_CP0, Data_CP0_to_Mem,
+				CP0Addr_Mem_to_CP0;
 	wire [59:0] InstrType_Mem_to_WB;
-	//wire [4:0] RegWriteAddr_Mem_to_WB;
+	wire [4:0] ErrStat_Mem_to_C0;
 	Mem Mem(
 	.RAddr0_EX_to_Mem(ReadAddr0_EX_to_Mem),
     .RAddr1_EX_to_Mem(ReadAddr1_EX_to_Mem),
@@ -269,8 +279,19 @@ module CPU(
 	.bypass_Mem(RegWriteData_Mem_to_WB), //从Mem/WB转发来的
 	.DMWriteDataBypassCtrl(DMWriteDataBypassCtrl_Mem),
 	
+	.ErrSignal(ErrSignal),
 	.ErrStat_EX_to_Mem(ErrStat_EX_to_Mem),
-	.Err_EX_to_Mem(Err_EX_to_Mem)
+	.Err_EX_to_Mem(Err_EX_to_Mem),
+	.Err(Err_Mem_to_C0),
+	.ErrStat(ErrStat_Mem_to_C0),
+	.CP0RData(Data_CP0_to_Mem),
+	.CP0Addr(CP0Addr_Mem_to_CP0),
+	.CP0WData(Data_Mem_to_CP0),
+	
+	.IO_RData(PrRD),//CPU从外部读
+	.IO_WData(PrWD),//CPU向外部写
+	.IO_Addr(PrAddr),// I/O地址
+	.IO_En(PrWE)// I/O写使能（读无需使能）
     );
 	
 	DMOutExtend DMOutExt(
@@ -279,7 +300,24 @@ module CPU(
     .Op(DMExtOp_Mem_to_WB),
     .DataOut(DMDataExtended)
     );
-	
+				
 	assign RegWriteData_Mem_to_WB = LoadInst_Mem_to_WB ? DMDataExtended : ALUOut_Mem_to_WB;
+	assign CurAddr = PC_EX_to_Mem;
+	
+	/////////////// Coprocessor 0 /////////////////////
+	CP0 CP0(
+	.clk(clk),
+	.reset(reset),
+    .InstrType(InstrType_EX_to_Mem),
+	.WBInstrType(InstrType_Mem_to_WB),
+    .PCAddr(PC_EX_to_Mem),
+	.DataIn(Data_Mem_to_CP0),
+	.CP0Addr(CP0Addr_Mem_to_CP0),
+	.Err(Err_Mem_to_C0),
+	.ErrStat(ErrStat_Mem_to_C0),
+	.HWInt(HWInt),
+	.ErrSignal(ErrSignal),
+	.DataOut(Data_CP0_to_Mem)
+    );
 	
 endmodule

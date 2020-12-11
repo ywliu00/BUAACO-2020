@@ -27,13 +27,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module TC(
-    input clk,
-    input reset,
-    input [31:2] Addr,
-    input WE,
-    input [31:0] Din,
-    output [31:0] Dout,
-    output IRQ
+    input wire clk,
+    input wire reset,
+    input wire [31:2] Addr,
+    input wire WE,
+    input wire [31:0] Din,
+    output wire [31:0] Dout,
+    output wire IRQ
     );
 
 	reg [1:0] state;

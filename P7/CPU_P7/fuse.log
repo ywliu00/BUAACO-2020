@@ -1,0 +1,71 @@
+Running: D:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o F:/Course/CO/P7/CPU_P7/CPU_TestBench_isim_beh.exe -prj F:/Course/CO/P7/CPU_P7/CPU_TestBench_beh.prj work.CPU_TestBench work.glbl -mt off 
+ISim P.20131013 (signature 0x7708f090)
+Turned off multi-threading for compilation
+Determining compilation order of HDL files
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/ProgramCounter.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/NPC.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/MultDivModule.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/MemErrDect.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/IOAddrDetect.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/InstrDecoder.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/IM.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/GRF.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/Extender.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/DMExtendOp.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/DM.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/ByteEnExtend.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/BranchJudge.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/AT_Cal.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/ALUOpDecoder.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/ALU.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/StallUnit.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/Mem.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/IF.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/ID.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/Ex.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/DMOutExtend.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/CP0.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/BypassController.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/P7_standard_timer_2019.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/CPU.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/Bridge.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/mips.v" into library work
+Analyzing Verilog file "F:/Course/CO/P7/CPU_P7/mips_tb.v" into library work
+Analyzing Verilog file "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module BypassController
+Compiling module StallUnit
+Compiling module NPC
+Compiling module ProgramCounter
+Compiling module IM
+Compiling module IF
+Compiling module InstrDecoder
+Compiling module Extender
+Compiling module AT_Cal
+Compiling module GRF
+Compiling module BranchJudge
+Compiling module ID
+Compiling module ALUOpDecoder
+Compiling module ALU
+Compiling module MultDivModule
+Compiling module EX
+Compiling module ByteEnExtend
+Compiling module DM
+Compiling module IOAddrDetect
+Compiling module DMExtendOp
+Compiling module MemErrDect
+Compiling module Mem
+Compiling module DMOutExtend
+Compiling module CP0
+Compiling module CPU
+Compiling module Bridge
+Compiling module TC
+Compiling module mips
+Compiling module CPU_TestBench
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Compiled 30 Verilog Units
+Built simulation executable F:/Course/CO/P7/CPU_P7/CPU_TestBench_isim_beh.exe
+Fuse Memory Usage: 33508 KB
+Fuse CPU Usage: 1108 ms

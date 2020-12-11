@@ -57,8 +57,20 @@ module Mem(
 	output wire [2:0] Tnew_WAddr_Mem,
 	
 	// 异常处理信息
+	input wire ErrSignal,
 	input wire [4:0] ErrStat_EX_to_Mem,
-	input wire Err_EX_to_Mem
+	input wire Err_EX_to_Mem,
+	input wire [31:0] CP0RData,
+	output wire Err,
+	output wire [4:0] ErrStat,
+	output wire [31:0] CP0Addr,
+	output wire [31:0] CP0WData,
+	
+	// 外部设备读写信息
+	input wire [31:0] IO_RData,
+	output wire [31:0] IO_WData,
+	output wire [31:2] IO_Addr,
+	output wire IO_En
     );
 	wire [59:0] InstrType;
 	wire [31:0] DMRead_wire, DMWriteData_bypass;
@@ -88,7 +100,7 @@ module Mem(
     .BE(ByteEn));
 	/////////////////////////////// DM /////////////////////////////////
 	wire [3:0] ByteEnErr;
-	assign ByteEnErr = ByteEn & ~{4{Err}};
+	assign ByteEnErr = ByteEn & ~{4{ErrSignal}};
 	
 	DM DM(
 	.Addr(ALUOut_EX_to_Mem),
@@ -103,7 +115,16 @@ module Mem(
 	//assign ALUOut_wire = ALUOut_EX_to_Mem;
 	//assign RegWriteEn_wire = (`addu || `subu || `ori || `lw || `lui ||
 	//                          `jal || `sll || `addiu || `jalr ) ? 1 : 0;
-		
+	
+	////////////////////////// I/O Detect //////////////////////
+	IOAddrDetect IOAddrDetect(
+    .Addr(ALUOut_EX_to_Mem),
+	.Err(ErrSignal),
+    .IO_En(IO_En)
+    );
+	assign IO_WData = DMWriteData_bypass;
+	assign IO_Addr = ALUOut_EX_to_Mem[31:2];
+	
 	///////////////////// DM Ext Op ///////////////////
 	wire [2:0] DMExtOp_wire;
 	DMExtendOp DMExtOp(
@@ -119,8 +140,7 @@ module Mem(
 	assign Tnew_WAddr_Mem = Tnew_WAddr_wire;
 	
 	////////////////// Error Detect ////////////////
-	wire Err;
-	wire [4:0] ErrStat;
+	//wire Err;
 	
 	MemErrDect MemErrDet(
     .InstrType(InstrType),
@@ -129,6 +149,15 @@ module Mem(
     .MemRWAddr(ALUOut_EX_to_Mem),
     .Err(Err),
     .ErrStat(ErrStat));
+	
+	//////////////////// Coprocessor Data ////////////////////////
+	wire [31:0] GRFWriteData;
+	assign CP0Addr = DMWriteData_EX_to_Mem; 
+	//从ID级一路传下来的Rd值（见AT模块）
+	assign CP0WData = ALUOut_EX_to_Mem;
+	//从ID级一路传下来的Rt值（见AT模块）
+	assign GRFWriteData = (`mfc0) ? CP0RData : 
+						  (IO_En) ? IO_RData : DMRead_wire;
 	
 	////////////////流水线寄存器//////////////////
 	always@(posedge clk)
@@ -157,7 +186,7 @@ module Mem(
 			Tuse_RAddr1_Mem_to_WB <= Tuse_RAddr1_wire;
 			Tnew_WAddr_Mem_to_WB <= Tnew_WAddr_wire;
 			InstrType_Mem_to_WB <= InstrType_EX_to_Mem;
-			DMReadData_Mem_to_WB <= DMRead_wire;
+			DMReadData_Mem_to_WB <= GRFWriteData;
 			DMExtOp_Mem_to_WB <= DMExtOp_wire;
 			LoadInst_Mem_to_WB <= `lw || `lh || `lb || `lbu || `lhu;
 		end

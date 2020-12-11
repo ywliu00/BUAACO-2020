@@ -27,6 +27,7 @@ module IF(
 	input wire Stall,
 	input wire clk,
 	input wire reset,
+	input wire ErrSignal,
     output reg [31:0] PC_4,
 	output reg [31:0] Instr,
 	output reg [31:0] PC,
@@ -66,10 +67,9 @@ module IF(
 	 
 	 always@(posedge clk)
 	 begin
-		if(reset)
+		if(reset || ErrSignal)
 		begin
 			PC_4 <= 32'h0000_3004;
-			//Instr <= FirstInstr_wire;
 			Instr = 32'h0000_0000;
 			PC <= 32'h0000_3000;
 			ErrStat_IF_to_ID <= 5'd31;
@@ -83,7 +83,6 @@ module IF(
 			ErrStat_IF_to_ID <= 5'd31;
 			Err_IF_to_ID <= 0;
 		end
-		
 		else
 		begin
 			PC_4 <= PC_4_wire;

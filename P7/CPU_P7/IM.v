@@ -25,10 +25,10 @@ module IM(
     );
 	 
 	 reg [31:0] IM_Unit [0:4095];
-	 
 	 initial
 	 begin
 		$readmemh("code.txt",IM_Unit);
+		$readmemh("code_handler.txt", IM_Unit, 1120, 2047);
 	 end
 	 
 	 assign Instr = IM_Unit[OpAddr];

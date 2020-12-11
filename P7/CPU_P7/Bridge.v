@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
- module Bridge(
+module Bridge(
 	input wire [31:2] PrAddr,
 	input wire [31:0] PrWD, //¥”CPUœÚBridge–¥
 	output wire [31:0] PrRD, //CPU¥”Bridge∂¡

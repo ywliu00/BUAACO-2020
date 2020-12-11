@@ -1,0 +1,29 @@
+ISim log file
+Running: F:\Course\CO\P7\CPU_P7\CPU_TestBench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb F:/Course/CO/P7/CPU_P7/CPU_TestBench_isim_beh.wdb 
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $10 <= 0bb80000
+                 155@00003004: $10 <= 0bb807b4
+                 165@00003008: $11 <= 4e200000
+                 175@0000300c: $11 <= 4e200520
+                 255@00003014: $13 <= 03938995
+                 265@00003018: $14 <= dda77a80
+                 265@0000301c: *00000004 <= 95000000
+                 275@00003020: *00000008 <= 7a800000
+                 295@00003024: $20 <= 12340000
+                 305@00003028: $20 <= 12345678
+                 305@0000302c: *00000000 <= 12345678
+                 325@00003030: $21 <= ffff0000
+                 335@00003034: $21 <= ffffffff
+                 345@00003038: $22 <= ffff0000
+                 355@0000303c: $22 <= ffffffff
+                 365@00003040: $17 <= 00000078
+                 375@00003044: $21 <= 00000056
+                 385@00003048: $22 <= 00005678
+                 395@0000304c: $23 <= 00001234

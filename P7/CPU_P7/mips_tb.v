@@ -26,17 +26,22 @@ module CPU_TestBench;
 	// Inputs
 	reg clk;
 	reg reset;
+	reg interrupt;
+	wire [31:0] addr;
 
 	// Instantiate the Unit Under Test (UUT)
 	mips uut (
 		.clk(clk), 
-		.reset(reset)
+		.reset(reset),
+		.interrupt(interrupt),
+		.addr(addr)
 	);
 
 	initial begin
 		// Initialize Inputs
 		clk = 0;
 		reset = 0;
+		interrupt = 0;
 
 		// Wait 100 ns for global reset to finish
 		#90;

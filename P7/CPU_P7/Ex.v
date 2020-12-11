@@ -63,6 +63,7 @@ module EX(
 	output wire MultBusy,   //////乘除模块运行中信号
 	
 	// 异常处理信息
+	input wire ErrSignal,
 	input wire [4:0] ErrStat_ID_to_EX,
 	input wire Err_ID_to_EX,
 	output reg [4:0] ErrStat_EX_to_Mem,
@@ -141,8 +142,10 @@ module EX(
 	
 	assign ALUOut_wire = (Tnew_WAddr_wire == 0 && RegWriteAddr_ID_to_EX != 5'd0) ? ResFromID_ID_to_EX : 
 						 (`mfhi) ? HI_wire : 
-						 (`mflo) ? LO_wire : ALURes_wire;
+						 (`mflo) ? LO_wire : 
+						 (`mtc0) ? ALUIn0_bypass : ALURes_wire;
 	//若在ID级产生了结果，则Tnew为0，在这里并入数据通路
+	//若为mtc0，则在这里跳过ALU计算，直接传递（转发后的）原值
 	
 	/////////////////// 给冲突处理单元的数据 /////////////////////////
 	assign RAddr0_EX = RAddr0_ID_to_EX;
@@ -165,7 +168,7 @@ module EX(
 	///////////////////// 流水线寄存器 ///////////////////////////////
 	always@(posedge clk)
 	begin
-		if(reset)
+		if(reset || ErrSignal)
 		begin
 			RAddr0_EX_to_Mem <= 32'd0;
 			RAddr1_EX_to_Mem <= 32'd0;

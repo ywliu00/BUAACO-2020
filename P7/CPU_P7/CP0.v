@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
+`include "CPU_Param.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date:    10:40:16 12/11/2020 
+// Create Date:    23:48:39 12/10/2020 
 // Design Name: 
-// Module Name:    CP0 
+// Module Name:    EPC_BD_Cal 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -21,14 +22,96 @@
 module CP0(
 	input wire clk,
 	input wire reset,
-	input wire WriteEn,
-    input wire [31:0] SR_in,
-    input wire [31:0] Cause,
-    input wire [31:0] EPC_in,
-    output wire [31:0] PRId,
-	output wire [31:0] SR_out,
-	output wire [31:0] EPC_out
+    input wire [59:0] InstrType,
+	input wire [59:0] WBInstrType,
+    input wire [31:0] PCAddr,
+	input wire [31:0] DataIn,
+	input wire [31:0] CP0Addr,
+	input wire Err,
+	input wire [4:0] ErrStat,
+	input wire [7:2] HWInt,
+	output wire ErrSignal,
+	output wire [31:0] DataOut
     );
-
-
+	wire [4:0] ExcCode;
+	wire [7:2] IP;
+	wire WBJump, WBBranch, EXL_wire, BD_wire;
+	wire [31:0] SR_wire, EPC_wire, Cause_wire;
+	reg [31:0] SR, EPC, Cause, PRId;
+	
+	assign ErrSignal = Err | (| HWInt);
+	// 通知CPU开始中断
+	
+	assign ExcCode = (| HWInt) ? 5'd0 : 
+					 Err ? ErrStat : 5'd31;//中断优先级高于异常
+	assign IP = HWInt;
+	assign Cause_wire = {16'd0, IP, 3'd0, ExcCode, 2'd0};
+	
+	assign WBJump = WBInstrType == `inst_j || 
+					WBInstrType == `inst_jal ||
+					WBInstrType == `inst_jr ||
+					WBInstrType == `inst_jalr ? 1 : 0;
+	assign WBBranch = WBInstrType == `inst_beq ||
+					  WBInstrType == `inst_bgez ||
+					  WBInstrType == `inst_bgtz ||
+					  WBInstrType == `inst_blez ||
+					  WBInstrType == `inst_bltz ||
+					  WBInstrType == `inst_bne ? 1 : 0;
+	assign EPC_wire = (`mtc0 && CP0Addr[4:0] == 14) ? DataIn :
+					  (`mtc0 && CP0Addr[4:0] != 14) ? EPC :
+					  (WBJump || WBBranch) ? {PCAddr[31:2], 2'b0} - 32'd4 : 
+										{PCAddr[31:2], 2'b0};
+	// mtc0指令写EPC，如果写的不是EPC则保持原值
+	assign BD_wire = (WBJump || WBBranch) ? 1 : 0;
+	// 是否在延迟槽内
+	
+	assign ExcCode = (| HWInt) ? 5'd0 : 
+					 Err ? ErrStat : 5'd31;//中断优先级高于异常
+	assign IP = HWInt;
+	assign Cause_wire = {BD_wire, 15'd0, IP, 3'd0, ExcCode, 2'd0};
+	
+	assign EXL_wire = (~SR[1]) && ErrSignal ? 1 : 
+					  (SR[1]) && `eret ? 0 : SR[1];
+	assign SR_wire = (`mtc0 && CP0Addr[4:0] == 12) ? DataIn : 
+					 (`mtc0 && CP0Addr[4:0] != 12) ? SR : 
+								{SR[31:2], EXL_wire, SR[0]};
+	// mtc0指令写SR，如果写的不是SR则保持原值，或只有进出中断时改EXL位
+	
+	assign DataOut = (`mfc0 && CP0Addr[4:0] == 12) ? SR :
+					 (`mfc0 && CP0Addr[4:0] == 13) ? Cause :
+					 (`mfc0 && CP0Addr[4:0] == 14) ? EPC :
+					 (`mfc0 && CP0Addr[4:0] == 15) ? PRId : 32'h1837_5200;
+	//mfc0指令读数据
+	
+	always@(posedge clk)
+	begin
+		if(reset)
+		begin
+			SR <= 32'd0;
+			EPC <= 32'd0;
+			Cause <= 32'd0;
+			PRId <= 32'h1817_1906;
+		end
+		else if(ErrSignal)
+		begin
+			SR <= SR_wire;
+			EPC <= EPC_wire;
+			Cause <= Cause_wire;
+		end
+		else if(`eret)
+		begin
+			SR <= SR_wire;
+		end
+		else if(`mtc0)
+		begin
+			SR <= SR_wire;
+			EPC <= EPC_wire;
+		end
+		else
+		begin
+			SR <= SR;
+			EPC <= EPC;
+		end
+	end
+	
 endmodule

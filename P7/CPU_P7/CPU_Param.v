@@ -93,6 +93,9 @@
 `define inst_blez (60'd1 << 47)
 `define inst_bltz (60'd1 << 48)
 `define inst_bne (60'd1 << 49)
+`define inst_mtc0 (60'd1 << 50)
+`define inst_mfc0 (60'd1 << 51)
+`define inst_eret (60'd1 << 52)
 
 
 //Ö¸ÁîÅĞ¶Ï
@@ -147,6 +150,9 @@
 `define blez (InstrType[47])
 `define bltz (InstrType[48])
 `define bne (InstrType[49])
+`define mtc0 (InstrType[50])
+`define mfc0 (InstrType[51])
+`define eret (InstrType[52])
 
 //´íÎóĞÅÏ¢
 `define Interrupt (5'd0)

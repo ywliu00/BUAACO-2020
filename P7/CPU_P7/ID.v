@@ -62,6 +62,7 @@ module ID(
 	output wire MultTypeInstr,
 	
 	// 异常处理信息
+	input wire ErrSignal,
 	input wire [4:0] ErrStat_IF_to_ID,
 	input wire Err_IF_to_ID,
 	output reg [4:0] ErrStat_ID_to_EX,
@@ -181,7 +182,7 @@ module ID(
 	
 	always@(posedge clk)
 	begin
-		if(reset || Stall)  //Stall时同步清空ID/EX寄存器
+		if(reset || Stall || ErrSignal)  //Stall时同步清空ID/EX寄存器
 		begin
 			RAddr0_ID_to_EX <= 5'd0;
 			RAddr1_ID_to_EX <= 5'd0;
