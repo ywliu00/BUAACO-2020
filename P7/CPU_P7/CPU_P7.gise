@@ -37,11 +37,11 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1607702387" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1607702387">
+    <transform xil_pn:end_ts="1607829605" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1607829605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1607702387" xil_pn:in_ck="5703532873074361108" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1607702387">
+    <transform xil_pn:end_ts="1607829605" xil_pn:in_ck="-1233075101880740680" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1607829605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="ALU.v"/>
@@ -53,7 +53,6 @@
       <outfile xil_pn:name="ByteEnExtend.v"/>
       <outfile xil_pn:name="CP0.v"/>
       <outfile xil_pn:name="CPU.v"/>
-      <outfile xil_pn:name="CPU_Param.v"/>
       <outfile xil_pn:name="DM.v"/>
       <outfile xil_pn:name="DMExtendOp.v"/>
       <outfile xil_pn:name="DMOutExtend.v"/>
@@ -75,19 +74,19 @@
       <outfile xil_pn:name="mips.v"/>
       <outfile xil_pn:name="mips_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1607702387" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="2921163432605696350" xil_pn:start_ts="1607702387">
+    <transform xil_pn:end_ts="1607829605" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="2921163432605696350" xil_pn:start_ts="1607829605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1607702387" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="2340424016432860932" xil_pn:start_ts="1607702387">
+    <transform xil_pn:end_ts="1607829605" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="2340424016432860932" xil_pn:start_ts="1607829605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1607702387" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-6825801120149235046" xil_pn:start_ts="1607702387">
+    <transform xil_pn:end_ts="1607829605" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-6825801120149235046" xil_pn:start_ts="1607829605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1607702387" xil_pn:in_ck="5703532873074361108" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1607702387">
+    <transform xil_pn:end_ts="1607829605" xil_pn:in_ck="-1233075101880740680" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1607829605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="ALU.v"/>
@@ -99,7 +98,6 @@
       <outfile xil_pn:name="ByteEnExtend.v"/>
       <outfile xil_pn:name="CP0.v"/>
       <outfile xil_pn:name="CPU.v"/>
-      <outfile xil_pn:name="CPU_Param.v"/>
       <outfile xil_pn:name="DM.v"/>
       <outfile xil_pn:name="DMExtendOp.v"/>
       <outfile xil_pn:name="DMOutExtend.v"/>
@@ -121,9 +119,11 @@
       <outfile xil_pn:name="mips.v"/>
       <outfile xil_pn:name="mips_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1607702400" xil_pn:in_ck="5703532873074361108" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6259449410488000898" xil_pn:start_ts="1607702387">
+    <transform xil_pn:end_ts="1607829617" xil_pn:in_ck="-1233075101880740680" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6259449410488000898" xil_pn:start_ts="1607829605">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="CPU_TestBench_beh.prj"/>
       <outfile xil_pn:name="CPU_TestBench_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -131,9 +131,11 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1607702400" xil_pn:in_ck="8149789277519929782" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1470864866174268092" xil_pn:start_ts="1607702400">
+    <transform xil_pn:end_ts="1607829617" xil_pn:in_ck="8149789277519929782" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1470864866174268092" xil_pn:start_ts="1607829617">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="CPU_TestBench_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
