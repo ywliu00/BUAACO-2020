@@ -34,18 +34,12 @@ module CP0(
 	output wire [31:0] DataOut
     );
 	wire [4:0] ExcCode;
-	wire [7:2] IP;
 	wire WBJump, WBBranch, EXL_wire, BD_wire;
 	wire [31:0] SR_wire, EPC_wire, Cause_wire;
 	reg [31:0] SR, EPC, Cause, PRId;
 	
-	assign ErrSignal = Err | (| HWInt);
+	assign ErrSignal = (Err | (| HWInt)) && (!SR[1]) && SR[0];// EXL为1时禁止中断，IE全局中断使能
 	// 通知CPU开始中断
-	
-	//assign ExcCode = (| HWInt) ? 5'd0 : 
-	//				 Err ? ErrStat : 5'd31;//中断优先级高于异常
-	//assign IP = HWInt;
-	//assign Cause_wire = {16'd0, IP, 3'd0, ExcCode, 2'd0};
 	
 	assign WBJump = WBInstrType == `inst_j || 
 					WBInstrType == `inst_jal ||
@@ -65,7 +59,6 @@ module CP0(
 	
 	assign ExcCode = (| HWInt) ? 5'd0 : 
 					 Err ? ErrStat : 5'd31;//中断优先级高于异常
-	assign IP = HWInt;
 	
 	assign BD_wire = (WBJump || WBBranch) ? 1 : 0;
 	// 是否在延迟槽内

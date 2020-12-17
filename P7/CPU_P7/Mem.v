@@ -80,7 +80,7 @@ module Mem(
 	wire DMWriteEn;//, RegWriteEn_wire;
 	
 	assign InstrType = InstrType_EX_to_Mem;
-	assign DMWriteEn = (!ErrSignal && (`sw || `sh || `sb)) ? 1 : 0;
+	assign DMWriteEn = (!(ErrSignal || IO_En) && (`sw || `sh || `sb)) ? 1 : 0;
 	assign Tuse_RAddr0_wire = (Tuse_RAddr0_EX_to_Mem > 0) ? Tuse_RAddr0_EX_to_Mem - 3'b001 : Tuse_RAddr0_EX_to_Mem;
 	assign Tuse_RAddr1_wire = (Tuse_RAddr1_EX_to_Mem > 0) ? Tuse_RAddr1_EX_to_Mem - 3'b001 : Tuse_RAddr1_EX_to_Mem;
 	assign Tnew_WAddr_wire = (Tnew_WAddr_EX_to_Mem > 0) ? Tnew_WAddr_EX_to_Mem - 3'b001 : Tnew_WAddr_EX_to_Mem;
@@ -120,6 +120,7 @@ module Mem(
 	
 	////////////////////////// I/O Detect //////////////////////
 	IOAddrDetect IOAddrDetect(
+	.InstrType(InstrType),
     .Addr(ALUOut_EX_to_Mem),
 	.Err(ErrSignal),
     .IO_En(IO_En)

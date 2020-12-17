@@ -45,12 +45,12 @@ module Bridge(
 	
 	assign Addr_0 = PrAddr;
 	assign Addr_1 = PrAddr;
-	assign WE_0 = (PrAddr >= 32'h0000_7F00 && PrAddr <= 32'h0000_7F0B) && PrWE ? 1 : 0;
-	assign WE_1 = (PrAddr >= 32'h0000_7F10 && PrAddr <= 32'h0000_7F1B) && PrWE ? 1 : 0;
+	assign WE_0 = ({PrAddr, 2'b00} >= 32'h0000_7F00 && {PrAddr, 2'b00} <= 32'h0000_7F0B) && PrWE ? 1 : 0;
+	assign WE_1 = ({PrAddr, 2'b00} >= 32'h0000_7F10 && {PrAddr, 2'b00} <= 32'h0000_7F1B) && PrWE ? 1 : 0;
 	assign Din_0 = PrWD;
 	assign Din_1 = PrWD;
-	assign PrRD = (PrAddr >= 32'h0000_7F00 && PrAddr <= 32'h0000_7F0B) ? Dout_0 :
-				  (PrAddr >= 32'h0000_7F10 && PrAddr <= 32'h0000_7F1B) ? Dout_1 : 32'h1234_ABCD;
+	assign PrRD = ({PrAddr, 2'b00} >= 32'h0000_7F00 && {PrAddr, 2'b00} <= 32'h0000_7F0B) ? Dout_0 :
+				  ({PrAddr, 2'b00} >= 32'h0000_7F10 && {PrAddr, 2'b00} <= 32'h0000_7F1B) ? Dout_1 : 32'h1234_ABCD;
 	assign HWIntOut = {3'b0, Interrupt, IRQ_1, IRQ_0};
 	
 endmodule

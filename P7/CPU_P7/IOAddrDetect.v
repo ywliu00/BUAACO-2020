@@ -20,11 +20,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module IOAddrDetect(
+input wire [59:0] InstrType,
     input wire [31:0] Addr,
 	input wire Err,
     output wire IO_En
     );
 	
-	assign IO_En = (!Err) && ((Addr >= 32'h0000_7f00 && Addr <= 32'h0000_7f0b) || (Addr >= 32'h0000_7f10 && Addr <= 32'h0000_7f1b));
+	assign IO_En = (`lw || `sw) && (!Err) && ((Addr >= 32'h0000_7f00 && Addr <= 32'h0000_7f0b) || (Addr >= 32'h0000_7f10 && Addr <= 32'h0000_7f1b));
 	
 endmodule
