@@ -28,6 +28,8 @@ module IF(
 	input wire clk,
 	input wire reset,
 	input wire ErrSignal,
+	input wire eretEn,
+	input wire [31:0] EPCData,
     output reg [31:0] PC_4,
 	output reg [31:0] Instr,
 	output reg [31:0] PC,
@@ -48,7 +50,10 @@ module IF(
     .branch_addr(branch_addr32),
     .jump_addr(jump_addr32),
     .NextPC(NextPC_wire),
-	.PC_4(PC_4_wire));   //PC永远存的是下一条指令地址，因此Stall时NPC输出当前PC只即可
+	.PC_4(PC_4_wire),
+	.ErrSignal(ErrSignal),
+	.eretEn(eretEn),
+	.EPCData(EPCData));   //PC永远存的是下一条指令地址，因此Stall时NPC输出当前PC只即可
 	 
 	ProgramCounter PCnt(
 	.clk(clk),

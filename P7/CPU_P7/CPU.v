@@ -92,7 +92,7 @@ module CPU(
 	wire [31:0] branch_addr32, jump_addr32, PC_4_IF_to_ID,
 	            Instr_IF_to_ID, PC_IF_to_ID;
 	wire [4:0] ErrStat_IF_to_ID;
-	wire branch, jump, Err_IF_to_ID;
+	wire branch, jump, Err_IF_to_ID, eretEn;
 	IF IF(
     .branch_addr32(branch_addr32),
     .jump_addr32(jump_addr32),
@@ -108,7 +108,9 @@ module CPU(
 	
 	.ErrSignal(ErrSignal),
 	.ErrStat_IF_to_ID(ErrStat_IF_to_ID),
-	.Err_IF_to_ID(Err_IF_to_ID)
+	.Err_IF_to_ID(Err_IF_to_ID),
+	.eretEn(eretEn),
+	.EPCData(Data_CP0_to_Mem)
     );
 	
 	////////////////////// ID ////////////////////////////
@@ -287,6 +289,7 @@ module CPU(
 	.CP0RData(Data_CP0_to_Mem),
 	.CP0Addr(CP0Addr_Mem_to_CP0),
 	.CP0WData(Data_Mem_to_CP0),
+	.eretEn(eretEn),
 	
 	.IO_RData(PrRD),//CPU从外部读
 	.IO_WData(PrWD),//CPU向外部写

@@ -80,7 +80,8 @@ module CP0(
 	assign DataOut = (`mfc0 && CP0Addr[4:0] == 12) ? SR :
 					 (`mfc0 && CP0Addr[4:0] == 13) ? Cause :
 					 (`mfc0 && CP0Addr[4:0] == 14) ? EPC :
-					 (`mfc0 && CP0Addr[4:0] == 15) ? PRId : 32'h1837_5200;
+					 (`mfc0 && CP0Addr[4:0] == 15) ? PRId : 
+					 (`eret) ? EPC :32'h1837_5200;
 	//mfc0Ö¸Áî¶ÁÊý¾Ý
 	
 	always@(posedge clk)

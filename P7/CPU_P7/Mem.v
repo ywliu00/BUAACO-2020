@@ -65,6 +65,7 @@ module Mem(
 	output wire [4:0] ErrStat,
 	output wire [31:0] CP0Addr,
 	output wire [31:0] CP0WData,
+	output wire eretEn,
 	
 	// 外部设备读写信息
 	input wire [31:0] IO_RData,
@@ -158,7 +159,7 @@ module Mem(
 	//从ID级一路传下来的Rt值（见AT模块）
 	assign GRFWriteData = (`mfc0) ? CP0RData : 
 						  (IO_En) ? IO_RData : DMRead_wire;
-	
+	assign eretEn = `eret ? 1 : 0;
 	////////////////流水线寄存器//////////////////
 	always@(posedge clk)
 	begin

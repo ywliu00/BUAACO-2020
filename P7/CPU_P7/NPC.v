@@ -27,10 +27,15 @@ module NPC(
     input wire [31:0] branch_addr,
     input wire [31:0] jump_addr,
     output wire [31:0] NextPC,
-	output wire [31:0] PC_4
+	output wire [31:0] PC_4,
+	input wire ErrSignal,
+	input wire eretEn,
+	input wire [31:0] EPCData
     );
 	 assign PC_4 = PC + 31'd4;
 	 assign NextPC = (Stall) ? PC :
+					 (ErrSignal) ? 32'h0000_4180 :
+					 (eretEn) ? EPCData :
 					 (jump) ? jump_addr :
 	                 (branch) ? branch_addr :
 						  PC_4;
