@@ -33,9 +33,9 @@ module NPC(
 	input wire [31:0] EPCData
     );
 	 assign PC_4 = PC + 31'd4;
-	 assign NextPC = (Stall) ? PC :
+	 assign NextPC = (eretEn) ? EPCData :
 					 (ErrSignal) ? 32'h0000_4180 :
-					 (eretEn) ? EPCData :
+					 (Stall) ? PC :
 					 (jump) ? jump_addr :
 	                 (branch) ? branch_addr :
 						  PC_4;

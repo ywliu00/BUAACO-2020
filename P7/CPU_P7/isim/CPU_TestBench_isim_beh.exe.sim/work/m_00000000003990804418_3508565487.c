@@ -21,11 +21,11 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/BUAACO/P7/CPU_P7/CPU.v";
+static const char *ng0 = "F:/Course/CO/P7/CPU_P7/CPU.v";
 
 
 
-static void Cont_307_0(char *t0)
+static void Cont_313_0(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -55,15 +55,15 @@ static void Cont_307_0(char *t0)
     char *t26;
     char *t27;
 
-LAB0:    t1 = (t0 + 16928U);
+LAB0:    t1 = (t0 + 17248U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(307, ng0);
-    t2 = (t0 + 13528U);
+LAB2:    xsi_set_current_line(313, ng0);
+    t2 = (t0 + 13848U);
     t5 = *((char **)t2);
     memset(t4, 0, 8);
     t2 = (t5 + 4);
@@ -100,14 +100,14 @@ LAB13:    if (*((unsigned int *)t4) > 0)
 
 LAB15:    memcpy(t3, t22, 8);
 
-LAB16:    t16 = (t0 + 17592);
+LAB16:    t16 = (t0 + 17912);
     t23 = (t16 + 56U);
     t24 = *((char **)t23);
     t25 = (t24 + 56U);
     t26 = *((char **)t25);
     memcpy(t26, t3, 8);
     xsi_driver_vfirst_trans(t16, 0, 31);
-    t27 = (t0 + 17496);
+    t27 = (t0 + 17816);
     *((int *)t27) = 1;
 
 LAB1:    return;
@@ -119,11 +119,11 @@ LAB6:    t11 = (t4 + 4);
     *((unsigned int *)t11) = 1;
     goto LAB7;
 
-LAB8:    t16 = (t0 + 14968U);
+LAB8:    t16 = (t0 + 15288U);
     t17 = *((char **)t16);
     goto LAB9;
 
-LAB10:    t16 = (t0 + 14648U);
+LAB10:    t16 = (t0 + 14968U);
     t22 = *((char **)t16);
     goto LAB11;
 
@@ -135,7 +135,7 @@ LAB14:    memcpy(t3, t17, 8);
 
 }
 
-static void Cont_308_1(char *t0)
+static void Cont_314_1(char *t0)
 {
     char *t1;
     char *t2;
@@ -146,33 +146,33 @@ static void Cont_308_1(char *t0)
     char *t7;
     char *t8;
 
-LAB0:    t1 = (t0 + 17176U);
+LAB0:    t1 = (t0 + 17496U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(308, ng0);
-    t2 = (t0 + 12888U);
+LAB2:    xsi_set_current_line(314, ng0);
+    t2 = (t0 + 13208U);
     t3 = *((char **)t2);
-    t2 = (t0 + 17656);
+    t2 = (t0 + 17976);
     t4 = (t2 + 56U);
     t5 = *((char **)t4);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
     memcpy(t7, t3, 8);
     xsi_driver_vfirst_trans(t2, 0, 31);
-    t8 = (t0 + 17512);
+    t8 = (t0 + 17832);
     *((int *)t8) = 1;
 
 LAB1:    return;
 }
 
 
-extern void work_m_00000000002549315172_3508565487_init()
+extern void work_m_00000000003990804418_3508565487_init()
 {
-	static char *pe[] = {(void *)Cont_307_0,(void *)Cont_308_1};
-	xsi_register_didat("work_m_00000000002549315172_3508565487", "isim/CPU_TestBench_isim_beh.exe.sim/work/m_00000000002549315172_3508565487.didat");
+	static char *pe[] = {(void *)Cont_313_0,(void *)Cont_314_1};
+	xsi_register_didat("work_m_00000000003990804418_3508565487", "isim/CPU_TestBench_isim_beh.exe.sim/work/m_00000000003990804418_3508565487.didat");
 	xsi_register_executes(pe);
 }

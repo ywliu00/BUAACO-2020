@@ -117,7 +117,7 @@ module CPU(
 	wire Start_ID_to_EX, Err_ID_to_EX;//RegWriteEn;
 	wire [2:0] Tuse_RAddr0_ID_to_EX, Tuse_RAddr1_ID_to_EX, Tnew_WAddr_ID_to_EX;
 	wire [4:0] ReadAddr0_ID_to_EX, ReadAddr1_ID_to_EX, RegWriteAddr_ID_to_EX, 
-	           Shamt_ID_to_EX, ErrStat_ID_to_EX;
+	           Shamt_ID_to_EX, ErrStat_ID_to_EX, Rd_CP0Addr_ID_to_EX;
 	wire [31:0] RegWriteData, RegWritePC, imm32_ID_to_EX, Data0_ID_to_EX,
 	            Data1_ID_to_EX, ResFromID_ID_to_EX, PC_ID_to_EX,
 				RegWriteData_Mem_to_WB;
@@ -148,6 +148,7 @@ module CPU(
 	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
 	.Tnew_WAddr_ID_to_EX(Tnew_WAddr_ID_to_EX),
 	.Start_ID_to_EX(Start_ID_to_EX),
+	.Rd_CP0Addr_ID_to_EX(Rd_CP0Addr_ID_to_EX),
 	
 	.branch(branch),
     .jump(jump),
@@ -171,14 +172,15 @@ module CPU(
 	.ErrStat_IF_to_ID(ErrStat_IF_to_ID),
 	.Err_IF_to_ID(Err_IF_to_ID),
 	.ErrStat_ID_to_EX(ErrStat_ID_to_EX),
-	.Err_ID_to_EX(Err_ID_to_EX)
+	.Err_ID_to_EX(Err_ID_to_EX),
+	.eretEn(eretEn)
     );
 	 
 	//////////////////// EX /////////////////////////////////
 	wire Err_EX_to_Mem;
 	wire [2:0] Tuse_RAddr0_EX_to_Mem, Tuse_RAddr1_EX_to_Mem, Tnew_WAddr_EX_to_Mem;
 	wire [4:0] ReadAddr0_EX_to_Mem, ReadAddr1_EX_to_Mem, 
-			   RegWriteAddr_EX_to_Mem, ErrStat_EX_to_Mem;
+			   RegWriteAddr_EX_to_Mem, ErrStat_EX_to_Mem, Rd_CP0Addr_EX_to_Mem;
 	wire [31:0] PC_EX_to_Mem, DMWriteData_EX_to_Mem, ALUOut_EX_to_Mem;
 	wire [59:0] InstrType_EX_to_Mem;
 	EX EX(
@@ -196,6 +198,8 @@ module CPU(
 	.Tuse_RAddr1_ID_to_EX(Tuse_RAddr1_ID_to_EX),
 	.Tnew_WAddr_ID_to_EX(Tnew_WAddr_ID_to_EX),
 	.Start_ID_to_EX(Start_ID_to_EX),
+	.Rd_CP0Addr_ID_to_EX(Rd_CP0Addr_ID_to_EX),
+	.eretEn(eretEn),
 	.clk(clk),
     .reset(reset),
 	
@@ -209,6 +213,7 @@ module CPU(
 	.Tuse_RAddr0_EX_to_Mem(Tuse_RAddr0_EX_to_Mem),
 	.Tuse_RAddr1_EX_to_Mem(Tuse_RAddr1_EX_to_Mem),
 	.Tnew_WAddr_EX_to_Mem(Tnew_WAddr_EX_to_Mem),
+	.Rd_CP0Addr_EX_to_Mem(Rd_CP0Addr_EX_to_Mem),
 	
 	// 给冲突处理单元的数据
 	.RAddr0_EX(RAddr0_EX),
@@ -253,6 +258,7 @@ module CPU(
 	.Tuse_RAddr0_EX_to_Mem(Tuse_RAddr0_EX_to_Mem),
 	.Tuse_RAddr1_EX_to_Mem(Tuse_RAddr1_EX_to_Mem),
 	.Tnew_WAddr_EX_to_Mem(Tnew_WAddr_EX_to_Mem),
+	.Rd_CP0Addr_EX_to_Mem(Rd_CP0Addr_EX_to_Mem),
 	.clk(clk),
     .reset(reset),
 	

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/BUAACO/P7/CPU_P7/mips_tb.v";
+static const char *ng0 = "F:/Course/CO/P7/CPU_P7/mips_tb.v";
 static int ng1[] = {0, 0};
 static int ng2[] = {1, 0};
 
@@ -78,7 +78,7 @@ LAB6:    xsi_set_current_line(50, ng0);
 
 }
 
-static void Always_55_1(char *t0)
+static void Always_59_1(char *t0)
 {
     char t3[8];
     char *t1;
@@ -112,13 +112,13 @@ LAB0:    t1 = (t0 + 2936U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(55, ng0);
+LAB2:    xsi_set_current_line(59, ng0);
     t2 = (t0 + 2744);
     xsi_process_wait(t2, 5000LL);
     *((char **)t1) = &&LAB4;
 
 LAB1:    return;
-LAB4:    xsi_set_current_line(55, ng0);
+LAB4:    xsi_set_current_line(59, ng0);
     t4 = (t0 + 1448);
     t5 = (t4 + 56U);
     t6 = *((char **)t5);
@@ -172,7 +172,7 @@ LAB10:    t18 = *((unsigned int *)t3);
 
 extern void work_m_00000000004012381387_2707123020_init()
 {
-	static char *pe[] = {(void *)Initial_40_0,(void *)Always_55_1};
+	static char *pe[] = {(void *)Initial_40_0,(void *)Always_59_1};
 	xsi_register_didat("work_m_00000000004012381387_2707123020", "isim/CPU_TestBench_isim_beh.exe.sim/work/m_00000000004012381387_2707123020.didat");
 	xsi_register_executes(pe);
 }

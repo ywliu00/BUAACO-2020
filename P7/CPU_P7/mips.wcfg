@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="24" />
+   <WVObjectSize size="26" />
    <wvobject fp_name="/CPU_TestBench/addr" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">addr[31:0]</obj_property>
       <obj_property name="ObjectShortName">addr[31:0]</obj_property>
@@ -48,82 +48,85 @@
       <obj_property name="ObjectShortName">PC_EX_to_Mem[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/GRFWriteData" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">GRFWriteData[31:0]</obj_property>
-      <obj_property name="ObjectShortName">GRFWriteData[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
    <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/PC_Mem_to_WB" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">PC_Mem_to_WB[31:0]</obj_property>
       <obj_property name="ObjectShortName">PC_Mem_to_WB[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/DMOutExt/Addr2" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">Addr2[1:0]</obj_property>
-      <obj_property name="ObjectShortName">Addr2[1:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/ErrSignal" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ErrSignal</obj_property>
+      <obj_property name="ObjectShortName">ErrSignal</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/DMOutExt/DataIn" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">DataIn[31:0]</obj_property>
-      <obj_property name="ObjectShortName">DataIn[31:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/CP0Addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">CP0Addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CP0Addr[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/DMOutExt/Op" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">Op[2:0]</obj_property>
-      <obj_property name="ObjectShortName">Op[2:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/InstrType[51]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[51]</obj_property>
+      <obj_property name="ObjectShortName">InstrType[51]</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/DMOutExt/DataOut" type="array" db_ref_id="1">
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/DataOut" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">DataOut[31:0]</obj_property>
       <obj_property name="ObjectShortName">DataOut[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/DMOutExt/ByteData" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ByteData[7:0]</obj_property>
-      <obj_property name="ObjectShortName">ByteData[7:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/GRFWriteData" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">GRFWriteData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">GRFWriteData[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/DMOutExt/HalfWordData" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">HalfWordData[15:0]</obj_property>
-      <obj_property name="ObjectShortName">HalfWordData[15:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/RegWriteAddr_Mem_to_WB" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">RegWriteAddr_Mem_to_WB[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RegWriteAddr_Mem_to_WB[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/DMReadData_Mem_to_WB" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">DMReadData_Mem_to_WB[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DMReadData_Mem_to_WB[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/ALUOut_EX_to_Mem" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ALUOut_EX_to_Mem[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ALUOut_EX_to_Mem[31:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/eretEn" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">eretEn</obj_property>
+      <obj_property name="ObjectShortName">eretEn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/IF/NPC/EPCData" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">EPCData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">EPCData[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/ALUOut_Mem_to_WB" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ALUOut_Mem_to_WB[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ALUOut_Mem_to_WB[31:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/IF/NPC/NextPC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">NextPC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">NextPC[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/ALURes_wire" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ALURes_wire[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ALURes_wire[31:0]</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/Cause" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">Cause[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Cause[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/EPC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">EPC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">EPC[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/ALU/In0" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">In0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">In0[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/SR" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SR[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/ALU/In1" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">In1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">In1[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/WBJump" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">WBJump</obj_property>
+      <obj_property name="ObjectShortName">WBJump</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/ALU/Res33" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">Res33[32:0]</obj_property>
-      <obj_property name="ObjectShortName">Res33[32:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/WBBranch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">WBBranch</obj_property>
+      <obj_property name="ObjectShortName">WBBranch</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/ALU/In0SignedExt" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">In0SignedExt[32:0]</obj_property>
-      <obj_property name="ObjectShortName">In0SignedExt[32:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/BD_wire" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BD_wire</obj_property>
+      <obj_property name="ObjectShortName">BD_wire</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/ALU/In1SignedExt" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">In1SignedExt[32:0]</obj_property>
-      <obj_property name="ObjectShortName">In1SignedExt[32:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/Cause_wire" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">Cause_wire[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Cause_wire[31:0]</obj_property>
    </wvobject>
 </wave_config>

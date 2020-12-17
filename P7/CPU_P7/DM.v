@@ -54,7 +54,7 @@ module DM(
 	 begin
 		if(reset)
 		begin
-			for(i = 0;i < 1024;i = i + 1)
+			for(i = 0;i < 4096;i = i + 1)
 			begin
 				DM_Unit[i] <= 32'h0000_0000;
 			end

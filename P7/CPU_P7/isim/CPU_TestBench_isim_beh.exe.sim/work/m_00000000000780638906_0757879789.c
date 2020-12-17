@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/BUAACO/P7/CPU_P7/NPC.v";
+static const char *ng0 = "F:/Course/CO/P7/CPU_P7/NPC.v";
 static unsigned int ng1[] = {4U, 0U};
 static unsigned int ng2[] = {16768U, 0U};
 
@@ -180,7 +180,7 @@ LAB0:    t1 = (t0 + 4056U);
 LAB3:    goto *t2;
 
 LAB2:    xsi_set_current_line(36, ng0);
-    t2 = (t0 + 1528U);
+    t2 = (t0 + 2488U);
     t5 = *((char **)t2);
     memset(t4, 0, 8);
     t2 = (t5 + 4);
@@ -236,7 +236,7 @@ LAB6:    t11 = (t4 + 4);
     *((unsigned int *)t11) = 1;
     goto LAB7;
 
-LAB8:    t16 = (t0 + 1048U);
+LAB8:    t16 = (t0 + 2648U);
     t17 = *((char **)t16);
     goto LAB9;
 
@@ -296,7 +296,7 @@ LAB19:    t30 = (t23 + 4);
 LAB21:    t35 = ((char*)((ng2)));
     goto LAB22;
 
-LAB23:    t42 = (t0 + 2488U);
+LAB23:    t42 = (t0 + 1528U);
     t43 = *((char **)t42);
     memset(t41, 0, 8);
     t42 = (t43 + 4);
@@ -349,7 +349,7 @@ LAB32:    t49 = (t41 + 4);
     *((unsigned int *)t49) = 1;
     goto LAB33;
 
-LAB34:    t54 = (t0 + 2648U);
+LAB34:    t54 = (t0 + 1048U);
     t55 = *((char **)t54);
     goto LAB35;
 

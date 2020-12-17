@@ -41,6 +41,8 @@ module EX(
 	input wire Start_ID_to_EX, /////////////////乘除模块开始运算信号
 	input wire clk,
     input wire reset,
+	input wire [4:0] Rd_CP0Addr_ID_to_EX,
+	input wire eretEn,
 	
 	output reg [31:0] PC_EX_to_Mem,
 	output reg [4:0] RAddr0_EX_to_Mem,
@@ -52,6 +54,7 @@ module EX(
 	output reg [2:0] Tuse_RAddr0_EX_to_Mem,
 	output reg [2:0] Tuse_RAddr1_EX_to_Mem,
 	output reg [2:0] Tnew_WAddr_EX_to_Mem,
+	output reg [4:0] Rd_CP0Addr_EX_to_Mem,
 	
 	// 给冲突处理单元的数据
 	output wire [4:0] RAddr0_EX,
@@ -168,7 +171,7 @@ module EX(
 	///////////////////// 流水线寄存器 ///////////////////////////////
 	always@(posedge clk)
 	begin
-		if(reset || ErrSignal)
+		if(reset || ErrSignal || eretEn)
 		begin
 			RAddr0_EX_to_Mem <= 32'd0;
 			RAddr1_EX_to_Mem <= 32'd0;
@@ -182,6 +185,7 @@ module EX(
 			Tnew_WAddr_EX_to_Mem <= 3'b000;
 			ErrStat_EX_to_Mem <= 5'd31;
 			Err_EX_to_Mem <= 0;
+			Rd_CP0Addr_EX_to_Mem <= 5'd0;
 		end
 		else
 		begin
@@ -197,6 +201,7 @@ module EX(
 			Tnew_WAddr_EX_to_Mem <= Tnew_WAddr_wire;
 			ErrStat_EX_to_Mem <= ErrStat_wire;
 			Err_EX_to_Mem <= Err_wire;
+			Rd_CP0Addr_EX_to_Mem <= Rd_CP0Addr_ID_to_EX;
 		end
 	end
 

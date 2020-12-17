@@ -49,6 +49,10 @@ module CPU_TestBench;
 		#10;
 		reset = 0;
         
+		//#60;
+		//interrupt = 1;
+		//#10;
+		//interrupt = 0;
 		// Add stimulus here
 
 	end

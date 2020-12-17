@@ -1,5 +1,5 @@
 ISim log file
-Running: D:\BUAACO\P7\CPU_P7\CPU_TestBench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/BUAACO/P7/CPU_P7/CPU_TestBench_isim_beh.wdb 
+Running: F:\Course\CO\P7\CPU_P7\CPU_TestBench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb F:/Course/CO/P7/CPU_P7/CPU_TestBench_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 This is a Full version of ISim.
 Time resolution is 1 ps
@@ -8,22 +8,1175 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-                 145@00003000: $10 <= 0bb80000
-                 155@00003004: $10 <= 0bb807b4
-                 165@00003008: $11 <= 4e200000
-                 175@0000300c: $11 <= 4e200520
-                 255@00003014: $13 <= 03938995
-                 265@00003018: $14 <= dda77a80
-                 265@0000301c: *00000004 <= 95000000
-                 275@00003020: *00000008 <= 7a800000
-                 295@00003024: $20 <= 12340000
-                 305@00003028: $20 <= 12345678
-                 305@0000302c: *00000000 <= 12345678
-                 325@00003030: $21 <= ffff0000
-                 335@00003034: $21 <= ffffffff
-                 345@00003038: $22 <= ffff0000
-                 355@0000303c: $22 <= ffffffff
-                 365@00003040: $17 <= 00000078
-                 375@00003044: $21 <= 00000056
-                 385@00003048: $22 <= 00005678
-                 395@0000304c: $23 <= 00001234
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 7 <= 80000004
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 7 <= 80000004
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run all
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+Stopped at time : 4870335 ns : File "F:/Course/CO/P7/CPU_P7/ID.v" Line 223
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00000000
+                 245@00004184: $ 1 <= 00000004
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@xxxxxxxX: $ 7 <= xxxxxxxx
+                 325@xxxxxxxX: $ 7 <= xxxxxxxx
+                 335@xxxxxxxX: $ 7 <= xxxxxxxx
+                 345@xxxxxxxX: $ 7 <= xxxxxxxx
+                 355@xxxxxxxX: $ 7 <= xxxxxxxx
+                 365@xxxxxxxX: $ 7 <= xxxxxxxx
+                 375@xxxxxxxX: $ 7 <= xxxxxxxx
+                 385@xxxxxxxX: $ 7 <= xxxxxxxx
+                 395@xxxxxxxX: $ 7 <= xxxxxxxx
+                 405@xxxxxxxX: $ 7 <= xxxxxxxx
+                 415@xxxxxxxX: $ 7 <= xxxxxxxx
+                 425@xxxxxxxX: $ 7 <= xxxxxxxx
+                 435@xxxxxxxX: $ 7 <= xxxxxxxx
+                 445@xxxxxxxX: $ 7 <= xxxxxxxx
+                 455@xxxxxxxX: $ 7 <= xxxxxxxx
+                 465@xxxxxxxX: $ 7 <= xxxxxxxx
+                 475@xxxxxxxX: $ 7 <= xxxxxxxx
+                 485@xxxxxxxX: $ 7 <= xxxxxxxx
+                 495@xxxxxxxX: $ 7 <= xxxxxxxx
+                 505@xxxxxxxX: $ 7 <= xxxxxxxx
+                 515@xxxxxxxX: $ 7 <= xxxxxxxx
+                 525@xxxxxxxX: $ 7 <= xxxxxxxx
+                 535@xxxxxxxX: $ 7 <= xxxxxxxx
+                 545@xxxxxxxX: $ 7 <= xxxxxxxx
+                 555@xxxxxxxX: $ 7 <= xxxxxxxx
+                 565@xxxxxxxX: $ 7 <= xxxxxxxx
+                 575@xxxxxxxX: $ 7 <= xxxxxxxx
+                 585@xxxxxxxX: $ 7 <= xxxxxxxx
+                 595@xxxxxxxX: $ 7 <= xxxxxxxx
+                 605@xxxxxxxX: $ 7 <= xxxxxxxx
+                 615@xxxxxxxX: $ 7 <= xxxxxxxx
+                 625@xxxxxxxX: $ 7 <= xxxxxxxx
+                 635@xxxxxxxX: $ 7 <= xxxxxxxx
+                 645@xxxxxxxX: $ 7 <= xxxxxxxx
+                 655@xxxxxxxX: $ 7 <= xxxxxxxx
+                 665@xxxxxxxX: $ 7 <= xxxxxxxx
+                 675@xxxxxxxX: $ 7 <= xxxxxxxx
+                 685@xxxxxxxX: $ 7 <= xxxxxxxx
+                 695@xxxxxxxX: $ 7 <= xxxxxxxx
+                 705@xxxxxxxX: $ 7 <= xxxxxxxx
+                 715@xxxxxxxX: $ 7 <= xxxxxxxx
+                 725@xxxxxxxX: $ 7 <= xxxxxxxx
+                 735@xxxxxxxX: $ 7 <= xxxxxxxx
+                 745@xxxxxxxX: $ 7 <= xxxxxxxx
+                 755@xxxxxxxX: $ 7 <= xxxxxxxx
+                 765@xxxxxxxX: $ 7 <= xxxxxxxx
+                 775@xxxxxxxX: $ 7 <= xxxxxxxx
+                 785@xxxxxxxX: $ 7 <= xxxxxxxx
+                 795@xxxxxxxX: $ 7 <= xxxxxxxx
+                 805@xxxxxxxX: $ 7 <= xxxxxxxx
+                 815@xxxxxxxX: $ 7 <= xxxxxxxx
+                 825@xxxxxxxX: $ 7 <= xxxxxxxx
+                 835@xxxxxxxX: $ 7 <= xxxxxxxx
+                 845@xxxxxxxX: $ 7 <= xxxxxxxx
+                 855@xxxxxxxX: $ 7 <= xxxxxxxx
+                 865@xxxxxxxX: $ 7 <= xxxxxxxx
+                 875@xxxxxxxX: $ 7 <= xxxxxxxx
+                 885@xxxxxxxX: $ 7 <= xxxxxxxx
+                 895@xxxxxxxX: $ 7 <= xxxxxxxx
+                 905@xxxxxxxX: $ 7 <= xxxxxxxx
+                 915@xxxxxxxX: $ 7 <= xxxxxxxx
+                 925@xxxxxxxX: $ 7 <= xxxxxxxx
+                 935@xxxxxxxX: $ 7 <= xxxxxxxx
+                 945@xxxxxxxX: $ 7 <= xxxxxxxx
+                 955@xxxxxxxX: $ 7 <= xxxxxxxx
+                 965@xxxxxxxX: $ 7 <= xxxxxxxx
+                 975@xxxxxxxX: $ 7 <= xxxxxxxx
+                 985@xxxxxxxX: $ 7 <= xxxxxxxx
+                 995@xxxxxxxX: $ 7 <= xxxxxxxx
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@xxxxxxxX: $ 7 <= xxxxxxxx
+                 325@xxxxxxxX: $ 7 <= xxxxxxxx
+                 335@xxxxxxxX: $ 7 <= xxxxxxxx
+                 345@xxxxxxxX: $ 7 <= xxxxxxxx
+                 355@xxxxxxxX: $ 7 <= xxxxxxxx
+                 365@xxxxxxxX: $ 7 <= xxxxxxxx
+                 375@xxxxxxxX: $ 7 <= xxxxxxxx
+                 385@xxxxxxxX: $ 7 <= xxxxxxxx
+                 395@xxxxxxxX: $ 7 <= xxxxxxxx
+                 405@xxxxxxxX: $ 7 <= xxxxxxxx
+                 415@xxxxxxxX: $ 7 <= xxxxxxxx
+                 425@xxxxxxxX: $ 7 <= xxxxxxxx
+                 435@xxxxxxxX: $ 7 <= xxxxxxxx
+                 445@xxxxxxxX: $ 7 <= xxxxxxxx
+                 455@xxxxxxxX: $ 7 <= xxxxxxxx
+                 465@xxxxxxxX: $ 7 <= xxxxxxxx
+                 475@xxxxxxxX: $ 7 <= xxxxxxxx
+                 485@xxxxxxxX: $ 7 <= xxxxxxxx
+                 495@xxxxxxxX: $ 7 <= xxxxxxxx
+                 505@xxxxxxxX: $ 7 <= xxxxxxxx
+                 515@xxxxxxxX: $ 7 <= xxxxxxxx
+                 525@xxxxxxxX: $ 7 <= xxxxxxxx
+                 535@xxxxxxxX: $ 7 <= xxxxxxxx
+                 545@xxxxxxxX: $ 7 <= xxxxxxxx
+                 555@xxxxxxxX: $ 7 <= xxxxxxxx
+                 565@xxxxxxxX: $ 7 <= xxxxxxxx
+                 575@xxxxxxxX: $ 7 <= xxxxxxxx
+                 585@xxxxxxxX: $ 7 <= xxxxxxxx
+                 595@xxxxxxxX: $ 7 <= xxxxxxxx
+                 605@xxxxxxxX: $ 7 <= xxxxxxxx
+                 615@xxxxxxxX: $ 7 <= xxxxxxxx
+                 625@xxxxxxxX: $ 7 <= xxxxxxxx
+                 635@xxxxxxxX: $ 7 <= xxxxxxxx
+                 645@xxxxxxxX: $ 7 <= xxxxxxxx
+                 655@xxxxxxxX: $ 7 <= xxxxxxxx
+                 665@xxxxxxxX: $ 7 <= xxxxxxxx
+                 675@xxxxxxxX: $ 7 <= xxxxxxxx
+                 685@xxxxxxxX: $ 7 <= xxxxxxxx
+                 695@xxxxxxxX: $ 7 <= xxxxxxxx
+                 705@xxxxxxxX: $ 7 <= xxxxxxxx
+                 715@xxxxxxxX: $ 7 <= xxxxxxxx
+                 725@xxxxxxxX: $ 7 <= xxxxxxxx
+                 735@xxxxxxxX: $ 7 <= xxxxxxxx
+                 745@xxxxxxxX: $ 7 <= xxxxxxxx
+                 755@xxxxxxxX: $ 7 <= xxxxxxxx
+                 765@xxxxxxxX: $ 7 <= xxxxxxxx
+                 775@xxxxxxxX: $ 7 <= xxxxxxxx
+                 785@xxxxxxxX: $ 7 <= xxxxxxxx
+                 795@xxxxxxxX: $ 7 <= xxxxxxxx
+                 805@xxxxxxxX: $ 7 <= xxxxxxxx
+                 815@xxxxxxxX: $ 7 <= xxxxxxxx
+                 825@xxxxxxxX: $ 7 <= xxxxxxxx
+                 835@xxxxxxxX: $ 7 <= xxxxxxxx
+                 845@xxxxxxxX: $ 7 <= xxxxxxxx
+                 855@xxxxxxxX: $ 7 <= xxxxxxxx
+                 865@xxxxxxxX: $ 7 <= xxxxxxxx
+                 875@xxxxxxxX: $ 7 <= xxxxxxxx
+                 885@xxxxxxxX: $ 7 <= xxxxxxxx
+                 895@xxxxxxxX: $ 7 <= xxxxxxxx
+                 905@xxxxxxxX: $ 7 <= xxxxxxxx
+                 915@xxxxxxxX: $ 7 <= xxxxxxxx
+                 925@xxxxxxxX: $ 7 <= xxxxxxxx
+                 935@xxxxxxxX: $ 7 <= xxxxxxxx
+                 945@xxxxxxxX: $ 7 <= xxxxxxxx
+                 955@xxxxxxxX: $ 7 <= xxxxxxxx
+                 965@xxxxxxxX: $ 7 <= xxxxxxxx
+                 975@xxxxxxxX: $ 7 <= xxxxxxxx
+                 985@xxxxxxxX: $ 7 <= xxxxxxxx
+                 995@xxxxxxxX: $ 7 <= xxxxxxxx
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@xxxxxxxX: $ 7 <= xxxxxxxx
+                 325@xxxxxxxX: $ 7 <= xxxxxxxx
+                 335@xxxxxxxX: $ 7 <= xxxxxxxx
+                 345@xxxxxxxX: $ 7 <= xxxxxxxx
+                 355@xxxxxxxX: $ 7 <= xxxxxxxx
+                 365@xxxxxxxX: $ 7 <= xxxxxxxx
+                 375@xxxxxxxX: $ 7 <= xxxxxxxx
+                 385@xxxxxxxX: $ 7 <= xxxxxxxx
+                 395@xxxxxxxX: $ 7 <= xxxxxxxx
+                 405@xxxxxxxX: $ 7 <= xxxxxxxx
+                 415@xxxxxxxX: $ 7 <= xxxxxxxx
+                 425@xxxxxxxX: $ 7 <= xxxxxxxx
+                 435@xxxxxxxX: $ 7 <= xxxxxxxx
+                 445@xxxxxxxX: $ 7 <= xxxxxxxx
+                 455@xxxxxxxX: $ 7 <= xxxxxxxx
+                 465@xxxxxxxX: $ 7 <= xxxxxxxx
+                 475@xxxxxxxX: $ 7 <= xxxxxxxx
+                 485@xxxxxxxX: $ 7 <= xxxxxxxx
+                 495@xxxxxxxX: $ 7 <= xxxxxxxx
+                 505@xxxxxxxX: $ 7 <= xxxxxxxx
+                 515@xxxxxxxX: $ 7 <= xxxxxxxx
+                 525@xxxxxxxX: $ 7 <= xxxxxxxx
+                 535@xxxxxxxX: $ 7 <= xxxxxxxx
+                 545@xxxxxxxX: $ 7 <= xxxxxxxx
+                 555@xxxxxxxX: $ 7 <= xxxxxxxx
+                 565@xxxxxxxX: $ 7 <= xxxxxxxx
+                 575@xxxxxxxX: $ 7 <= xxxxxxxx
+                 585@xxxxxxxX: $ 7 <= xxxxxxxx
+                 595@xxxxxxxX: $ 7 <= xxxxxxxx
+                 605@xxxxxxxX: $ 7 <= xxxxxxxx
+                 615@xxxxxxxX: $ 7 <= xxxxxxxx
+                 625@xxxxxxxX: $ 7 <= xxxxxxxx
+                 635@xxxxxxxX: $ 7 <= xxxxxxxx
+                 645@xxxxxxxX: $ 7 <= xxxxxxxx
+                 655@xxxxxxxX: $ 7 <= xxxxxxxx
+                 665@xxxxxxxX: $ 7 <= xxxxxxxx
+                 675@xxxxxxxX: $ 7 <= xxxxxxxx
+                 685@xxxxxxxX: $ 7 <= xxxxxxxx
+                 695@xxxxxxxX: $ 7 <= xxxxxxxx
+                 705@xxxxxxxX: $ 7 <= xxxxxxxx
+                 715@xxxxxxxX: $ 7 <= xxxxxxxx
+                 725@xxxxxxxX: $ 7 <= xxxxxxxx
+                 735@xxxxxxxX: $ 7 <= xxxxxxxx
+                 745@xxxxxxxX: $ 7 <= xxxxxxxx
+                 755@xxxxxxxX: $ 7 <= xxxxxxxx
+                 765@xxxxxxxX: $ 7 <= xxxxxxxx
+                 775@xxxxxxxX: $ 7 <= xxxxxxxx
+                 785@xxxxxxxX: $ 7 <= xxxxxxxx
+                 795@xxxxxxxX: $ 7 <= xxxxxxxx
+                 805@xxxxxxxX: $ 7 <= xxxxxxxx
+                 815@xxxxxxxX: $ 7 <= xxxxxxxx
+                 825@xxxxxxxX: $ 7 <= xxxxxxxx
+                 835@xxxxxxxX: $ 7 <= xxxxxxxx
+                 845@xxxxxxxX: $ 7 <= xxxxxxxx
+                 855@xxxxxxxX: $ 7 <= xxxxxxxx
+                 865@xxxxxxxX: $ 7 <= xxxxxxxx
+                 875@xxxxxxxX: $ 7 <= xxxxxxxx
+                 885@xxxxxxxX: $ 7 <= xxxxxxxx
+                 895@xxxxxxxX: $ 7 <= xxxxxxxx
+                 905@xxxxxxxX: $ 7 <= xxxxxxxx
+                 915@xxxxxxxX: $ 7 <= xxxxxxxx
+                 925@xxxxxxxX: $ 7 <= xxxxxxxx
+                 935@xxxxxxxX: $ 7 <= xxxxxxxx
+                 945@xxxxxxxX: $ 7 <= xxxxxxxx
+                 955@xxxxxxxX: $ 7 <= xxxxxxxx
+                 965@xxxxxxxX: $ 7 <= xxxxxxxx
+                 975@xxxxxxxX: $ 7 <= xxxxxxxx
+                 985@xxxxxxxX: $ 7 <= xxxxxxxx
+                 995@xxxxxxxX: $ 7 <= xxxxxxxx
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@xxxxxxxX: $ 7 <= xxxxxxxx
+                 325@xxxxxxxX: $ 7 <= xxxxxxxx
+                 335@xxxxxxxX: $ 7 <= xxxxxxxx
+                 345@xxxxxxxX: $ 7 <= xxxxxxxx
+                 355@xxxxxxxX: $ 7 <= xxxxxxxx
+                 365@xxxxxxxX: $ 7 <= xxxxxxxx
+                 375@xxxxxxxX: $ 7 <= xxxxxxxx
+                 385@xxxxxxxX: $ 7 <= xxxxxxxx
+                 395@xxxxxxxX: $ 7 <= xxxxxxxx
+                 405@xxxxxxxX: $ 7 <= xxxxxxxx
+                 415@xxxxxxxX: $ 7 <= xxxxxxxx
+                 425@xxxxxxxX: $ 7 <= xxxxxxxx
+                 435@xxxxxxxX: $ 7 <= xxxxxxxx
+                 445@xxxxxxxX: $ 7 <= xxxxxxxx
+                 455@xxxxxxxX: $ 7 <= xxxxxxxx
+                 465@xxxxxxxX: $ 7 <= xxxxxxxx
+                 475@xxxxxxxX: $ 7 <= xxxxxxxx
+                 485@xxxxxxxX: $ 7 <= xxxxxxxx
+                 495@xxxxxxxX: $ 7 <= xxxxxxxx
+                 505@xxxxxxxX: $ 7 <= xxxxxxxx
+                 515@xxxxxxxX: $ 7 <= xxxxxxxx
+                 525@xxxxxxxX: $ 7 <= xxxxxxxx
+                 535@xxxxxxxX: $ 7 <= xxxxxxxx
+                 545@xxxxxxxX: $ 7 <= xxxxxxxx
+                 555@xxxxxxxX: $ 7 <= xxxxxxxx
+                 565@xxxxxxxX: $ 7 <= xxxxxxxx
+                 575@xxxxxxxX: $ 7 <= xxxxxxxx
+                 585@xxxxxxxX: $ 7 <= xxxxxxxx
+                 595@xxxxxxxX: $ 7 <= xxxxxxxx
+                 605@xxxxxxxX: $ 7 <= xxxxxxxx
+                 615@xxxxxxxX: $ 7 <= xxxxxxxx
+                 625@xxxxxxxX: $ 7 <= xxxxxxxx
+                 635@xxxxxxxX: $ 7 <= xxxxxxxx
+                 645@xxxxxxxX: $ 7 <= xxxxxxxx
+                 655@xxxxxxxX: $ 7 <= xxxxxxxx
+                 665@xxxxxxxX: $ 7 <= xxxxxxxx
+                 675@xxxxxxxX: $ 7 <= xxxxxxxx
+                 685@xxxxxxxX: $ 7 <= xxxxxxxx
+                 695@xxxxxxxX: $ 7 <= xxxxxxxx
+                 705@xxxxxxxX: $ 7 <= xxxxxxxx
+                 715@xxxxxxxX: $ 7 <= xxxxxxxx
+                 725@xxxxxxxX: $ 7 <= xxxxxxxx
+                 735@xxxxxxxX: $ 7 <= xxxxxxxx
+                 745@xxxxxxxX: $ 7 <= xxxxxxxx
+                 755@xxxxxxxX: $ 7 <= xxxxxxxx
+                 765@xxxxxxxX: $ 7 <= xxxxxxxx
+                 775@xxxxxxxX: $ 7 <= xxxxxxxx
+                 785@xxxxxxxX: $ 7 <= xxxxxxxx
+                 795@xxxxxxxX: $ 7 <= xxxxxxxx
+                 805@xxxxxxxX: $ 7 <= xxxxxxxx
+                 815@xxxxxxxX: $ 7 <= xxxxxxxx
+                 825@xxxxxxxX: $ 7 <= xxxxxxxx
+                 835@xxxxxxxX: $ 7 <= xxxxxxxx
+                 845@xxxxxxxX: $ 7 <= xxxxxxxx
+                 855@xxxxxxxX: $ 7 <= xxxxxxxx
+                 865@xxxxxxxX: $ 7 <= xxxxxxxx
+                 875@xxxxxxxX: $ 7 <= xxxxxxxx
+                 885@xxxxxxxX: $ 7 <= xxxxxxxx
+                 895@xxxxxxxX: $ 7 <= xxxxxxxx
+                 905@xxxxxxxX: $ 7 <= xxxxxxxx
+                 915@xxxxxxxX: $ 7 <= xxxxxxxx
+                 925@xxxxxxxX: $ 7 <= xxxxxxxx
+                 935@xxxxxxxX: $ 7 <= xxxxxxxx
+                 945@xxxxxxxX: $ 7 <= xxxxxxxx
+                 955@xxxxxxxX: $ 7 <= xxxxxxxx
+                 965@xxxxxxxX: $ 7 <= xxxxxxxx
+                 975@xxxxxxxX: $ 7 <= xxxxxxxx
+                 985@xxxxxxxX: $ 7 <= xxxxxxxx
+                 995@xxxxxxxX: $ 7 <= xxxxxxxx
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@xxxxxxxX: $ 7 <= xxxxxxxx
+                 325@xxxxxxxX: $ 7 <= xxxxxxxx
+                 335@xxxxxxxX: $ 7 <= xxxxxxxx
+                 345@xxxxxxxX: $ 7 <= xxxxxxxx
+                 355@xxxxxxxX: $ 7 <= xxxxxxxx
+                 365@xxxxxxxX: $ 7 <= xxxxxxxx
+                 375@xxxxxxxX: $ 7 <= xxxxxxxx
+                 385@xxxxxxxX: $ 7 <= xxxxxxxx
+                 395@xxxxxxxX: $ 7 <= xxxxxxxx
+                 405@xxxxxxxX: $ 7 <= xxxxxxxx
+                 415@xxxxxxxX: $ 7 <= xxxxxxxx
+                 425@xxxxxxxX: $ 7 <= xxxxxxxx
+                 435@xxxxxxxX: $ 7 <= xxxxxxxx
+                 445@xxxxxxxX: $ 7 <= xxxxxxxx
+                 455@xxxxxxxX: $ 7 <= xxxxxxxx
+                 465@xxxxxxxX: $ 7 <= xxxxxxxx
+                 475@xxxxxxxX: $ 7 <= xxxxxxxx
+                 485@xxxxxxxX: $ 7 <= xxxxxxxx
+                 495@xxxxxxxX: $ 7 <= xxxxxxxx
+                 505@xxxxxxxX: $ 7 <= xxxxxxxx
+                 515@xxxxxxxX: $ 7 <= xxxxxxxx
+                 525@xxxxxxxX: $ 7 <= xxxxxxxx
+                 535@xxxxxxxX: $ 7 <= xxxxxxxx
+                 545@xxxxxxxX: $ 7 <= xxxxxxxx
+                 555@xxxxxxxX: $ 7 <= xxxxxxxx
+                 565@xxxxxxxX: $ 7 <= xxxxxxxx
+                 575@xxxxxxxX: $ 7 <= xxxxxxxx
+                 585@xxxxxxxX: $ 7 <= xxxxxxxx
+                 595@xxxxxxxX: $ 7 <= xxxxxxxx
+                 605@xxxxxxxX: $ 7 <= xxxxxxxx
+                 615@xxxxxxxX: $ 7 <= xxxxxxxx
+                 625@xxxxxxxX: $ 7 <= xxxxxxxx
+                 635@xxxxxxxX: $ 7 <= xxxxxxxx
+                 645@xxxxxxxX: $ 7 <= xxxxxxxx
+                 655@xxxxxxxX: $ 7 <= xxxxxxxx
+                 665@xxxxxxxX: $ 7 <= xxxxxxxx
+                 675@xxxxxxxX: $ 7 <= xxxxxxxx
+                 685@xxxxxxxX: $ 7 <= xxxxxxxx
+                 695@xxxxxxxX: $ 7 <= xxxxxxxx
+                 705@xxxxxxxX: $ 7 <= xxxxxxxx
+                 715@xxxxxxxX: $ 7 <= xxxxxxxx
+                 725@xxxxxxxX: $ 7 <= xxxxxxxx
+                 735@xxxxxxxX: $ 7 <= xxxxxxxx
+                 745@xxxxxxxX: $ 7 <= xxxxxxxx
+                 755@xxxxxxxX: $ 7 <= xxxxxxxx
+                 765@xxxxxxxX: $ 7 <= xxxxxxxx
+                 775@xxxxxxxX: $ 7 <= xxxxxxxx
+                 785@xxxxxxxX: $ 7 <= xxxxxxxx
+                 795@xxxxxxxX: $ 7 <= xxxxxxxx
+                 805@xxxxxxxX: $ 7 <= xxxxxxxx
+                 815@xxxxxxxX: $ 7 <= xxxxxxxx
+                 825@xxxxxxxX: $ 7 <= xxxxxxxx
+                 835@xxxxxxxX: $ 7 <= xxxxxxxx
+                 845@xxxxxxxX: $ 7 <= xxxxxxxx
+                 855@xxxxxxxX: $ 7 <= xxxxxxxx
+                 865@xxxxxxxX: $ 7 <= xxxxxxxx
+                 875@xxxxxxxX: $ 7 <= xxxxxxxx
+                 885@xxxxxxxX: $ 7 <= xxxxxxxx
+                 895@xxxxxxxX: $ 7 <= xxxxxxxx
+                 905@xxxxxxxX: $ 7 <= xxxxxxxx
+                 915@xxxxxxxX: $ 7 <= xxxxxxxx
+                 925@xxxxxxxX: $ 7 <= xxxxxxxx
+                 935@xxxxxxxX: $ 7 <= xxxxxxxx
+                 945@xxxxxxxX: $ 7 <= xxxxxxxx
+                 955@xxxxxxxX: $ 7 <= xxxxxxxx
+                 965@xxxxxxxX: $ 7 <= xxxxxxxx
+                 975@xxxxxxxX: $ 7 <= xxxxxxxx
+                 985@xxxxxxxX: $ 7 <= xxxxxxxx
+                 995@xxxxxxxX: $ 7 <= xxxxxxxx
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 175@00003010: *80007ffc <= xxxxxxxx
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 225@00004180: $ 1 <= 00003010
+                 245@00004184: $ 1 <= 00003014
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 215@00004180: $ 1 <= 0000300c
+                 235@00004184: $ 1 <= 00003010
+                 295@00003010: $ 7 <= xxxxxxxx
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 215@00004180: $ 1 <= 0000300c
+                 235@00004184: $ 1 <= 00003010
+                 295@00003010: $ 7 <= xxxxxxxx
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 215@00004180: $ 1 <= 0000300c
+                 235@00004184: $ 1 <= 00003010
+                 295@00003010: $ 7 <= 00000000
+                 305@00003014: $ 7 <= 12340000
+                 315@00003018: $ 7 <= 12345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 215@00004180: $ 1 <= 0000300c
+                 235@00004184: $ 1 <= 00003010
+                 295@00003010: $ 8 <= 0000302c
+                 335@0000302c: $ 7 <= 32340000
+                 345@00003030: $ 7 <= 32345678
+                 355@00003034: $ 7 <= 42340000
+                 365@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 215@00004180: $ 1 <= 0000300c
+                 235@00004184: $ 1 <= 00003010
+                 295@00003010: $ 8 <= 0000302d
+                 375@00004180: $ 1 <= 0000302c
+                 395@00004184: $ 1 <= 00003030
+                 455@00003030: $ 7 <= 00005678
+                 465@00003034: $ 7 <= 42340000
+                 475@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 215@00004180: $ 1 <= 0000300c
+                 225@00004184: $ 2 <= 00004ffc
+                 235@00004188: $ 2 <= ffffe010
+                 275@00004194: $ 1 <= 00003010
+                 335@00003010: $ 8 <= 00004ffd
+                 415@00004180: $ 1 <= 00004ffc
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= 00000000
+                 475@00004194: $ 1 <= 00005000
+                 575@00004180: $ 1 <= 00005000
+                 585@00004184: $ 2 <= 00004ffc
+                 595@00004188: $ 2 <= 00000004
+                 635@000041a0: $ 1 <= 0000301c
+                 675@0000301c: $ 7 <= 12340000
+                 685@00003020: $ 7 <= 12345678
+                 695@00003024: $ 7 <= 22340000
+                 705@00003028: $ 7 <= 22345678
+                 715@0000302c: $ 7 <= 32340000
+                 725@00003030: $ 7 <= 32345678
+                 735@00003034: $ 7 <= 42340000
+                 745@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00004ffd
+                 265@00004180: $ 1 <= 00004ffc
+                 275@00004184: $ 2 <= 00004ffc
+                 285@00004188: $ 2 <= 00000000
+                 325@00004194: $ 1 <= 00005000
+                 425@00004180: $ 1 <= 00005000
+                 435@00004184: $ 2 <= 00004ffc
+                 445@00004188: $ 2 <= 00000004
+                 485@000041a0: $ 1 <= 0000301c
+                 525@0000301c: $ 7 <= 12340000
+                 535@00003020: $ 7 <= 12345678
+                 545@00003024: $ 7 <= 22340000
+                 555@00003028: $ 7 <= 22345678
+                 565@0000302c: $ 7 <= 32340000
+                 575@00003030: $ 7 <= 32345678
+                 585@00003034: $ 7 <= 42340000
+                 595@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00004ffd
+                 265@00004180: $ 1 <= 00004ffc
+                 275@00004184: $ 2 <= 00004ffc
+                 285@00004188: $ 2 <= 00000000
+                 325@000041a0: $ 1 <= 0000301c
+                 365@0000301c: $ 7 <= 12340000
+                 375@00003020: $ 7 <= 12345678
+                 385@00003024: $ 7 <= 22340000
+                 395@00003028: $ 7 <= 22345678
+                 405@0000302c: $ 7 <= 32340000
+                 415@00003030: $ 7 <= 32345678
+                 425@00003034: $ 7 <= 42340000
+                 435@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                 145@00003000: $ 4 <= 7fff0000
+                 155@00003004: $ 5 <= 0000ffff
+                 165@00003008: $ 6 <= 00000005
+                 175@0000300c: $ 7 <= 7fffffff
+                 185@00003010: $ 8 <= 00003024
+                 255@00004180: $ 1 <= 00003014
+                 265@00004184: $ 2 <= 00004ffc
+                 275@00004188: $ 2 <= ffffe018
+                 315@00004194: $ 1 <= 00003018
+                 415@00004180: $ 1 <= 00003018
+                 425@00004184: $ 2 <= 00004ffc
+                 435@00004188: $ 2 <= ffffe01c
+                 475@00004194: $ 1 <= 0000301c
+                 535@0000301c: $ 7 <= 12340000
+                 545@00003020: $ 7 <= 12345678
+                 555@00003024: $ 7 <= 22340000
+                 565@00003028: $ 7 <= 22345678
+                 575@0000302c: $ 7 <= 32340000
+                 585@00003030: $ 7 <= 32345678
+                 595@00003034: $ 7 <= 42340000
+                 605@00003038: $ 7 <= 42345678

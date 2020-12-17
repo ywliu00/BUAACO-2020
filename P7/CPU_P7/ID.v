@@ -34,6 +34,7 @@ module ID(
 	input wire [1:0] RData0BypassCtrl,
 	input wire [1:0] RData1BypassCtrl,
 	input wire [4:0] RegWriteAddr_Mem_to_WB,
+	
     output reg [4:0] RAddr0_ID_to_EX,
     output reg [4:0] RAddr1_ID_to_EX,
     output reg [4:0] RegWriteAddr_ID_to_EX, //非指令中Rd，而是当前指令真实的需写入的GPR地址
@@ -48,6 +49,7 @@ module ID(
 	output reg [2:0] Tuse_RAddr1_ID_to_EX,
 	output reg [2:0] Tnew_WAddr_ID_to_EX, // 产生时间
 	output reg Start_ID_to_EX,
+	output reg [4:0] Rd_CP0Addr_ID_to_EX,
 	
 	output wire branch,
     output wire jump,
@@ -65,6 +67,7 @@ module ID(
 	input wire ErrSignal,
 	input wire [4:0] ErrStat_IF_to_ID,
 	input wire Err_IF_to_ID,
+	inout wire eretEn,
 	output reg [4:0] ErrStat_ID_to_EX,
 	output reg Err_ID_to_EX
     );
@@ -182,7 +185,7 @@ module ID(
 	
 	always@(posedge clk)
 	begin
-		if(reset || Stall || ErrSignal)  //Stall时同步清空ID/EX寄存器
+		if(reset || Stall || ErrSignal || eretEn)  //Stall时同步清空ID/EX寄存器
 		begin
 			RAddr0_ID_to_EX <= 5'd0;
 			RAddr1_ID_to_EX <= 5'd0;
@@ -200,6 +203,7 @@ module ID(
 			Start_ID_to_EX <= 1'b0;
 			ErrStat_ID_to_EX <= 5'd31;
 			Err_ID_to_EX <= 0;
+			Rd_CP0Addr_ID_to_EX <= 5'd0;
 		end
 		else
 		begin
@@ -219,6 +223,7 @@ module ID(
 			Start_ID_to_EX <= Start_wire;
 			ErrStat_ID_to_EX <= ErrStat_wire;
 			Err_ID_to_EX <= Err_wire;
+			Rd_CP0Addr_ID_to_EX <= Instr[15:11];
 		end
 	end
 	

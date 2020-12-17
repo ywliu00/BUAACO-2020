@@ -186,19 +186,19 @@ module AT_Cal(
 		else if(`mfc0)
 		begin
 			RAddr0 <= 5'd0;
-			RAddr1 <= Rd;
+			RAddr1 <= 5'd0;
 			WAddr <= Rt;
 			Tuse_RAddr0 <= 3'd7;//不读
-			Tuse_RAddr1 <= 3'd2;//Mem级需要待读取C0寄存器地址
+			Tuse_RAddr1 <= 3'd7;//不读
 			Tnew_WAddr <= 3'd3; //写Rt，Mem级出结果
 		end
 		else if(`mtc0)
 		begin
 			RAddr0 <= Rt;
-			RAddr1 <= Rd;
+			RAddr1 <= 5'd0;
 			WAddr <= 5'd0;
 			Tuse_RAddr0 <= 3'd1;//由于Mem级没有转发入口，只能转发到EX级
-			Tuse_RAddr1 <= 3'd2;//Mem级需要待写入C0寄存器地址
+			Tuse_RAddr1 <= 3'd7;//不读
 			Tnew_WAddr <= 3'd0; //不写
 		end
 	end

@@ -42,10 +42,10 @@ module CP0(
 	assign ErrSignal = Err | (| HWInt);
 	// 通知CPU开始中断
 	
-	assign ExcCode = (| HWInt) ? 5'd0 : 
-					 Err ? ErrStat : 5'd31;//中断优先级高于异常
-	assign IP = HWInt;
-	assign Cause_wire = {16'd0, IP, 3'd0, ExcCode, 2'd0};
+	//assign ExcCode = (| HWInt) ? 5'd0 : 
+	//				 Err ? ErrStat : 5'd31;//中断优先级高于异常
+	//assign IP = HWInt;
+	//assign Cause_wire = {16'd0, IP, 3'd0, ExcCode, 2'd0};
 	
 	assign WBJump = WBInstrType == `inst_j || 
 					WBInstrType == `inst_jal ||
@@ -62,13 +62,14 @@ module CP0(
 					  (WBJump || WBBranch) ? {PCAddr[31:2], 2'b0} - 32'd4 : 
 										{PCAddr[31:2], 2'b0};
 	// mtc0指令写EPC，如果写的不是EPC则保持原值
-	assign BD_wire = (WBJump || WBBranch) ? 1 : 0;
-	// 是否在延迟槽内
 	
 	assign ExcCode = (| HWInt) ? 5'd0 : 
 					 Err ? ErrStat : 5'd31;//中断优先级高于异常
 	assign IP = HWInt;
-	assign Cause_wire = {BD_wire, 15'd0, IP, 3'd0, ExcCode, 2'd0};
+	
+	assign BD_wire = (WBJump || WBBranch) ? 1 : 0;
+	// 是否在延迟槽内
+	assign Cause_wire = {BD_wire, 15'd0, HWInt, 3'd0, ExcCode, 2'd0};
 	
 	assign EXL_wire = (~SR[1]) && ErrSignal ? 1 : 
 					  (SR[1]) && `eret ? 0 : SR[1];
@@ -97,7 +98,7 @@ module CP0(
 		begin
 			SR <= SR_wire;
 			EPC <= EPC_wire;
-			Cause <= Cause_wire;
+			Cause <= Cause_wire[31:0];
 		end
 		else if(`eret)
 		begin

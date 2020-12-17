@@ -72,7 +72,7 @@ module IF(
 	 
 	 always@(posedge clk)
 	 begin
-		if(reset || ErrSignal)
+		if(reset || ErrSignal || eretEn)
 		begin
 			PC_4 <= 32'h0000_3004;
 			Instr = 32'h0000_0000;
