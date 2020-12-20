@@ -36,12 +36,16 @@ module CPU_TestBench;
 		.interrupt(interrupt),
 		.addr(addr)
 	);
+	
+	reg flag;
 
 	initial begin
 		// Initialize Inputs
 		clk = 0;
 		reset = 0;
 		interrupt = 0;
+		
+		flag = 1;
 
 		// Wait 100 ns for global reset to finish
 		#90;
@@ -56,6 +60,24 @@ module CPU_TestBench;
 		// Add stimulus here
 
 	end
+	
+	always@(negedge clk)
+	begin
+		if((addr == 32'h0000_3050) && flag)
+		begin
+			//interrupt <= 1;
+			flag <= 0;
+		end
+		else if(addr == 32'h0000_418c)
+		begin
+			//interrupt <= 1;
+		end
+		else
+		begin
+			interrupt <= 0;
+		end
+	end
+	
 	always #5 clk = ~clk;
       
 endmodule

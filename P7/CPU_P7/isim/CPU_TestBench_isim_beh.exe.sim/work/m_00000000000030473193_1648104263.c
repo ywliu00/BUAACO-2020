@@ -6709,7 +6709,7 @@ LAB40:    t155 = (t127 + 4);
 
 LAB49:    xsi_set_current_line(209, ng0);
 
-LAB52:    xsi_set_current_line(210, ng0);
+LAB65:    xsi_set_current_line(210, ng0);
     t2 = (t0 + 6008U);
     t3 = *((char **)t2);
     t2 = (t0 + 9448);
@@ -7064,9 +7064,45 @@ LAB51:    xsi_set_current_line(190, ng0);
     t3 = (t0 + 10728);
     xsi_vlogvar_wait_assign_value(t3, t2, 0, 0, 32, 0LL);
     xsi_set_current_line(199, ng0);
-    t2 = ((char*)((ng6)));
-    t3 = (t0 + 10888);
-    xsi_vlogvar_wait_assign_value(t3, t2, 0, 0, 32, 0LL);
+    t2 = (t0 + 1848U);
+    t3 = *((char **)t2);
+    memset(t20, 0, 8);
+    t2 = (t3 + 4);
+    t7 = *((unsigned int *)t2);
+    t8 = (~(t7));
+    t9 = *((unsigned int *)t3);
+    t10 = (t9 & t8);
+    t11 = (t10 & 1U);
+    if (t11 != 0)
+        goto LAB52;
+
+LAB53:    if (*((unsigned int *)t2) != 0)
+        goto LAB54;
+
+LAB55:    t5 = (t20 + 4);
+    t14 = *((unsigned int *)t20);
+    t15 = *((unsigned int *)t5);
+    t16 = (t14 || t15);
+    if (t16 > 0)
+        goto LAB56;
+
+LAB57:    t17 = *((unsigned int *)t20);
+    t21 = (~(t17));
+    t22 = *((unsigned int *)t5);
+    t23 = (t21 || t22);
+    if (t23 > 0)
+        goto LAB58;
+
+LAB59:    if (*((unsigned int *)t5) > 0)
+        goto LAB60;
+
+LAB61:    if (*((unsigned int *)t20) > 0)
+        goto LAB62;
+
+LAB63:    memcpy(t6, t19, 8);
+
+LAB64:    t26 = (t0 + 10888);
+    xsi_vlogvar_wait_assign_value(t26, t6, 0, 0, 32, 0LL);
     xsi_set_current_line(200, ng0);
     t2 = ((char*)((ng13)));
     t3 = (t0 + 11048);
@@ -7096,6 +7132,28 @@ LAB51:    xsi_set_current_line(190, ng0);
     t3 = (t0 + 11688);
     xsi_vlogvar_wait_assign_value(t3, t2, 0, 0, 5, 0LL);
     goto LAB50;
+
+LAB52:    *((unsigned int *)t20) = 1;
+    goto LAB55;
+
+LAB54:    t4 = (t20 + 4);
+    *((unsigned int *)t20) = 1;
+    *((unsigned int *)t4) = 1;
+    goto LAB55;
+
+LAB56:    t12 = (t0 + 10888);
+    t13 = (t12 + 56U);
+    t18 = *((char **)t13);
+    goto LAB57;
+
+LAB58:    t19 = ((char*)((ng6)));
+    goto LAB59;
+
+LAB60:    xsi_vlog_unsigned_bit_combine(t6, 32, t18, 32, t19, 32);
+    goto LAB64;
+
+LAB62:    memcpy(t6, t18, 8);
+    goto LAB64;
 
 }
 

@@ -83,17 +83,17 @@
          <ClosedNode>/CPU F:|Course|CO|P7|CPU_P7|CPU.v/EX - EX</ClosedNode>
          <ClosedNode>/CPU F:|Course|CO|P7|CPU_P7|CPU.v/ID - ID</ClosedNode>
          <ClosedNode>/CPU F:|Course|CO|P7|CPU_P7|CPU.v/IF - IF</ClosedNode>
-         <ClosedNode>/CPU_TestBench F:|Course|CO|P7|CPU_P7|mips_tb.v/uut - mips/CPU - CPU/EX - EX</ClosedNode>
          <ClosedNode>/CPU_TestBench F:|Course|CO|P7|CPU_P7|mips_tb.v/uut - mips/CPU - CPU/ID - ID</ClosedNode>
+         <ClosedNode>/CPU_TestBench F:|Course|CO|P7|CPU_P7|mips_tb.v/uut - mips/CPU - CPU/IF - IF</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Bridge - Bridge (F:/Course/CO/P7/CPU_P7/Bridge.v)</SelectedItem>
+         <SelectedItem>DM - DM (F:/Course/CO/P7/CPU_P7/DM.v)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >9</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001c9000000020000000000000000000000000200000064ffffffff000000810000000300000002000001c90000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Bridge - Bridge (F:/Course/CO/P7/CPU_P7/Bridge.v)</CurrentItem>
+      <CurrentItem>DM - DM (F:/Course/CO/P7/CPU_P7/DM.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -101,13 +101,13 @@
          <ClosedNode>Design Utilities/Compile HDL Simulation Libraries</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="DESUT_VERILOG" guiview="Process" >
       <ClosedNodes>

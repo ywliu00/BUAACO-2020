@@ -38,7 +38,7 @@ module CP0(
 	wire [31:0] SR_wire, EPC_wire, Cause_wire;
 	reg [31:0] SR, EPC, Cause, PRId;
 	
-	assign ErrSignal = (Err | (| HWInt)) && (!SR[1]) && SR[0];// EXL为1时禁止中断，IE全局中断使能
+	assign ErrSignal = (Err || (HWInt != 6'b000000)) && (SR[1] == 0) && SR[0];// EXL为1时禁止中断，IE全局中断使能
 	// 通知CPU开始中断
 	
 	assign WBJump = WBInstrType == `inst_j || 
@@ -62,12 +62,13 @@ module CP0(
 	
 	assign BD_wire = (WBJump || WBBranch) ? 1 : 0;
 	// 是否在延迟槽内
-	assign Cause_wire = {BD_wire, 15'd0, HWInt, 3'd0, ExcCode, 2'd0};
+	assign Cause_wire = ErrSignal ? {BD_wire, 15'd0, HWInt, 3'd0, ExcCode, 2'd0} : 
+									{Cause_wire[31:16], HWInt, Cause_wire[9:0]};
 	
-	assign EXL_wire = (~SR[1]) && ErrSignal ? 1 : 
-					  (SR[1]) && `eret ? 0 : SR[1];
+	assign EXL_wire = ErrSignal ? 1 : 
+					  `eret ? 0 : SR[1];
 	assign SR_wire = (`mtc0 && CP0Addr[4:0] == 12) ? DataIn : 
-					 (`mtc0 && CP0Addr[4:0] != 12) ? SR : 
+					 //(`mtc0 && CP0Addr[4:0] != 12) ? SR : 
 								{SR[31:2], EXL_wire, SR[0]};
 	// mtc0指令写SR，如果写的不是SR则保持原值，或只有进出中断时改EXL位
 	
@@ -82,7 +83,7 @@ module CP0(
 	begin
 		if(reset)
 		begin
-			SR <= 32'd0;
+			SR <= 32'd1;
 			EPC <= 32'd0;
 			Cause <= 32'd0;
 			PRId <= 32'h1817_1906;
@@ -91,21 +92,24 @@ module CP0(
 		begin
 			SR <= SR_wire;
 			EPC <= EPC_wire;
-			Cause <= Cause_wire[31:0];
+			Cause <= Cause_wire;
 		end
 		else if(`eret)
 		begin
 			SR <= SR_wire;
+			Cause <= Cause_wire;
 		end
 		else if(`mtc0)
 		begin
 			SR <= SR_wire;
 			EPC <= EPC_wire;
+			Cause <= Cause_wire;
 		end
 		else
 		begin
 			SR <= SR;
 			EPC <= EPC;
+			Cause <= Cause_wire;
 		end
 	end
 	

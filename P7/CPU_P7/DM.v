@@ -29,7 +29,7 @@ module DM(
 	input wire [3:0] ByteEn,
     output wire [31:0] RData
     );
-	 reg [31:0] DM_Unit[0:4095];
+	 reg [31:0] DM_Unit[0:8191];
 	 integer i;
 	 wire [31:0] RealAddr, WriteData;
 	 wire [7:0] byte3, byte2, byte1, byte0;
@@ -54,7 +54,7 @@ module DM(
 	 begin
 		if(reset)
 		begin
-			for(i = 0;i < 4096;i = i + 1)
+			for(i = 0; i < 8192; i = i + 1)
 			begin
 				DM_Unit[i] <= 32'h0000_0000;
 			end
