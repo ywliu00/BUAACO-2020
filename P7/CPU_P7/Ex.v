@@ -139,6 +139,7 @@ module EX(
     .Start(Start_ID_to_EX),
     .clk(clk),
 	.reset(reset),
+	.ErrSignal(ErrSignal),
     .Busy(Busy),
     .HI(HI_wire),
     .LO(LO_wire));
@@ -166,7 +167,8 @@ module EX(
 	assign ErrStat_wire = OverFlow_wire && (`add || `sub || `addi) ? `Ov :
 						  OverFlow_wire && LoadType ? `AdEL : 
 						  OverFlow_wire && StoreType ? `AdES : ErrStat_ID_to_EX;
-	assign Err_wire = OverFlow_wire ? 1 : Err_ID_to_EX;
+	//assign Err_wire = OverFlow_wire ? 1 : Err_ID_to_EX;
+	assign Err_wire = (ErrStat_wire != 5'd31) ? 1 : Err_ID_to_EX;
 	
 	///////////////////// Á÷Ë®Ïß¼Ä´æÆ÷ ///////////////////////////////
 	always@(posedge clk)

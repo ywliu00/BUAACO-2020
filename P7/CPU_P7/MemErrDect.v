@@ -30,17 +30,17 @@ module MemErrDect(
 	
 	wire Addr4BAlignErr, Addr2BAlignErr, LoadAlignErr, StoreAlignErr;
 	assign Addr4BAlignErr = MemRWAddr[1:0] != 2'b00 ? 1 : 0;
-	assign Addr2BAlignErr = MemRWAddr[0];
-	assign LoadAlignErr = (`lw && Addr4BAlignErr) || ((`lh || `lhu) && Addr2BAlignErr);
-	assign StoreAlignErr = (`sw && Addr4BAlignErr) || (`sh && Addr2BAlignErr);
+	assign Addr2BAlignErr = (MemRWAddr[0] == 1) ? 1 : 0;
+	assign LoadAlignErr = ((`lw && Addr4BAlignErr) || ((`lh || `lhu) && Addr2BAlignErr)) ? 1 : 0;
+	assign StoreAlignErr = ((`sw && Addr4BAlignErr) || (`sh && Addr2BAlignErr)) ? 1 : 0;
 	//对齐错误部分
 	
 	wire DMRange, TimerRange, LoadAddrErr, StoreAddrErr;
-	assign DMRange = (MemRWAddr >= 32'h0000_0000 && MemRWAddr <= 32'h0000_2fff);
-	assign TimerRange = (MemRWAddr >= 32'h0000_7f00 && MemRWAddr <= 32'h0000_7f0b) || 
-						(MemRWAddr >= 32'h0000_7f10 && MemRWAddr <= 32'h0000_7f1b);
-	assign LoadAddrErr = (!(DMRange || TimerRange) && (`lw || `lh || `lhu || `lb || `lbu)) || (TimerRange && (`lh || `lhu || `lb || `lbu));
-	assign StoreAddrErr = (!(DMRange || TimerRange) && (`sw || `sh || `sb)) || (TimerRange && (`sh || `sb));
+	assign DMRange = (MemRWAddr >= 32'h0000_0000 && MemRWAddr <= 32'h0000_2fff) ? 1 : 0;
+	assign TimerRange = ((MemRWAddr >= 32'h0000_7f00 && MemRWAddr <= 32'h0000_7f0b) || 
+						(MemRWAddr >= 32'h0000_7f10 && MemRWAddr <= 32'h0000_7f1b)) ? 1 : 0;
+	assign LoadAddrErr = ((!(DMRange || TimerRange) && (`lw || `lh || `lhu || `lb || `lbu)) || (TimerRange && (`lh || `lhu || `lb || `lbu))) ? 1 : 0;
+	assign StoreAddrErr = (!(DMRange || TimerRange) && (`sw || `sh || `sb)) || (TimerRange && (`sh || `sb)) ? 1 : 0;
 	// 地址非法部分
 	
 	wire LoadAddrOv, StoreAddrOv;
@@ -48,8 +48,8 @@ module MemErrDect(
 	assign StoreAddrOv = (ErrStat_EX_to_Mem == `Ov) && (`sw || `sh || `sb);
 	// 地址溢出部分
 	
-	assign Err = LoadAlignErr || StoreAlignErr || LoadAddrErr || StoreAddrErr ||
-				 LoadAddrOv || StoreAddrOv || Err_EX_to_Mem;
+	assign Err = (LoadAlignErr || StoreAlignErr || LoadAddrErr || StoreAddrErr ||
+				 LoadAddrOv || StoreAddrOv) ? 1 : Err_EX_to_Mem;
 	assign ErrStat = (LoadAlignErr || LoadAddrErr || LoadAddrOv) ? `AdEL :
 					 (StoreAlignErr || StoreAddrErr || StoreAddrOv) ? `AdES :
 					 ErrStat_EX_to_Mem;

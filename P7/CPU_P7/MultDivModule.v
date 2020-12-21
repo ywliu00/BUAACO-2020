@@ -26,6 +26,7 @@ module MultDivModule(
     input wire Start,
     input wire clk,
 	input wire reset,
+	input wire ErrSignal,
     output reg Busy,
     output reg [31:0] HI,
     output reg [31:0] LO
@@ -47,7 +48,7 @@ module MultDivModule(
 			i <= 32'h0000_0000;
 			DelayTime <= 32'h0FFF_FFFF;
 		end
-		else if(Start)
+		else if(Start && !ErrSignal)
 		begin
 			Busy <= 1'b1;
 			if(`mult)
@@ -86,8 +87,8 @@ module MultDivModule(
 			end
 			i <= i + 1;
 		end
-		else if(`mthi) HI <= D1;
-		else if(`mtlo) LO <= D1;
+		else if(`mthi && !ErrSignal) HI <= D1;
+		else if(`mtlo && !ErrSignal) LO <= D1;
 		else
 		begin
 			HI <= HI;

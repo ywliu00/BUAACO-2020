@@ -66,7 +66,7 @@ module IF(
     .Instr(Instr_wire));
 	
 	////////////////////// Error Detect ///////////////
-	assign Err_wire = (PC_wire[1:0] != 2'b00 || PC_wire > 32'h0000_4fff || PC_wire < 32'h0000_3000) ? 1 : 0;
+	assign Err_wire = (PC_wire[1:0] != 2'b00 || PC_wire > 32'h0000_4ffc || PC_wire < 32'h0000_3000) ? 1 : 0;
 	assign ErrStat_wire = Err_wire ? `AdEL : 5'd31;
 	/////////////////////////////////////////////////
 	 

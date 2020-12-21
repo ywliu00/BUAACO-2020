@@ -99,7 +99,7 @@
 
 
 //÷∏¡Ó≈–∂œ
-`define insterr (| InstrType == 0)
+`define insterr (InstrType == 60'd0)
 `define addu (InstrType[0])
 `define subu (InstrType[1])
 `define ori (InstrType[2])

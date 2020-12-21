@@ -38,7 +38,8 @@ module CP0(
 	wire [31:0] SR_wire, EPC_wire, Cause_wire;
 	reg [31:0] SR, EPC, Cause, PRId;
 	
-	assign ErrSignal = (Err || (HWInt != 6'b000000)) && (SR[1] == 0) && SR[0];// EXL为1时禁止中断，IE全局中断使能
+	//assign ErrSignal = (Err || (HWInt != 6'b000000)) && (SR[1] == 0) && SR[0];// EXL为1时禁止中断，IE全局中断使能
+	assign ErrSignal = Err || ((HWInt != 6'b000000) && (SR[1] == 0) && SR[0]);
 	// 通知CPU开始中断
 	
 	assign WBJump = WBInstrType == `inst_j || 
