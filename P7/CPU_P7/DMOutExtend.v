@@ -33,8 +33,7 @@ module DMOutExtend(
 					  (Addr2 == 2'b10) ? DataIn[23:16] : 
 					  (Addr2 == 2'b11) ? DataIn[31:24] : DataIn[7:0];
 	//assign HalfWordData = (Addr2[1] == 1'b1) ? DataIn[31:16] : DataIn[15:0];
-	assign HalfWordData = //(Addr2[0] == 1'b1) ? 32'h0EEE : 
-						  (Addr2[1] == 1'b1) ? DataIn[31:16] : DataIn[15:0];
+	assign HalfWordData = (Addr2[1] == 1'b1) ? DataIn[31:16] : DataIn[15:0];
 	
 	assign DataOut = (Op == 3'b001) ? {{24{1'b0}}, ByteData} :
 					 (Op == 3'b010) ? {{24{ByteData[7]}}, ByteData} :

@@ -780,7 +780,7 @@ LAB18:    memcpy(t3, t42, 8);
 
 }
 
-static void Cont_39_2(char *t0)
+static void Cont_38_2(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -972,7 +972,7 @@ LAB0:    t1 = (t0 + 3504U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(39, ng0);
+LAB2:    xsi_set_current_line(38, ng0);
     t2 = (t0 + 1368U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -1371,7 +1371,7 @@ LAB69:    memcpy(t127, t158, 8);
 
 extern void work_m_00000000003795650122_1587489690_init()
 {
-	static char *pe[] = {(void *)Cont_32_0,(void *)Cont_36_1,(void *)Cont_39_2};
+	static char *pe[] = {(void *)Cont_32_0,(void *)Cont_36_1,(void *)Cont_38_2};
 	xsi_register_didat("work_m_00000000003795650122_1587489690", "isim/CPU_TestBench_isim_beh.exe.sim/work/m_00000000003795650122_1587489690.didat");
 	xsi_register_executes(pe);
 }

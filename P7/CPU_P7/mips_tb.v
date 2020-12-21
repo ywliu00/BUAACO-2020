@@ -53,10 +53,10 @@ module CPU_TestBench;
 		#10;
 		reset = 0;
         
-		//#60;
+		#380;
 		//interrupt = 1;
-		//#10;
-		//interrupt = 0;
+		#10;
+		interrupt = 0;
 		// Add stimulus here
 
 	end
@@ -74,7 +74,7 @@ module CPU_TestBench;
 		end
 		else
 		begin
-			interrupt <= 0;
+			//interrupt <= 0;
 		end
 	end
 	

@@ -6,7 +6,7 @@
 // 
 // Create Date:    23:48:39 12/10/2020 
 // Design Name: 
-// Module Name:    EPC_BD_Cal 
+// Module Name:    CP0
 // Project Name: 
 // Target Devices: 
 // Tool versions: 

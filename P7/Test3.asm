@@ -16,7 +16,7 @@ ori $4, 0x3031
 mthi $4
 sw $4, 4($0)
 ori $4, 0x3038
-sw $4, 1($0)
+sw $4, 0($0)
 mthi $4
 nop
 mfhi $5
@@ -45,7 +45,8 @@ lhu $4, 0x0100($0)
 #lw $4, 0x2004($0)
 #add $5, $4, $6
 div $15, $5
-jal Dest1
+sw $11, 1000($0)
+#jal Dest1
 mfhi $6
 ori $6, $0, 1
 addiu $6, $6, 0x1234
