@@ -196,7 +196,8 @@ module ID(
 			RAddr0Data_ID_to_EX <= 32'd0;
 			RAddr1Data_ID_to_EX <= 32'd0;
 			ResFromID_ID_to_EX <= 32'd0;
-			PC_ID_to_EX <= (Stall) ? PC_ID_to_EX : 32'h0000_3000;
+			PC_ID_to_EX <= (Stall) ? PC : 32'h0000_3000;
+			//PC_ID_to_EX <= 32'h0000_3000;
 			Tuse_RAddr0_ID_to_EX <= 3'b111; // 要用到的时间
 			Tuse_RAddr1_ID_to_EX <= 3'b111;
 			Tnew_WAddr_ID_to_EX <= 3'b000; // 产生时间

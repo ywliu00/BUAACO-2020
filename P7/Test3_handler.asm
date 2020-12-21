@@ -19,11 +19,12 @@ bgtz $26, If2
 nop
 #以上是外部中断处理内容
 #接下来处理内部异常
+IfRet2:
 mfc0 $1, $14
-addiu $1, $1, 8
+#addiu $1, $1, 8
 mtc0 $1, $14
 #直接跳过
-IfRet2:
+
 eret 
 
 If0:

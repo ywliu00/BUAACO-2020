@@ -239,7 +239,7 @@ module CPU(
     );
 	
 	////////////////////// Mem ////////////////////////////
-	wire LoadInst_Mem_to_WB, Err_Mem_to_C0;
+	wire LoadInst_Mem_to_WB, Err_Mem_to_C0, BD_Mem_to_CP0;
 	wire [2:0] Tuse_RAddr0_Mem_to_WB, Tuse_RAddr1_Mem_to_WB, 
 				Tnew_WAddr_Mem_to_WB, DMExtOp_Mem_to_WB;
 	wire [31:0] PC_Mem_to_WB, ALUOut_Mem_to_WB, DMReadData_Mem_to_WB, 
@@ -296,6 +296,7 @@ module CPU(
 	.CP0Addr(CP0Addr_Mem_to_CP0),
 	.CP0WData(Data_Mem_to_CP0),
 	.eretEn(eretEn),
+	.BD_to_CP0(BD_Mem_to_CP0),
 	
 	.IO_RData(PrRD),//CPU从外部读
 	.IO_WData(PrWD),//CPU向外部写
@@ -325,6 +326,7 @@ module CPU(
 	.Err(Err_Mem_to_C0),
 	.ErrStat(ErrStat_Mem_to_C0),
 	.HWInt(HWInt),
+	.BD_from_Mem(BD_Mem_to_CP0),
 	.ErrSignal(ErrSignal),
 	.DataOut(Data_CP0_to_Mem)
     );

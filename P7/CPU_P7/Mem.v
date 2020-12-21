@@ -48,6 +48,7 @@ module Mem(
 	output reg [31:0] DMReadData_Mem_to_WB,
 	output reg [2:0] DMExtOp_Mem_to_WB,
 	output reg LoadInst_Mem_to_WB,
+	//output reg BDSlot,
 	
 	// 冲突处理单元信号
 	output wire [4:0] RAddr0_Mem,
@@ -67,6 +68,7 @@ module Mem(
 	output wire [31:0] CP0Addr,
 	output wire [31:0] CP0WData,
 	output wire eretEn,
+	output wire BD_to_CP0,
 	
 	// 外部设备读写信息
 	input wire [31:0] IO_RData,
@@ -153,6 +155,11 @@ module Mem(
     .Err(Err),
     .ErrStat(ErrStat));
 	
+	reg [31:0] PC_of_BorJ;
+	wire typeJ, typeB;
+	assign typeJ = `j || `jal || `jr || `jalr ? 1 : 0;
+	assign typeB = `beq || `bgez || `bgtz || `blez || `bltz || `bne ? 1 : 0;
+	
 	//////////////////// Coprocessor Data ////////////////////////
 	wire [31:0] GRFWriteData;
 	assign CP0Addr = {27'd0, Rd_CP0Addr_EX_to_Mem};//DMWriteData_EX_to_Mem; 
@@ -162,6 +169,7 @@ module Mem(
 	assign GRFWriteData = (`mfc0) ? CP0RData : 
 						  (IO_En) ? IO_RData : DMRead_wire;
 	assign eretEn = `eret ? 1 : 0;
+	assign BD_to_CP0 = (PC_of_BorJ + 32'd4 == PC_EX_to_Mem) ? 1 : 0;
 	////////////////流水线寄存器//////////////////
 	always@(posedge clk)
 	begin
@@ -178,6 +186,8 @@ module Mem(
 			DMReadData_Mem_to_WB <= 32'h1234_ABCD;
 			DMExtOp_Mem_to_WB <= 3'b000;
 			LoadInst_Mem_to_WB <= 1'b0;
+			//BDSlot <= 0;
+			PC_of_BorJ <= (reset) ? 32'hFFFF_FFFF : PC_of_BorJ;
 		end
 		else
 		begin
@@ -192,6 +202,7 @@ module Mem(
 			DMReadData_Mem_to_WB <= GRFWriteData;
 			DMExtOp_Mem_to_WB <= DMExtOp_wire;
 			LoadInst_Mem_to_WB <= `lw || `lh || `lb || `lbu || `lhu;
+			PC_of_BorJ <= (typeJ || typeB) ? PC_EX_to_Mem : PC_of_BorJ;
 		end
 	end
 

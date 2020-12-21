@@ -17,7 +17,7 @@ mthi $4
 sw $4, 4($0)
 ori $4, 0x3038
 sw $4, 0($0)
-mthi $4
+mtlo $4
 nop
 mfhi $5
 lw $5, 4($0)
@@ -41,12 +41,17 @@ ori $4, $4, 0xfff0
 lbu $4, 0x2000($0)
 addi $4, $4, 1
 lh $4, 0x1002($0)
-lhu $4, 0x0100($0)
+#mthi $11
+div $15, $5
+#lhu $4, 0x0100($0)
 #lw $4, 0x2004($0)
 #add $5, $4, $6
-div $15, $5
-sw $11, 1000($0)
-#jal Dest1
+#div $15, $5
+
+#addi $6, $0, 0xabcd
+#addi $6, $0, 0xdcba
+#addi $6, $0, 0x4399
+jal Dest1
 mfhi $6
 ori $6, $0, 1
 addiu $6, $6, 0x1234
@@ -55,3 +60,5 @@ ori $6, $0, 0
 Dest1:
 lui $7, 0xABCD
 addiu $7, $0, 0x1234
+mfhi $6
+mflo $6

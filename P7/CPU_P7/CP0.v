@@ -30,6 +30,7 @@ module CP0(
 	input wire Err,
 	input wire [4:0] ErrStat,
 	input wire [7:2] HWInt,
+	input wire BD_from_Mem,
 	output wire ErrSignal,
 	output wire [31:0] DataOut
     );
@@ -42,28 +43,32 @@ module CP0(
 	assign ErrSignal = Err || ((HWInt != 6'b000000) && (SR[1] == 0) && SR[0]);
 	// 通知CPU开始中断
 	
-	assign WBJump = WBInstrType == `inst_j || 
-					WBInstrType == `inst_jal ||
-					WBInstrType == `inst_jr ||
-					WBInstrType == `inst_jalr ? 1 : 0;
-	assign WBBranch = WBInstrType == `inst_beq ||
-					  WBInstrType == `inst_bgez ||
-					  WBInstrType == `inst_bgtz ||
-					  WBInstrType == `inst_blez ||
-					  WBInstrType == `inst_bltz ||
-					  WBInstrType == `inst_bne ? 1 : 0;
+	//assign WBJump = WBInstrType == `inst_j || 
+	//				WBInstrType == `inst_jal ||
+	//				WBInstrType == `inst_jr ||
+	//				WBInstrType == `inst_jalr ? 1 : 0;
+	//assign WBBranch = WBInstrType == `inst_beq ||
+	//				  WBInstrType == `inst_bgez ||
+	//				  WBInstrType == `inst_bgtz ||
+	//				  WBInstrType == `inst_blez ||
+	//				  WBInstrType == `inst_bltz ||
+	//				  WBInstrType == `inst_bne ? 1 : 0;
 	assign EPC_wire = (`mtc0 && CP0Addr[4:0] == 14) ? DataIn :
 					  (`mtc0 && CP0Addr[4:0] != 14) ? EPC :
-					  (WBJump || WBBranch) ? {PCAddr[31:2], 2'b0} - 32'd4 : 
+					  //(WBJump || WBBranch) ? {PCAddr[31:2], 2'b0} - 32'd4 : 
+					  BD_from_Mem ? {PCAddr[31:2], 2'b0} - 32'd4 :
 										{PCAddr[31:2], 2'b0};
 	// mtc0指令写EPC，如果写的不是EPC则保持原值
 	
 	assign ExcCode = (| HWInt) ? 5'd0 : 
 					 Err ? ErrStat : 5'd31;//中断优先级高于异常
 	
-	assign BD_wire = (WBJump || WBBranch) ? 1 : 0;
+	//assign BD_wire = (WBJump || WBBranch) ? 1 : 0;
 	// 是否在延迟槽内
-	assign Cause_wire = ErrSignal ? {BD_wire, 15'd0, HWInt, 3'd0, ExcCode, 2'd0} : 
+	//assign Cause_wire = ErrSignal ? {BD_wire, 15'd0, HWInt, 3'd0, ExcCode, 2'd0} : 
+	//								{Cause_wire[31:16], HWInt, Cause_wire[9:0]};
+	
+	assign Cause_wire = ErrSignal ? {BD_from_Mem, 15'd0, HWInt, 3'd0, ExcCode, 2'd0} : 
 									{Cause_wire[31:16], HWInt, Cause_wire[9:0]};
 	
 	assign EXL_wire = ErrSignal ? 1 : 

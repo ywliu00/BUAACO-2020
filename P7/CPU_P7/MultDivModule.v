@@ -31,7 +31,8 @@ module MultDivModule(
     output reg [31:0] HI,
     output reg [31:0] LO
     );
-	reg [63:0] result;
+	reg [63:0] result, TmpHILO;
+	reg Start1Clk;
 	wire [63:0] D1_Ext, D2_Ext;
 	assign D1_Ext = {{32{D1[31]}}, D1};
 	assign D2_Ext = {{32{D2[31]}}, D2};
@@ -47,10 +48,19 @@ module MultDivModule(
 			LO <= 32'h0000_0000;
 			i <= 32'h0000_0000;
 			DelayTime <= 32'h0FFF_FFFF;
+			Start1Clk <= 0;
+			TmpHILO <= 64'h0000_0000_0000_0000;
 		end
+		else if(Start1Clk && ErrSignal)
+			begin
+				Busy <= 0;
+				{HI, LO} <= TmpHILO;
+			end
 		else if(Start && !ErrSignal)
 		begin
 			Busy <= 1'b1;
+			Start1Clk <= Start;
+			TmpHILO <= {HI, LO};
 			if(`mult)
 			begin
 				result <= $signed(D1) * $signed(D2);
@@ -86,15 +96,27 @@ module MultDivModule(
 				{HI, LO} <= result;
 			end
 			i <= i + 1;
+			Start1Clk <= Start;
 		end
-		else if(`mthi && !ErrSignal) HI <= D1;
-		else if(`mtlo && !ErrSignal) LO <= D1;
+		else if(`mthi && !ErrSignal)
+		begin
+			TmpHILO <= {HI, LO};
+			HI <= D1;
+			Start1Clk <= 1;
+		end
+		else if(`mtlo && !ErrSignal)
+		begin
+			TmpHILO <= {HI, LO};
+			LO <= D1;
+			Start1Clk <= 1;
+		end
 		else
 		begin
 			HI <= HI;
 			LO <= LO;
 			i <= 32'h0000_0000;
 			DelayTime <= 32'h0FFF_FFFF;
+			Start1Clk <= Start;
 		end
 	end
 	
