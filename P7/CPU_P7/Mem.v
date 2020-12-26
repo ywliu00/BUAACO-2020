@@ -63,6 +63,7 @@ module Mem(
 	input wire [4:0] ErrStat_EX_to_Mem,
 	input wire Err_EX_to_Mem,
 	input wire [31:0] CP0RData,
+	//input wire [31:0] EPCData,
 	output wire Err,
 	output wire [4:0] ErrStat,
 	output wire [31:0] CP0Addr,
@@ -176,7 +177,7 @@ module Mem(
 		if(reset || ErrSignal || eretEn)
 		begin
 			RegWriteAddr_Mem_to_WB <= 5'd0;
-			PC_Mem_to_WB <= 32'h0000_3000;
+			PC_Mem_to_WB <= (eretEn) ? CP0RData : ErrSignal ? 32'h0000_4180 : 32'h0000_3000;
 			ALUOut_Mem_to_WB <= 32'd0;
 			//RegWriteEn <= 1'b0;
 			Tuse_RAddr0_Mem_to_WB <= 3'b111;

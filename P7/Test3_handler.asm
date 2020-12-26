@@ -5,6 +5,7 @@
 #addiu $1, $1, 1
 #sw $1, 0x7f00($0)
 #addiu $6, $6, 1
+mflo $1
 mfc0 $1, $13
 andi $26, $1, 0x400
 bgtz $26, If0
@@ -21,7 +22,7 @@ nop
 #接下来处理内部异常
 IfRet2:
 mfc0 $1, $14
-#addiu $1, $1, 8
+addiu $1, $1, 8
 mtc0 $1, $14
 #直接跳过
 

@@ -21,11 +21,11 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "F:/Course/CO/P7/CPU_P7/CPU.v";
+static const char *ng0 = "D:/BUAACO/P7/CPU_P7/CPU.v";
 
 
 
-static void Cont_314_0(char *t0)
+static void Cont_316_0(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -62,7 +62,7 @@ LAB0:    t1 = (t0 + 17408U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(314, ng0);
+LAB2:    xsi_set_current_line(316, ng0);
     t2 = (t0 + 13848U);
     t5 = *((char **)t2);
     memset(t4, 0, 8);
@@ -135,7 +135,7 @@ LAB14:    memcpy(t3, t17, 8);
 
 }
 
-static void Cont_315_1(char *t0)
+static void Cont_317_1(char *t0)
 {
     char *t1;
     char *t2;
@@ -153,7 +153,7 @@ LAB0:    t1 = (t0 + 17656U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(315, ng0);
+LAB2:    xsi_set_current_line(317, ng0);
     t2 = (t0 + 13208U);
     t3 = *((char **)t2);
     t2 = (t0 + 18136);
@@ -170,9 +170,9 @@ LAB1:    return;
 }
 
 
-extern void work_m_00000000003624281489_3508565487_init()
+extern void work_m_00000000001733027923_3508565487_init()
 {
-	static char *pe[] = {(void *)Cont_314_0,(void *)Cont_315_1};
-	xsi_register_didat("work_m_00000000003624281489_3508565487", "isim/CPU_TestBench_isim_beh.exe.sim/work/m_00000000003624281489_3508565487.didat");
+	static char *pe[] = {(void *)Cont_316_0,(void *)Cont_317_1};
+	xsi_register_didat("work_m_00000000001733027923_3508565487", "isim/CPU_TestBench_isim_beh.exe.sim/work/m_00000000001733027923_3508565487.didat");
 	xsi_register_executes(pe);
 }

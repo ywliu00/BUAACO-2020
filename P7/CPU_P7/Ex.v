@@ -69,6 +69,7 @@ module EX(
 	input wire ErrSignal,
 	input wire [4:0] ErrStat_ID_to_EX,
 	input wire Err_ID_to_EX,
+	input wire [31:0] EPCData,
 	output reg [4:0] ErrStat_EX_to_Mem,
 	output reg Err_EX_to_Mem
     );
@@ -181,7 +182,7 @@ module EX(
 			InstrType_EX_to_Mem <= `inst_sll;
 			ALUOut_EX_to_Mem <= 32'd0;
 			DMWriteData_EX_to_Mem <= 32'd0;
-			PC_EX_to_Mem <= 32'h0000_3000;
+			PC_EX_to_Mem <= eretEn ? EPCData : ErrSignal ? 32'h0000_4180 : 32'h0000_3000;
 			Tuse_RAddr0_EX_to_Mem <= 3'b111;
 			Tuse_RAddr1_EX_to_Mem <= 3'b111;
 			Tnew_WAddr_EX_to_Mem <= 3'b000;

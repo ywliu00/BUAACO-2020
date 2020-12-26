@@ -173,7 +173,8 @@ module CPU(
 	.Err_IF_to_ID(Err_IF_to_ID),
 	.ErrStat_ID_to_EX(ErrStat_ID_to_EX),
 	.Err_ID_to_EX(Err_ID_to_EX),
-	.eretEn(eretEn)
+	.eretEn(eretEn),
+	.EPCData(Data_CP0_to_Mem)
     );
 	 
 	//////////////////// EX /////////////////////////////////
@@ -223,6 +224,7 @@ module CPU(
 	.Tuse_RAddr1_EX(Tuse_RAddr1_EX),
 	.Tnew_WAddr_EX(Tnew_WAddr_EX),
 	.MultBusy(MultBusy),
+	.EPCData(Data_CP0_to_Mem),
 	
 	//转发需求部分
 	.bypass_EX(ALUOut_EX_to_Mem),  //从EX/Mem转发来的

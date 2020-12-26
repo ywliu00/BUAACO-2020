@@ -74,9 +74,9 @@ module IF(
 	 begin
 		if(reset || ErrSignal || eretEn)
 		begin
-			PC_4 <= 32'h0000_3004;
+			PC_4 <= ErrSignal ? 32'h0000_4184: eretEn ? EPCData + 32'd4 : 32'h0000_3004;
 			Instr = 32'h0000_0000;
-			PC <= 32'h0000_3000;
+			PC <= ErrSignal ? 32'h0000_4180 : eretEn ? EPCData : 32'h0000_3000;
 			ErrStat_IF_to_ID <= 5'd31;
 			Err_IF_to_ID <= 0;
 		end

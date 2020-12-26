@@ -56,16 +56,16 @@ module CPU_TestBench;
 		#360;
 		//interrupt = 1;
 		#10;
-		interrupt = 0;
+		//interrupt = 0;
 		// Add stimulus here
 
 	end
 	
 	always@(negedge clk)
 	begin
-		if((addr == 32'h0000_3050) && flag)
+		if((addr == 32'h0000_3030) )//&& flag)
 		begin
-			//interrupt <= 1;
+			interrupt <= 1;
 			flag <= 0;
 		end
 		else if(addr == 32'h0000_418c)
@@ -74,7 +74,7 @@ module CPU_TestBench;
 		end
 		else
 		begin
-			//interrupt <= 0;
+			interrupt <= 0;
 		end
 	end
 	

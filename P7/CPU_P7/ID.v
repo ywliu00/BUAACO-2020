@@ -67,7 +67,8 @@ module ID(
 	input wire ErrSignal,
 	input wire [4:0] ErrStat_IF_to_ID,
 	input wire Err_IF_to_ID,
-	inout wire eretEn,
+	input wire eretEn,
+	input wire [31:0] EPCData,
 	output reg [4:0] ErrStat_ID_to_EX,
 	output reg Err_ID_to_EX
     );
@@ -196,7 +197,7 @@ module ID(
 			RAddr0Data_ID_to_EX <= 32'd0;
 			RAddr1Data_ID_to_EX <= 32'd0;
 			ResFromID_ID_to_EX <= 32'd0;
-			PC_ID_to_EX <= (Stall) ? PC : 32'h0000_3000;
+			PC_ID_to_EX <= ErrSignal ? 32'h0000_4180 : (Stall) ? PC : eretEn ? EPCData : 32'h0000_3000;
 			//PC_ID_to_EX <= 32'h0000_3000;
 			Tuse_RAddr0_ID_to_EX <= 3'b111; // 要用到的时间
 			Tuse_RAddr1_ID_to_EX <= 3'b111;

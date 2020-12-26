@@ -3,14 +3,14 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="F:/Course/CO/P7/CPU_P7/CPU_TestBench_isim_beh.wdb" id="1" type="auto">
+      <db_ref path="D:/BUAACO/P7/CPU_P7/CPU_TestBench_isim_beh.wdb" id="1" type="auto">
          <top_modules>
             <top_module name="CPU_TestBench" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="23" />
+   <WVObjectSize size="12" />
    <wvobject fp_name="/CPU_TestBench/addr" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">addr[31:0]</obj_property>
       <obj_property name="ObjectShortName">addr[31:0]</obj_property>
@@ -57,20 +57,6 @@
       <obj_property name="ObjectShortName">PC_Mem_to_WB[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/Cause_wire" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">Cause_wire[31:0]</obj_property>
-      <obj_property name="ObjectShortName">Cause_wire[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/CP0/EPC" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">EPC[31:0]</obj_property>
-      <obj_property name="ObjectShortName">EPC[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/Mem/PC_of_BorJ" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">PC_of_BorJ[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PC_of_BorJ[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
    <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/MultDiv/HI" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">HI[31:0]</obj_property>
       <obj_property name="ObjectShortName">HI[31:0]</obj_property>
@@ -80,37 +66,5 @@
       <obj_property name="ElementShortName">LO[31:0]</obj_property>
       <obj_property name="ObjectShortName">LO[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/MultDiv/ErrSignal" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">ErrSignal</obj_property>
-      <obj_property name="ObjectShortName">ErrSignal</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/MultDiv/Start" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">Start</obj_property>
-      <obj_property name="ObjectShortName">Start</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/MultDiv/Busy" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">Busy</obj_property>
-      <obj_property name="ObjectShortName">Busy</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/EX/MultDiv/Start1Clk" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">Start1Clk</obj_property>
-      <obj_property name="ObjectShortName">Start1Clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/StallUnit/Stall" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">Stall</obj_property>
-      <obj_property name="ObjectShortName">Stall</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/StallUnit/Stall0" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">Stall0</obj_property>
-      <obj_property name="ObjectShortName">Stall0</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/StallUnit/Stall1" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">Stall1</obj_property>
-      <obj_property name="ObjectShortName">Stall1</obj_property>
-   </wvobject>
-   <wvobject fp_name="/CPU_TestBench/uut/CPU/StallUnit/Stall2" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">Stall2</obj_property>
-      <obj_property name="ObjectShortName">Stall2</obj_property>
    </wvobject>
 </wave_config>

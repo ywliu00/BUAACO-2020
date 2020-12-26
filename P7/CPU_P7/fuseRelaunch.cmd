@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Course/CO/P7/CPU_P7/CPU_TestBench_isim_beh.exe" -prj "F:/Course/CO/P7/CPU_P7/CPU_TestBench_beh.prj" "work.CPU_TestBench" "work.glbl" -mt "off" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "D:/BUAACO/P7/CPU_P7/CPU_TestBench_isim_beh.exe" -prj "D:/BUAACO/P7/CPU_P7/CPU_TestBench_beh.prj" "work.CPU_TestBench" "work.glbl" -mt "off" 
