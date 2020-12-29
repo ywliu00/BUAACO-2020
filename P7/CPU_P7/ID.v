@@ -180,8 +180,8 @@ module ID(
 	                       (`mflo) || (`mfhi) || (`mtlo) || (`mthi);
 	
 	////////////////// Error Detect /////////////////////
-	assign ErrStat_wire = `insterr ? `RI : ErrStat_IF_to_ID;
-	assign Err_wire = `insterr ? 1 : Err_IF_to_ID;
+	assign ErrStat_wire = `syscall ? `SyscallErr : `insterr ? `RI : ErrStat_IF_to_ID;
+	assign Err_wire = `insterr || `syscall ? 1 : Err_IF_to_ID;
 	////////////////// ID/EXÁ÷Ë®Ïß¼Ä´æÆ÷ ////////////////////
 	
 	always@(posedge clk)

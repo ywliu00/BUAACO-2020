@@ -75,8 +75,15 @@ module MultDivModule(
 			end
 			else if(`div)
 			begin
-				result[31:0] <= $signed(D1) / $signed(D2);
-				result[63:32] <= $signed(D1) % $signed(D2);
+				if(D2 == 32'd0)
+				begin
+					result <= {HI, LO};
+				end
+				else
+				begin
+					result[31:0] <= $signed(D1) / $signed(D2);
+					result[63:32] <= $signed(D1) % $signed(D2);
+				end
 				DelayTime <= 10;
 				i <= 1;
 			end

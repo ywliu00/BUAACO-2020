@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/BUAACO/P7/CPU_P7/Mem.v";
+static const char *ng0 = "F:/Course/CO/P7/CPU_P7/Mem.v";
 static int ng1[] = {1, 0};
 static int ng2[] = {0, 0};
 static unsigned int ng3[] = {1U, 0U};
@@ -4870,19 +4870,19 @@ LAB26:    t105 = (t77 + 4);
     if (t110 > 0)
         goto LAB34;
 
-LAB35:    xsi_set_current_line(194, ng0);
+LAB35:    xsi_set_current_line(193, ng0);
 
-LAB77:    xsi_set_current_line(195, ng0);
+LAB77:    xsi_set_current_line(194, ng0);
     t2 = (t0 + 1368U);
     t3 = *((char **)t2);
     t2 = (t0 + 9288);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 5, 0LL);
-    xsi_set_current_line(196, ng0);
+    xsi_set_current_line(195, ng0);
     t2 = (t0 + 2008U);
     t3 = *((char **)t2);
     t2 = (t0 + 9448);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 32, 0LL);
-    xsi_set_current_line(197, ng0);
+    xsi_set_current_line(196, ng0);
     t2 = (t0 + 6648U);
     t3 = *((char **)t2);
     memset(t27, 0, 8);
@@ -4934,37 +4934,37 @@ LAB89:    memcpy(t6, t31, 8);
 
 LAB90:    t19 = (t0 + 9128);
     xsi_vlogvar_wait_assign_value(t19, t6, 0, 0, 32, 0LL);
-    xsi_set_current_line(199, ng0);
+    xsi_set_current_line(198, ng0);
     t2 = (t0 + 7128U);
     t3 = *((char **)t2);
     t2 = (t0 + 9608);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 3, 0LL);
-    xsi_set_current_line(200, ng0);
+    xsi_set_current_line(199, ng0);
     t2 = (t0 + 7288U);
     t3 = *((char **)t2);
     t2 = (t0 + 9768);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 3, 0LL);
-    xsi_set_current_line(201, ng0);
+    xsi_set_current_line(200, ng0);
     t2 = (t0 + 7448U);
     t3 = *((char **)t2);
     t2 = (t0 + 9928);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 3, 0LL);
-    xsi_set_current_line(202, ng0);
+    xsi_set_current_line(201, ng0);
     t2 = (t0 + 1528U);
     t3 = *((char **)t2);
     t2 = (t0 + 10088);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 60, 0LL);
-    xsi_set_current_line(203, ng0);
+    xsi_set_current_line(202, ng0);
     t2 = (t0 + 8728U);
     t3 = *((char **)t2);
     t2 = (t0 + 10248);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 32, 0LL);
-    xsi_set_current_line(204, ng0);
+    xsi_set_current_line(203, ng0);
     t2 = (t0 + 8248U);
     t3 = *((char **)t2);
     t2 = (t0 + 10408);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, 0, 3, 0LL);
-    xsi_set_current_line(205, ng0);
+    xsi_set_current_line(204, ng0);
     t2 = (t0 + 6648U);
     t3 = *((char **)t2);
     memset(t6, 0, 8);
@@ -5072,7 +5072,7 @@ LAB138:    memcpy(t221, t190, 8);
 
 LAB139:    t249 = (t0 + 10568);
     xsi_vlogvar_wait_assign_value(t249, t221, 0, 0, 1, 0LL);
-    xsi_set_current_line(206, ng0);
+    xsi_set_current_line(205, ng0);
     t2 = (t0 + 8408U);
     t3 = *((char **)t2);
     memset(t27, 0, 8);
@@ -5360,7 +5360,7 @@ LAB50:    t33 = (t0 + 9448);
     t2 = ((char*)((ng4)));
     t3 = (t0 + 10568);
     xsi_vlogvar_wait_assign_value(t3, t2, 0, 0, 1, 0LL);
-    xsi_set_current_line(191, ng0);
+    xsi_set_current_line(190, ng0);
     t2 = (t0 + 2808U);
     t3 = *((char **)t2);
     memset(t20, 0, 8);

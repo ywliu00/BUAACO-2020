@@ -187,7 +187,6 @@ module Mem(
 			DMReadData_Mem_to_WB <= 32'h1234_ABCD;
 			DMExtOp_Mem_to_WB <= 3'b000;
 			LoadInst_Mem_to_WB <= 1'b0;
-			//BDSlot <= 0;
 			PC_of_BorJ <= (reset) ? 32'hFFFF_FFFF : PC_of_BorJ;
 		end
 		else

@@ -35,11 +35,15 @@ module MemErrDect(
 	assign StoreAlignErr = ((`sw && Addr4BAlignErr) || (`sh && Addr2BAlignErr)) ? 1 : 0;
 	//对齐错误部分
 	
-	wire DMRange, TimerRange, LoadAddrErr, StoreAddrErr;
+	wire DMRange, TimerRange, LoadAddrErr, StoreAddrErr, TimerRange_No_sw;
 	assign DMRange = (MemRWAddr >= 32'h0000_0000 && MemRWAddr <= 32'h0000_2fff) ? 1 : 0;
 	assign TimerRange = ((MemRWAddr >= 32'h0000_7f00 && MemRWAddr <= 32'h0000_7f0b) || 
 						(MemRWAddr >= 32'h0000_7f10 && MemRWAddr <= 32'h0000_7f1b)) ? 1 : 0;
-	assign LoadAddrErr = ((!(DMRange || TimerRange) && (`lw || `lh || `lhu || `lb || `lbu)) || (TimerRange && (`lh || `lhu || `lb || `lbu))) ? 1 : 0;
+	assign TimerRange_No_sw = (MemRWAddr >= 32'h0000_7f08 && MemRWAddr <= 32'h0000_7f0b) || 
+							  (MemRWAddr >= 32'h0000_7f18 && MemRWAddr <= 32'h0000_7f1b) ? 1 : 0;
+	assign LoadAddrErr = (!(DMRange || TimerRange) && (`lw || `lh || `lhu || `lb || `lbu)) || 
+						 (TimerRange && (`lh || `lhu || `lb || `lbu)) || 
+						 (`sw && TimerRange_No_sw)? 1 : 0;
 	assign StoreAddrErr = (!(DMRange || TimerRange) && (`sw || `sh || `sb)) || (TimerRange && (`sh || `sb)) ? 1 : 0;
 	// 地址非法部分
 	

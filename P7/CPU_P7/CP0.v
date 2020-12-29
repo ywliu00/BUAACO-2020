@@ -35,7 +35,7 @@ module CP0(
 	output wire [31:0] DataOut
     );
 	wire [4:0] ExcCode;
-	wire WBJump, WBBranch, EXL_wire, BD_wire;
+	wire EXL_wire, BD_wire;
 	wire [31:0] SR_wire, EPC_wire, Cause_wire;
 	reg [31:0] SR, EPC, Cause, PRId;
 	

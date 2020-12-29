@@ -96,6 +96,7 @@
 `define inst_mtc0 (60'd1 << 50)
 `define inst_mfc0 (60'd1 << 51)
 `define inst_eret (60'd1 << 52)
+`define inst_syscall (60'd1 << 53)
 
 
 //Ö¸ÁîÅĞ¶Ï
@@ -153,10 +154,12 @@
 `define mtc0 (InstrType[50])
 `define mfc0 (InstrType[51])
 `define eret (InstrType[52])
+`define syscall (InstrType[53])
 
 //´íÎóĞÅÏ¢
 `define Interrupt (5'd0)
 `define AdEL (5'd4)
 `define AdES (5'd5)
+`define SyscallErr (5'd8)
 `define RI (5'd10)
 `define Ov (5'd12)

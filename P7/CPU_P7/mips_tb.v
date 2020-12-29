@@ -63,7 +63,7 @@ module CPU_TestBench;
 	
 	always@(negedge clk)
 	begin
-		if((addr == 32'h0000_3030) )//&& flag)
+		if((addr == 32'h0000_3058) )//&& flag)
 		begin
 			interrupt <= 1;
 			flag <= 0;

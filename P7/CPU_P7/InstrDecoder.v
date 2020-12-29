@@ -85,6 +85,7 @@ module InstrDecoder(
 					   (OpCode == 6'b010000 && Rs == 5'b00100) ? `inst_mtc0 :
 					   (OpCode == 6'b010000 && Rs == 5'b00000) ? `inst_mfc0 :
 					   (OpCode == 6'b010000 && Func == 6'b011000) ? `inst_eret :
+					   (OpCode == 6'b000000 && Func == 6'b001100) ? `inst_syscall :
 					                                               `inst_err;
 
 endmodule

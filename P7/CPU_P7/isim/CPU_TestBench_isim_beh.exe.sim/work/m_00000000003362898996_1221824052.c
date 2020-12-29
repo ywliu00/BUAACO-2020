@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/BUAACO/P7/CPU_P7/InstrDecoder.v";
+static const char *ng0 = "F:/Course/CO/P7/CPU_P7/InstrDecoder.v";
 static unsigned int ng1[] = {33U, 0U};
 static unsigned int ng2[] = {1U, 0U, 0U, 0U};
 static int ng3[] = {0, 0};
@@ -112,7 +112,8 @@ static int ng87[] = {49, 0};
 static int ng88[] = {50, 0};
 static int ng89[] = {51, 0};
 static int ng90[] = {52, 0};
-static unsigned int ng91[] = {0U, 0U, 0U, 0U};
+static int ng91[] = {53, 0};
+static unsigned int ng92[] = {0U, 0U, 0U, 0U};
 
 
 
@@ -828,6 +829,14 @@ static void Cont_35_4(char *t0)
     char t3686[8];
     char t3694[8];
     char t3739[16];
+    char t3744[16];
+    char t3745[8];
+    char t3748[8];
+    char t3764[8];
+    char t3778[8];
+    char t3794[8];
+    char t3802[8];
+    char t3847[16];
     char *t1;
     char *t2;
     char *t5;
@@ -4261,13 +4270,113 @@ static void Cont_35_4(char *t0)
     unsigned int t3741;
     unsigned int t3742;
     unsigned int t3743;
-    char *t3744;
-    char *t3745;
     char *t3746;
     char *t3747;
-    char *t3748;
     char *t3749;
     char *t3750;
+    unsigned int t3751;
+    unsigned int t3752;
+    unsigned int t3753;
+    unsigned int t3754;
+    unsigned int t3755;
+    unsigned int t3756;
+    unsigned int t3757;
+    unsigned int t3758;
+    unsigned int t3759;
+    unsigned int t3760;
+    unsigned int t3761;
+    unsigned int t3762;
+    char *t3763;
+    char *t3765;
+    unsigned int t3766;
+    unsigned int t3767;
+    unsigned int t3768;
+    unsigned int t3769;
+    unsigned int t3770;
+    char *t3771;
+    char *t3772;
+    unsigned int t3773;
+    unsigned int t3774;
+    unsigned int t3775;
+    char *t3776;
+    char *t3777;
+    char *t3779;
+    char *t3780;
+    unsigned int t3781;
+    unsigned int t3782;
+    unsigned int t3783;
+    unsigned int t3784;
+    unsigned int t3785;
+    unsigned int t3786;
+    unsigned int t3787;
+    unsigned int t3788;
+    unsigned int t3789;
+    unsigned int t3790;
+    unsigned int t3791;
+    unsigned int t3792;
+    char *t3793;
+    char *t3795;
+    unsigned int t3796;
+    unsigned int t3797;
+    unsigned int t3798;
+    unsigned int t3799;
+    unsigned int t3800;
+    char *t3801;
+    unsigned int t3803;
+    unsigned int t3804;
+    unsigned int t3805;
+    char *t3806;
+    char *t3807;
+    char *t3808;
+    unsigned int t3809;
+    unsigned int t3810;
+    unsigned int t3811;
+    unsigned int t3812;
+    unsigned int t3813;
+    unsigned int t3814;
+    unsigned int t3815;
+    char *t3816;
+    char *t3817;
+    unsigned int t3818;
+    unsigned int t3819;
+    unsigned int t3820;
+    unsigned int t3821;
+    unsigned int t3822;
+    unsigned int t3823;
+    unsigned int t3824;
+    unsigned int t3825;
+    int t3826;
+    int t3827;
+    unsigned int t3828;
+    unsigned int t3829;
+    unsigned int t3830;
+    unsigned int t3831;
+    unsigned int t3832;
+    unsigned int t3833;
+    char *t3834;
+    unsigned int t3835;
+    unsigned int t3836;
+    unsigned int t3837;
+    unsigned int t3838;
+    unsigned int t3839;
+    char *t3840;
+    char *t3841;
+    unsigned int t3842;
+    unsigned int t3843;
+    unsigned int t3844;
+    char *t3845;
+    char *t3846;
+    unsigned int t3848;
+    unsigned int t3849;
+    unsigned int t3850;
+    unsigned int t3851;
+    char *t3852;
+    char *t3853;
+    char *t3854;
+    char *t3855;
+    char *t3856;
+    char *t3857;
+    char *t3858;
 
 LAB0:    t1 = (t0 + 4160U);
     t2 = *((char **)t1);
@@ -4336,15 +4445,15 @@ LAB31:    if (*((unsigned int *)t4) > 0)
 
 LAB33:    memcpy(t3, t93, 16);
 
-LAB34:    t3745 = (t0 + 4944);
-    t3746 = (t3745 + 56U);
-    t3747 = *((char **)t3746);
-    t3748 = (t3747 + 56U);
-    t3749 = *((char **)t3748);
-    xsi_vlog_bit_copy(t3749, 0, t3, 0, 60);
-    xsi_driver_vfirst_trans(t3745, 0, 59);
-    t3750 = (t0 + 4544);
-    *((int *)t3750) = 1;
+LAB34:    t3853 = (t0 + 4944);
+    t3854 = (t3853 + 56U);
+    t3855 = *((char **)t3854);
+    t3856 = (t3855 + 56U);
+    t3857 = *((char **)t3856);
+    xsi_vlog_bit_copy(t3857, 0, t3, 0, 60);
+    xsi_driver_vfirst_trans(t3853, 0, 59);
+    t3858 = (t0 + 4544);
+    *((int *)t3858) = 1;
 
 LAB1:    return;
 LAB4:    *((unsigned int *)t6) = 1;
@@ -12105,14 +12214,229 @@ LAB1350:    t3737 = ((char*)((ng2)));
     xsi_vlog_unsigned_lshift(t3739, 60, t3737, 60, t3738, 32);
     goto LAB1351;
 
-LAB1352:    t3744 = ((char*)((ng91)));
-    goto LAB1353;
+LAB1352:    t3746 = (t0 + 1368U);
+    t3747 = *((char **)t3746);
+    t3746 = ((char*)((ng21)));
+    memset(t3748, 0, 8);
+    t3749 = (t3747 + 4);
+    t3750 = (t3746 + 4);
+    t3751 = *((unsigned int *)t3747);
+    t3752 = *((unsigned int *)t3746);
+    t3753 = (t3751 ^ t3752);
+    t3754 = *((unsigned int *)t3749);
+    t3755 = *((unsigned int *)t3750);
+    t3756 = (t3754 ^ t3755);
+    t3757 = (t3753 | t3756);
+    t3758 = *((unsigned int *)t3749);
+    t3759 = *((unsigned int *)t3750);
+    t3760 = (t3758 | t3759);
+    t3761 = (~(t3760));
+    t3762 = (t3757 & t3761);
+    if (t3762 != 0)
+        goto LAB1362;
+
+LAB1359:    if (t3760 != 0)
+        goto LAB1361;
+
+LAB1360:    *((unsigned int *)t3748) = 1;
+
+LAB1362:    memset(t3764, 0, 8);
+    t3765 = (t3748 + 4);
+    t3766 = *((unsigned int *)t3765);
+    t3767 = (~(t3766));
+    t3768 = *((unsigned int *)t3748);
+    t3769 = (t3768 & t3767);
+    t3770 = (t3769 & 1U);
+    if (t3770 != 0)
+        goto LAB1363;
+
+LAB1364:    if (*((unsigned int *)t3765) != 0)
+        goto LAB1365;
+
+LAB1366:    t3772 = (t3764 + 4);
+    t3773 = *((unsigned int *)t3764);
+    t3774 = *((unsigned int *)t3772);
+    t3775 = (t3773 || t3774);
+    if (t3775 > 0)
+        goto LAB1367;
+
+LAB1368:    memcpy(t3802, t3764, 8);
+
+LAB1369:    memset(t3745, 0, 8);
+    t3834 = (t3802 + 4);
+    t3835 = *((unsigned int *)t3834);
+    t3836 = (~(t3835));
+    t3837 = *((unsigned int *)t3802);
+    t3838 = (t3837 & t3836);
+    t3839 = (t3838 & 1U);
+    if (t3839 != 0)
+        goto LAB1381;
+
+LAB1382:    if (*((unsigned int *)t3834) != 0)
+        goto LAB1383;
+
+LAB1384:    t3841 = (t3745 + 4);
+    t3842 = *((unsigned int *)t3745);
+    t3843 = *((unsigned int *)t3841);
+    t3844 = (t3842 || t3843);
+    if (t3844 > 0)
+        goto LAB1385;
+
+LAB1386:    t3848 = *((unsigned int *)t3745);
+    t3849 = (~(t3848));
+    t3850 = *((unsigned int *)t3841);
+    t3851 = (t3849 || t3850);
+    if (t3851 > 0)
+        goto LAB1387;
+
+LAB1388:    if (*((unsigned int *)t3841) > 0)
+        goto LAB1389;
+
+LAB1390:    if (*((unsigned int *)t3745) > 0)
+        goto LAB1391;
+
+LAB1392:    memcpy(t3744, t3852, 16);
+
+LAB1393:    goto LAB1353;
 
 LAB1354:    xsi_vlog_unsigned_bit_combine(t3636, 60, t3739, 60, t3744, 60);
     goto LAB1358;
 
 LAB1356:    memcpy(t3636, t3739, 16);
     goto LAB1358;
+
+LAB1361:    t3763 = (t3748 + 4);
+    *((unsigned int *)t3748) = 1;
+    *((unsigned int *)t3763) = 1;
+    goto LAB1362;
+
+LAB1363:    *((unsigned int *)t3764) = 1;
+    goto LAB1366;
+
+LAB1365:    t3771 = (t3764 + 4);
+    *((unsigned int *)t3764) = 1;
+    *((unsigned int *)t3771) = 1;
+    goto LAB1366;
+
+LAB1367:    t3776 = (t0 + 1528U);
+    t3777 = *((char **)t3776);
+    t3776 = ((char*)((ng58)));
+    memset(t3778, 0, 8);
+    t3779 = (t3777 + 4);
+    t3780 = (t3776 + 4);
+    t3781 = *((unsigned int *)t3777);
+    t3782 = *((unsigned int *)t3776);
+    t3783 = (t3781 ^ t3782);
+    t3784 = *((unsigned int *)t3779);
+    t3785 = *((unsigned int *)t3780);
+    t3786 = (t3784 ^ t3785);
+    t3787 = (t3783 | t3786);
+    t3788 = *((unsigned int *)t3779);
+    t3789 = *((unsigned int *)t3780);
+    t3790 = (t3788 | t3789);
+    t3791 = (~(t3790));
+    t3792 = (t3787 & t3791);
+    if (t3792 != 0)
+        goto LAB1373;
+
+LAB1370:    if (t3790 != 0)
+        goto LAB1372;
+
+LAB1371:    *((unsigned int *)t3778) = 1;
+
+LAB1373:    memset(t3794, 0, 8);
+    t3795 = (t3778 + 4);
+    t3796 = *((unsigned int *)t3795);
+    t3797 = (~(t3796));
+    t3798 = *((unsigned int *)t3778);
+    t3799 = (t3798 & t3797);
+    t3800 = (t3799 & 1U);
+    if (t3800 != 0)
+        goto LAB1374;
+
+LAB1375:    if (*((unsigned int *)t3795) != 0)
+        goto LAB1376;
+
+LAB1377:    t3803 = *((unsigned int *)t3764);
+    t3804 = *((unsigned int *)t3794);
+    t3805 = (t3803 & t3804);
+    *((unsigned int *)t3802) = t3805;
+    t3806 = (t3764 + 4);
+    t3807 = (t3794 + 4);
+    t3808 = (t3802 + 4);
+    t3809 = *((unsigned int *)t3806);
+    t3810 = *((unsigned int *)t3807);
+    t3811 = (t3809 | t3810);
+    *((unsigned int *)t3808) = t3811;
+    t3812 = *((unsigned int *)t3808);
+    t3813 = (t3812 != 0);
+    if (t3813 == 1)
+        goto LAB1378;
+
+LAB1379:
+LAB1380:    goto LAB1369;
+
+LAB1372:    t3793 = (t3778 + 4);
+    *((unsigned int *)t3778) = 1;
+    *((unsigned int *)t3793) = 1;
+    goto LAB1373;
+
+LAB1374:    *((unsigned int *)t3794) = 1;
+    goto LAB1377;
+
+LAB1376:    t3801 = (t3794 + 4);
+    *((unsigned int *)t3794) = 1;
+    *((unsigned int *)t3801) = 1;
+    goto LAB1377;
+
+LAB1378:    t3814 = *((unsigned int *)t3802);
+    t3815 = *((unsigned int *)t3808);
+    *((unsigned int *)t3802) = (t3814 | t3815);
+    t3816 = (t3764 + 4);
+    t3817 = (t3794 + 4);
+    t3818 = *((unsigned int *)t3764);
+    t3819 = (~(t3818));
+    t3820 = *((unsigned int *)t3816);
+    t3821 = (~(t3820));
+    t3822 = *((unsigned int *)t3794);
+    t3823 = (~(t3822));
+    t3824 = *((unsigned int *)t3817);
+    t3825 = (~(t3824));
+    t3826 = (t3819 & t3821);
+    t3827 = (t3823 & t3825);
+    t3828 = (~(t3826));
+    t3829 = (~(t3827));
+    t3830 = *((unsigned int *)t3808);
+    *((unsigned int *)t3808) = (t3830 & t3828);
+    t3831 = *((unsigned int *)t3808);
+    *((unsigned int *)t3808) = (t3831 & t3829);
+    t3832 = *((unsigned int *)t3802);
+    *((unsigned int *)t3802) = (t3832 & t3828);
+    t3833 = *((unsigned int *)t3802);
+    *((unsigned int *)t3802) = (t3833 & t3829);
+    goto LAB1380;
+
+LAB1381:    *((unsigned int *)t3745) = 1;
+    goto LAB1384;
+
+LAB1383:    t3840 = (t3745 + 4);
+    *((unsigned int *)t3745) = 1;
+    *((unsigned int *)t3840) = 1;
+    goto LAB1384;
+
+LAB1385:    t3845 = ((char*)((ng2)));
+    t3846 = ((char*)((ng91)));
+    xsi_vlog_unsigned_lshift(t3847, 60, t3845, 60, t3846, 32);
+    goto LAB1386;
+
+LAB1387:    t3852 = ((char*)((ng92)));
+    goto LAB1388;
+
+LAB1389:    xsi_vlog_unsigned_bit_combine(t3744, 60, t3847, 60, t3852, 60);
+    goto LAB1393;
+
+LAB1391:    memcpy(t3744, t3847, 16);
+    goto LAB1393;
 
 }
 
