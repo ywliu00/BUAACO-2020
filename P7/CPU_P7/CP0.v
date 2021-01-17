@@ -35,12 +35,21 @@ module CP0(
 	output wire [31:0] DataOut
     );
 	wire [4:0] ExcCode;
-	wire EXL_wire, BD_wire;
+	wire [7:2] IM_wire;
+	wire EXL_wire, BD_wire, HWIntEn;
 	wire [31:0] SR_wire, EPC_wire, Cause_wire;
 	reg [31:0] SR, EPC, Cause, PRId;
 	
-	//assign ErrSignal = (Err || (HWInt != 6'b000000)) && (SR[1] == 0) && SR[0];// EXL为1时禁止中断，IE全局中断使能
-	assign ErrSignal = Err || ((HWInt != 6'b000000) && (SR[1] == 0) && SR[0]);
+	assign IM_wire = SR[15:10];
+	assign HWIntEn = (HWInt[7] && IM_wire[7]) || 
+					 (HWInt[6] && IM_wire[6]) || 
+					 (HWInt[5] && IM_wire[5]) || 
+					 (HWInt[4] && IM_wire[4]) || 
+					 (HWInt[3] && IM_wire[3]) || 
+					 (HWInt[2] && IM_wire[2]);
+	
+	assign ErrSignal = Err || (HWIntEn && (SR[1] == 0) && SR[0]);// EXL为1时禁止中断，IE全局中断使能
+	//assign ErrSignal = Err || ((HWInt != 6'b000000) && (SR[1] == 0) && SR[0]);
 	// 通知CPU开始中断
 	
 	//assign WBJump = WBInstrType == `inst_j || 
@@ -89,7 +98,7 @@ module CP0(
 	begin
 		if(reset)
 		begin
-			SR <= 32'd1;
+			SR <= 32'h0000_FC00;
 			EPC <= 32'd0;
 			Cause <= 32'd0;
 			PRId <= 32'h1817_1906;

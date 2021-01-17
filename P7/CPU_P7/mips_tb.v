@@ -53,10 +53,10 @@ module CPU_TestBench;
 		#10;
 		reset = 0;
         
-		#360;
-		//interrupt = 1;
-		#10;
-		//interrupt = 0;
+		#170;
+		interrupt = 1;
+		#20;
+		interrupt = 0;
 		// Add stimulus here
 
 	end
@@ -65,7 +65,7 @@ module CPU_TestBench;
 	begin
 		if((addr == 32'h0000_3058) )//&& flag)
 		begin
-			interrupt <= 1;
+			//interrupt <= 1;
 			flag <= 0;
 		end
 		else if(addr == 32'h0000_418c)
@@ -74,7 +74,7 @@ module CPU_TestBench;
 		end
 		else
 		begin
-			interrupt <= 0;
+			//interrupt <= 0;
 		end
 	end
 	
